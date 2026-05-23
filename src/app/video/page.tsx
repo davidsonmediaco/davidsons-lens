@@ -1,0 +1,94 @@
+import type { Metadata } from 'next'
+import Footer from '@/components/Footer'
+import CTAButton from '@/components/CTAButton'
+import ScrollReveal from '@/components/ScrollReveal'
+import PageTransition from '@/components/PageTransition'
+import VideoHero from '@/components/VideoHero'
+
+export const metadata: Metadata = {
+  title: 'Video',
+  description:
+    'Video production in Bernardsville, NJ. Music videos, UGC, branding content, fitness content and short form social video for musicians, businesses and creators across northern New Jersey.',
+}
+
+export default function VideoPage() {
+  return (
+    <PageTransition>
+      {/* Full-screen video hero */}
+      <VideoHero src="/assets/video/reel.mp4" />
+
+      <div className="bg-[#0D0D0D]">
+        {/* Copy section */}
+        <ScrollReveal>
+          <div className="max-w-3xl mx-auto px-6 py-20 md:py-28">
+            <div className="w-12 h-px bg-[#C9A84C] mb-10" />
+            <h1
+              className="text-4xl md:text-5xl text-white mb-8"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              Video
+            </h1>
+            <div
+              className="text-[#F5F5F5] text-lg leading-relaxed space-y-6"
+              style={{ fontFamily: 'var(--font-body)' }}
+            >
+              <p>
+                Video is where personality lives. A photo stops time. Video lets people in.
+              </p>
+              <p>
+                For businesses it&apos;s the faces behind the counter, the energy of the space, the
+                people that make customers want to come back. For musicians it&apos;s the visual that
+                lives alongside the music and tells the story the song started. For brands and
+                creators it&apos;s the content that makes someone stop scrolling and actually pay
+                attention.
+              </p>
+              <p>
+                I shoot music videos, short form social content, UGC, branding content, and fitness
+                content. Full production or built for the scroll. Whatever the goal is, the approach
+                is the same. Make it feel real, make it look good, and make sure it works for the
+                people watching it.
+              </p>
+              <p>
+                Based in Bernardsville, NJ working with musicians, businesses, brands, and creators
+                across northern New Jersey and beyond.
+              </p>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* Services list */}
+        <ScrollReveal delay={0.1}>
+          <div className="max-w-3xl mx-auto px-6 pb-16">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {[
+                'Music Videos',
+                'Short Form Social',
+                'UGC Content',
+                'Branding Content',
+                'Fitness Content',
+                'Full Production',
+              ].map(service => (
+                <div
+                  key={service}
+                  className="border border-white/10 px-5 py-4 text-sm text-[#A0A0A0] tracking-wide"
+                  style={{ fontFamily: 'var(--font-body)' }}
+                >
+                  {service}
+                </div>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* CTA */}
+        <ScrollReveal delay={0.2}>
+          <div className="flex justify-center py-16">
+            <CTAButton />
+          </div>
+        </ScrollReveal>
+
+        <Footer />
+      </div>
+    </PageTransition>
+  )
+}

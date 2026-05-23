@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Brand colours */
+  --color-bg:          #0D0D0D;
+  --color-bg-card:     #1A1A1A;
+  --color-gold:        #C9A84C;
+  --color-gold-light:  #DFC070;
+  --color-text:        #F5F5F5;
+  --color-text-muted:  #A0A0A0;
+  --color-white:       #FFFFFF;
+  --color-overlay:     rgba(0,0,0,0.55);
+
+  /* Fonts */
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-body:    var(--font-outfit), system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0D0D0D;
+  color: #F5F5F5;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography base */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: #FFFFFF;
+}
+
+/* Selection */
+::selection {
+  background-color: #C9A84C;
+  color: #0D0D0D;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0D0D0D; }
+::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 3px; }
+
+/* Blog MDX prose styles */
+.prose-blog h2 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  color: #FFFFFF;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.prose-blog h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: #F5F5F5;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.prose-blog p {
+  color: #D0D0D0;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+  font-size: 1.0625rem;
+}
+.prose-blog a {
+  color: #C9A84C;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-blog a:hover { color: #DFC070; }
+.prose-blog ul, .prose-blog ol {
+  color: #D0D0D0;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+.prose-blog li { margin-bottom: 0.4rem; }
+.prose-blog ul li { list-style-type: disc; }
+.prose-blog ol li { list-style-type: decimal; }
+.prose-blog strong { color: #F5F5F5; font-weight: 600; }
+.prose-blog em { color: #C0C0C0; font-style: italic; }
+.prose-blog blockquote {
+  border-left: 2px solid #C9A84C;
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  color: #A0A0A0;
+  font-style: italic;
+}
+.prose-blog hr {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin: 2.5rem 0;
+}
+.prose-blog code {
+  background: #1A1A1A;
+  color: #C9A84C;
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  font-size: 0.875em;
+}
+
+/* Utility: gold underline on hover */
+.gold-hover {
+  position: relative;
+  transition: color 0.2s;
+}
+.gold-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #C9A84C;
+  transition: width 0.3s ease;
+}
+.gold-hover:hover::after { width: 100%; }
+.gold-hover:hover { color: #C9A84C; }
