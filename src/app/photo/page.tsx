@@ -19,8 +19,14 @@ const categories = [
   { href: '/photo/business', label: 'Business', description: 'Brands, spaces, products' },
 ]
 
-// Placeholder highlight images — replace with real images once assets are added
-const highlightImages: { src: string; alt: string; href: string }[] = []
+const highlightImages: { src: string; alt: string; href: string }[] = [
+  { src: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=800&q=80', alt: 'Portrait', href: '/photo/portraits' },
+  { src: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80', alt: 'Music', href: '/photo/music' },
+  { src: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80', alt: 'Sports', href: '/photo/sports' },
+  { src: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=800&q=80', alt: 'Pets', href: '/photo/pets' },
+  { src: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80', alt: 'Business', href: '/photo/business' },
+  { src: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80', alt: 'Portrait session', href: '/photo/portraits' },
+]
 
 export default function PhotoPage() {
   return (
