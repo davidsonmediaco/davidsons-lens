@@ -5,7 +5,6 @@ import Footer from '@/components/Footer'
 import PageTransition from '@/components/PageTransition'
 import CTAButton from '@/components/CTAButton'
 import { getPost, getAllPosts } from '@/lib/blog'
-import { MDXRemote } from 'next-mdx-remote/rsc'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -111,13 +110,12 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         )}
 
-        {/* MDX body */}
+        {/* Post body */}
         <article
           className="max-w-3xl mx-auto px-6 pb-16 prose-blog"
           style={{ fontFamily: 'var(--font-body)' }}
-        >
-          <MDXRemote source={post.content} />
-        </article>
+          dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+        />
 
         {/* CTA */}
         <section className="border-t border-white/5">

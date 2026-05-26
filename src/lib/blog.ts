@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import { marked } from 'marked'
 
 const POSTS_DIR = path.join(process.cwd(), 'content', 'blog')
 
@@ -14,7 +15,7 @@ export interface PostMeta {
 }
 
 export interface Post extends PostMeta {
-  content: string
+  contentHtml: string
 }
 
 function ensureDir() {
@@ -51,6 +52,7 @@ export function getPost(slug: string): Post | null {
   if (!filepath) return null
   const raw = fs.readFileSync(filepath, 'utf-8')
   const { data, content } = matter(raw)
+  const contentHtml = marked(content) as string
   return {
     slug,
     title: data.title ?? 'Untitled',
@@ -58,7 +60,7 @@ export function getPost(slug: string): Post | null {
     excerpt: data.excerpt ?? '',
     category: data.category ?? 'General',
     coverImage: data.coverImage,
-    content,
+    contentHtml,
   }
 }
 
