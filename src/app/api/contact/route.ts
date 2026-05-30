@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(req: NextRequest) {
   try {
     const { name, email, service, message } = await req.json()
@@ -15,6 +13,13 @@ export async function POST(req: NextRequest) {
     if (!emailRegex.test(email)) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 })
     }
+
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      console.error('Contact form: RESEND_API_KEY not configured')
+      return NextResponse.json({ error: 'Email service not configured' }, { status: 503 })
+    }
+    const resend = new Resend(apiKey)
 
     await resend.emails.send({
       from: 'Davidsons Lens <onboarding@resend.dev>',
