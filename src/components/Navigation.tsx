@@ -18,6 +18,9 @@ export default function Navigation() {
   const pathname = usePathname()
   const isHome = pathname === '/'
 
+  // Hide the main navigation on the standalone coming-soon page
+  const hideNav = pathname === '/coming-soon'
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -26,6 +29,8 @@ export default function Navigation() {
 
   // Close menu on route change
   useEffect(() => { setMenuOpen(false) }, [pathname])
+
+  if (hideNav) return null
 
   return (
     <>

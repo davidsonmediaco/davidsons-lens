@@ -56,7 +56,8 @@ export const metadata: Metadata = {
     title: 'Davidsons Lens | Photo, Video & Creative Media',
     description: 'Full-service creative media company based in Bernardsville, NJ.',
   },
-  robots: { index: true, follow: true },
+  // STAGING: site is not public yet. Flip both to true when promoting to production.
+  robots: { index: false, follow: false },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

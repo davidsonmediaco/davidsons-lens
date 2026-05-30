@@ -1,4 +1,7 @@
+# STAGING — site is not public. Disallow all crawling.
+# When promoting to production, restore:
+#   User-agent: *
+#   Allow: /
+#   Sitemap: https://davidsonslens.com/sitemap.xml
 User-agent: *
-Allow: /
-
-Sitemap: https://davidsonslens.com/sitemap.xml
+Disallow: /
