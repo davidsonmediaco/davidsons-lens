@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 import HeroGallery from '@/components/HeroGallery'
 import CTAButton from '@/components/CTAButton'
@@ -39,30 +38,6 @@ export default function HomepageClient({ images }: { images: HeroImage[] }) {
         >
           Photo&nbsp;&nbsp;|&nbsp;&nbsp;Video&nbsp;&nbsp;|&nbsp;&nbsp;Creative Services
         </motion.p>
-
-        {/* Nav links */}
-        <motion.nav
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.9, delay: 0.7 }}
-          className="hidden md:flex items-center gap-12 mb-14"
-        >
-          {[
-            ['/photo', 'Photo'],
-            ['/video', 'Video'],
-            ['/creative-services', 'Creative Services'],
-            ['/contact', 'Contact'],
-          ].map(([href, label]) => (
-            <Link
-              key={href}
-              href={href}
-              className="text-sm tracking-[0.2em] uppercase text-[#F5F5F5] hover:text-[#C9A84C] transition-colors duration-300"
-              style={{ fontFamily: 'var(--font-body)' }}
-            >
-              {label}
-            </Link>
-          ))}
-        </motion.nav>
 
         {/* CTA */}
         <motion.div

@@ -43,7 +43,7 @@ export default function Navigation() {
             : 'bg-[#0D0D0D]/95 backdrop-blur-sm border-b border-white/5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between relative">
           {/* Logo */}
           <Link
             href="/"
@@ -53,8 +53,8 @@ export default function Navigation() {
             Davidsons Lens
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-10">
+          {/* Desktop nav — centered */}
+          <nav className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
             {navLinks.map(({ href, label }) => (
               <Link
                 key={href}
