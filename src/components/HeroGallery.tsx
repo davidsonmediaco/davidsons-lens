@@ -2,14 +2,13 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { motion, AnimatePresence } from 'framer-motion'
 
 interface HeroGalleryProps {
   images: { src: string; alt: string; position?: string }[]
   interval?: number
 }
 
-export default function HeroGallery({ images, interval = 5000 }: HeroGalleryProps) {
+export default function HeroGallery({ images, interval = 8000 }: HeroGalleryProps) {
   const [current, setCurrent] = useState(0)
 
   useEffect(() => {
@@ -21,34 +20,32 @@ export default function HeroGallery({ images, interval = 5000 }: HeroGalleryProp
   }, [images.length, interval])
 
   if (images.length === 0) {
-    return (
-      <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1A] to-[#0D0D0D]" />
-    )
+    return <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1A] to-[#0D0D0D]" />
   }
 
   return (
-    <div className="absolute inset-0 overflow-hidden">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={current}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: 'easeInOut' }}
-          className="absolute inset-0"
+    <div className="absolute inset-0 overflow-hidden bg-[#0D0D0D]">
+      {/* All frames stacked; only the current one is opaque. The layers overlap,
+          so the outgoing image cross-dissolves into the incoming one with no black gap. */}
+      {images.map((img, i) => (
+        <div
+          key={img.src}
+          aria-hidden={i !== current}
+          className="absolute inset-0 transition-opacity duration-[1200ms] ease-in-out"
+          style={{ opacity: i === current ? 1 : 0 }}
         >
           <Image
-            src={images[current].src}
-            alt={images[current].alt}
+            src={img.src}
+            alt={img.alt}
             fill
-            priority={current === 0}
+            priority={i === 0}
             className="object-cover"
-            style={{ objectPosition: images[current].position ?? 'center' }}
+            style={{ objectPosition: img.position ?? 'center' }}
             sizes="100vw"
           />
-        </motion.div>
-      </AnimatePresence>
-      {/* Dark overlay */}
+        </div>
+      ))}
+      {/* Dark overlay for text legibility */}
       <div className="absolute inset-0 bg-black/55" />
     </div>
   )
