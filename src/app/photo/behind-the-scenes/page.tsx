@@ -8,18 +8,17 @@ export const metadata: Metadata = {
 }
 
 const heroImage = {
-  src: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1920&q=80',
-  alt: 'Behind the scenes on a Davidsons Lens shoot, Bernardsville NJ',
+  src: '/assets/behind-the-scenes/behind-the-scenes-podcast-shoot-nj-01.jpg',
+  alt: 'Behind the scenes of a podcast content shoot in New Jersey — Davidsons Lens',
 }
 
-// Replace these with your real behind-the-scenes photos in this same shape.
 const images: { src: string; alt: string }[] = [
-  { src: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80', alt: 'Behind the scenes' },
-  { src: 'https://images.unsplash.com/photo-1486693128850-a77436e7ba3c?auto=format&fit=crop&w=800&q=80', alt: 'On set' },
-  { src: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=800&q=80', alt: 'Lighting setup' },
-  { src: 'https://images.unsplash.com/photo-1500210600161-3c2b8eca5f9e?auto=format&fit=crop&w=800&q=80', alt: 'Camera at work' },
-  { src: 'https://images.unsplash.com/photo-1473876637954-4b493d59fd97?auto=format&fit=crop&w=800&q=80', alt: 'In the moment' },
-  { src: 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=800&q=80', alt: 'Working the shot' },
+  { src: '/assets/behind-the-scenes/behind-the-scenes-podcast-shoot-nj-01.jpg', alt: 'Behind the scenes of a podcast shoot on set in New Jersey — Davidsons Lens' },
+  { src: '/assets/behind-the-scenes/behind-the-scenes-podcast-set-nj-02.jpg', alt: 'Behind the scenes podcast set production in New Jersey — Davidsons Lens' },
+  { src: '/assets/behind-the-scenes/behind-the-scenes-content-shoot-nj-03.jpg', alt: 'Behind the scenes content shoot in New Jersey — Davidsons Lens' },
+  { src: '/assets/behind-the-scenes/behind-the-scenes-production-nj-04.jpg', alt: 'Behind the scenes production setup in New Jersey — Davidsons Lens' },
+  { src: '/assets/behind-the-scenes/behind-the-scenes-on-set-nj-05.jpg', alt: 'Behind the scenes on set in New Jersey — Davidsons Lens' },
+  { src: '/assets/behind-the-scenes/behind-the-scenes-creative-shoot-nj-06.jpg', alt: 'Behind the scenes of a creative shoot in New Jersey — Davidsons Lens' },
 ]
 
 export default function BehindTheScenesPage() {

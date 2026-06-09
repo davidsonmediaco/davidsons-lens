@@ -3,7 +3,6 @@ import Footer from '@/components/Footer'
 import CTAButton from '@/components/CTAButton'
 import ScrollReveal from '@/components/ScrollReveal'
 import PageTransition from '@/components/PageTransition'
-import VideoHero from '@/components/VideoHero'
 
 export const metadata: Metadata = {
   title: 'Video',
@@ -11,11 +10,44 @@ export const metadata: Metadata = {
     'Video production in Bernardsville, NJ. Music videos, UGC, branding content, fitness content and short form social video for musicians, businesses and creators across northern New Jersey.',
 }
 
+const YOUTUBE_CHANNEL = 'https://www.youtube.com/@davidsonslens'
+const FEATURED_VIDEO_ID = 'lQYogZoeweA'
+
 export default function VideoPage() {
   return (
     <PageTransition>
-      {/* Full-screen video hero */}
-      <VideoHero src="/assets/video/reel.mp4" />
+      {/* Featured music video */}
+      <section className="pt-[96px] md:pt-[120px] pb-4 bg-[#0D0D0D]">
+        <div className="max-w-5xl mx-auto px-6">
+          <p
+            className="text-xs tracking-[0.3em] uppercase text-[#C9A84C] mb-6 text-center"
+            style={{ fontFamily: 'var(--font-body)' }}
+          >
+            Featured Music Video
+          </p>
+          <div className="relative aspect-video w-full overflow-hidden bg-black shadow-2xl ring-1 ring-white/10">
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${FEATURED_VIDEO_ID}?rel=0`}
+              title="Featured music video — Davidsons Lens"
+              className="absolute inset-0 h-full w-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+          <div className="flex justify-center mt-8">
+            <a
+              href={YOUTUBE_CHANNEL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block border border-[#C9A84C] text-[#C9A84C] px-8 py-4 text-sm tracking-[0.2em] uppercase transition-colors duration-300 hover:bg-[#C9A84C] hover:text-[#0D0D0D]"
+              style={{ fontFamily: 'var(--font-body)' }}
+            >
+              Watch more on YouTube
+            </a>
+          </div>
+        </div>
+      </section>
 
       <div className="bg-[#0D0D0D]">
         {/* Copy section */}

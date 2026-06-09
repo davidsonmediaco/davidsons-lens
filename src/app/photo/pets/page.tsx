@@ -8,17 +8,20 @@ export const metadata: Metadata = {
 }
 
 const heroImage = {
-  src: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=1920&q=80',
-  alt: 'Pet photography by Davidsons Lens, Bernardsville NJ',
+  src: '/assets/pets/dramatic-labrador-portrait-nj.jpg',
+  alt: 'Dramatic close-up Labrador portrait — pet photography in New Jersey — Davidsons Lens',
 }
 
 const images: { src: string; alt: string }[] = [
-  { src: 'https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=800&q=80', alt: 'Cat portrait' },
-  { src: 'https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=800&q=80', alt: 'Dog portrait outdoors' },
-  { src: 'https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?auto=format&fit=crop&w=800&q=80', alt: 'Puppy portrait' },
-  { src: 'https://images.unsplash.com/photo-1548681528-6a5c45dbe30f?auto=format&fit=crop&w=800&q=80', alt: 'Dog close-up portrait' },
-  { src: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=800&q=80', alt: 'Dog portrait session' },
-  { src: 'https://images.unsplash.com/photo-1425082661705-1834bfd09dca?auto=format&fit=crop&w=800&q=80', alt: 'Cat portrait session' },
+  { src: '/assets/pets/pet-photography-puppy-bond-nj.jpg', alt: 'Owner nose-to-nose with a Labrador puppy — pet photography NJ — Davidsons Lens' },
+  { src: '/assets/pets/labradors-running-beach-nj.jpg', alt: 'Two Labradors running on the beach — dog photography in New Jersey — Davidsons Lens' },
+  { src: '/assets/pets/happy-yellow-lab-portrait-nj.jpg', alt: 'Happy yellow Labrador portrait outdoors — pet photography NJ — Davidsons Lens' },
+  { src: '/assets/pets/brindle-dog-winter-portrait-nj.jpg', alt: 'Brindle dog portrait in the snow — winter pet photography in New Jersey — Davidsons Lens' },
+  { src: '/assets/pets/yellow-lab-puppy-portrait-nj.jpg', alt: 'Yellow Labrador puppy portrait outdoors — pet photography NJ — Davidsons Lens' },
+  { src: '/assets/pets/labrador-puppy-candid-nj.jpg', alt: 'Labrador puppy candid moment on a porch — dog photography NJ — Davidsons Lens' },
+  { src: '/assets/pets/brindle-dog-portrait-nj.jpg', alt: 'Brindle dog portrait — pet photography in New Jersey — Davidsons Lens' },
+  { src: '/assets/pets/yellow-lab-relaxing-porch-nj.jpg', alt: 'Yellow Labrador relaxing on a porch — lifestyle pet photography NJ — Davidsons Lens' },
+  { src: '/assets/pets/dramatic-labrador-portrait-nj.jpg', alt: 'Dramatic Labrador close-up portrait — pet photography in New Jersey — Davidsons Lens' },
 ]
 
 export default function PetsPage() {

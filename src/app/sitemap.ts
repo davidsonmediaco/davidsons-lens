@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/photo/sports`, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE}/photo/pets`, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE}/photo/business`, priority: 0.8, changeFrequency: 'monthly' },
+    { url: `${BASE}/photo/behind-the-scenes`, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE}/video`, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE}/creative-services`, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE}/contact`, priority: 0.7, changeFrequency: 'yearly' },

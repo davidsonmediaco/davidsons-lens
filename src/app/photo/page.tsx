@@ -20,13 +20,15 @@ const categories = [
   { href: '/photo/behind-the-scenes', label: 'Behind the Scenes', description: 'On set, in the moment' },
 ]
 
+// Curated "best of" — one flagship image per service so Highlights shows full range.
+// Ordered for impact and tonal rhythm (cinematic → energy → emotion → color → mood → process).
 const highlightImages: { src: string; alt: string; href: string }[] = [
-  { src: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=800&q=80', alt: 'Portrait', href: '/photo/portraits' },
-  { src: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80', alt: 'Music', href: '/photo/music' },
-  { src: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80', alt: 'Sports', href: '/photo/sports' },
-  { src: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=800&q=80', alt: 'Pets', href: '/photo/pets' },
-  { src: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80', alt: 'Business', href: '/photo/business' },
-  { src: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80', alt: 'Behind the scenes', href: '/photo/behind-the-scenes' },
+  { src: '/assets/portraits/water-portrait-bernardsville-nj.jpg', alt: 'Cinematic waterside portrait — Portraits', href: '/photo/portraits' },
+  { src: '/assets/sports/nj-cyclones-basketball-game-02.jpg', alt: 'NJ Cyclones basketball action — Sports', href: '/photo/sports' },
+  { src: '/assets/pets/pet-photography-puppy-bond-nj.jpg', alt: 'Owner and Labrador puppy — Pets', href: '/photo/pets' },
+  { src: '/assets/business/sobol-acai-bowls-spread-nj.jpg', alt: 'SoBol acai bowls — Business brand photography', href: '/photo/business' },
+  { src: '/assets/music/cinematic-live-music-photography-nj.jpg', alt: 'Black-and-white live performance — Music', href: '/photo/music' },
+  { src: '/assets/behind-the-scenes/behind-the-scenes-podcast-shoot-nj-01.jpg', alt: 'On set podcast shoot — Behind the Scenes', href: '/photo/behind-the-scenes' },
 ]
 
 export default function PhotoPage() {
@@ -111,7 +113,7 @@ export default function PhotoPage() {
               >
                 Highlights
               </h2>
-              <GalleryGrid images={highlightImages} masonry />
+              <GalleryGrid images={highlightImages} />
             </div>
           </ScrollReveal>
         )}

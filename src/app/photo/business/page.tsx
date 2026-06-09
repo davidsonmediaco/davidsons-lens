@@ -8,17 +8,23 @@ export const metadata: Metadata = {
 }
 
 const heroImage = {
-  src: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1920&q=80',
-  alt: 'Business photography by Davidsons Lens, Bernardsville NJ',
+  src: '/assets/business/san-remo-espresso-machine-detail-nj.jpg',
+  alt: 'Premium coffee brand photography of a San Remo espresso machine in New Jersey — Davidsons Lens',
 }
 
 const images: { src: string; alt: string }[] = [
-  { src: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80', alt: 'Business workspace photography' },
-  { src: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80', alt: 'Office photography' },
-  { src: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80', alt: 'Business team photography' },
-  { src: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80', alt: 'Small business photography' },
-  { src: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=800&q=80', alt: 'Business branding photography' },
-  { src: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80', alt: 'Business photography session' },
+  { src: '/assets/business/san-remo-espresso-machine-detail-nj.jpg', alt: 'San Remo espresso machine detail — small business brand photography NJ — Davidsons Lens' },
+  { src: '/assets/business/sobol-acai-bowls-spread-nj.jpg', alt: 'SoBol acai bowls spread — food and brand photography in New Jersey — Davidsons Lens' },
+  { src: '/assets/business/barrister-coffee-house-brand-photography-basking-ridge-nj.jpg', alt: 'Barrister Coffee House brand photography in Basking Ridge, NJ — Davidsons Lens' },
+  { src: '/assets/business/sobol-acai-bowl-dragonfruit-patio-nj.jpg', alt: 'SoBol dragonfruit acai bowl product photography in New Jersey — Davidsons Lens' },
+  { src: '/assets/business/san-remo-espresso-machine-nj.jpg', alt: 'San Remo espresso machine at a New Jersey coffee house — Davidsons Lens' },
+  { src: '/assets/business/sobol-blue-acai-bowl-nj.jpg', alt: 'SoBol blue majik acai bowl product photography in New Jersey — Davidsons Lens' },
+  { src: '/assets/business/barrister-coffee-roasting-nj.jpg', alt: 'Coffee roasting process — small business photography NJ — Davidsons Lens' },
+  { src: '/assets/business/sobol-acai-bowl-fruit-topping-nj.jpg', alt: 'SoBol acai bowl with fresh fruit toppings — food photography NJ — Davidsons Lens' },
+  { src: '/assets/business/san-remo-coffee-bar-wide-nj.jpg', alt: 'Coffee bar interior brand photography in New Jersey — Davidsons Lens' },
+  { src: '/assets/business/sobol-acai-bowl-branding-nj.jpg', alt: 'SoBol acai bowl with branding — small business brand photography NJ — Davidsons Lens' },
+  { src: '/assets/business/barrister-coffee-roast-close-up-nj.jpg', alt: 'Close-up coffee roast product photography in New Jersey — Davidsons Lens' },
+  { src: '/assets/business/sobol-acai-bowl-close-up-nj.jpg', alt: 'Close-up SoBol acai bowl with mango and kiwi — food photography NJ — Davidsons Lens' },
 ]
 
 export default function BusinessPage() {

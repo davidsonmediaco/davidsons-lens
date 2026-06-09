@@ -1,8 +1,16 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import HeroGallery from '@/components/HeroGallery'
 import CTAButton from '@/components/CTAButton'
+
+const heroNav = [
+  ['/photo', 'Photo'],
+  ['/video', 'Video'],
+  ['/creative-services', 'Creative Services'],
+  ['/contact', 'Contact'],
+] as const
 
 interface HeroImage {
   src: string
@@ -13,7 +21,7 @@ export default function HomepageClient({ images }: { images: HeroImage[] }) {
   return (
     <div className="relative h-screen w-full overflow-hidden">
       {/* Background gallery or gradient fallback */}
-      <HeroGallery images={images} interval={5000} />
+      <HeroGallery images={images} interval={8000} />
 
       {/* Content overlay */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
@@ -28,16 +36,24 @@ export default function HomepageClient({ images }: { images: HeroImage[] }) {
           Davidsons Lens
         </motion.h1>
 
-        {/* Tagline */}
-        <motion.p
+        {/* Primary navigation — directly beneath the wordmark, this is the homepage nav */}
+        <motion.nav
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.9, delay: 0.5 }}
-          className="text-xs md:text-sm tracking-[0.35em] uppercase text-[#C9A84C] mb-14"
-          style={{ fontFamily: 'var(--font-body)' }}
+          className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 mt-6 mb-12"
         >
-          Photo&nbsp;&nbsp;|&nbsp;&nbsp;Video&nbsp;&nbsp;|&nbsp;&nbsp;Creative Services
-        </motion.p>
+          {heroNav.map(([href, label]) => (
+            <Link
+              key={href}
+              href={href}
+              className="text-sm tracking-[0.2em] uppercase text-[#C9A84C] hover:text-[#DFC070] transition-colors duration-300"
+              style={{ fontFamily: 'var(--font-body)' }}
+            >
+              {label}
+            </Link>
+          ))}
+        </motion.nav>
 
         {/* CTA */}
         <motion.div

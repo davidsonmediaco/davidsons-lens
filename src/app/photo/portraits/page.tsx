@@ -8,17 +8,18 @@ export const metadata: Metadata = {
 }
 
 const heroImage = {
-  src: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1920&q=80',
-  alt: 'Portrait photography by Davidsons Lens, Bernardsville NJ',
+  src: '/assets/portraits/water-portrait-bernardsville-nj.jpg',
+  alt: 'Cinematic waterside portrait photography in Bernardsville, NJ — Davidsons Lens',
 }
 
 const images: { src: string; alt: string }[] = [
-  { src: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80', alt: 'Portrait session' },
-  { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80', alt: 'Portrait session' },
-  { src: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80', alt: 'Portrait session' },
-  { src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80', alt: 'Portrait session' },
-  { src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80', alt: 'Portrait session' },
-  { src: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=800&q=80', alt: 'Portrait session' },
+  { src: '/assets/portraits/outdoor-headshot-portrait-nj.jpg', alt: 'Outdoor mens headshot portrait in New Jersey — Davidsons Lens' },
+  { src: '/assets/portraits/denim-headshot-portrait-nj.jpg', alt: 'Denim headshot portrait session in New Jersey — Davidsons Lens' },
+  { src: '/assets/portraits/water-portrait-bernardsville-nj.jpg', alt: 'Cinematic waterside portrait in Bernardsville, NJ — Davidsons Lens' },
+  { src: '/assets/portraits/seated-portrait-session-nj.jpg', alt: 'Seated outdoor portrait session in New Jersey — Davidsons Lens' },
+  { src: '/assets/portraits/studio-headshot-portrait-nj.jpg', alt: 'Studio-style headshot portrait in New Jersey — Davidsons Lens' },
+  { src: '/assets/portraits/creative-portrait-nj.webp', alt: 'Creative portrait photography in New Jersey — Davidsons Lens' },
+  { src: '/assets/portraits/environmental-portrait-nj.jpg', alt: 'Environmental portrait with guitar in New Jersey — Davidsons Lens' },
 ]
 
 export default function PortraitsPage() {

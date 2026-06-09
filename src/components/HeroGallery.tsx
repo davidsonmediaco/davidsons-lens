@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface HeroGalleryProps {
-  images: { src: string; alt: string }[]
+  images: { src: string; alt: string; position?: string }[]
   interval?: number
 }
 
@@ -43,6 +43,7 @@ export default function HeroGallery({ images, interval = 5000 }: HeroGalleryProp
             fill
             priority={current === 0}
             className="object-cover"
+            style={{ objectPosition: images[current].position ?? 'center' }}
             sizes="100vw"
           />
         </motion.div>

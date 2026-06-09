@@ -8,17 +8,20 @@ export const metadata: Metadata = {
 }
 
 const heroImage = {
-  src: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1920&q=80',
-  alt: 'Music photography by Davidsons Lens, Bernardsville NJ',
+  src: '/assets/music/cinematic-live-music-photography-nj.jpg',
+  alt: 'Cinematic live music performance photography in New Jersey — Davidsons Lens',
 }
 
 const images: { src: string; alt: string }[] = [
-  { src: 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=800&q=80', alt: 'Live concert photography' },
-  { src: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80', alt: 'Musician portrait' },
-  { src: 'https://images.unsplash.com/photo-1598387993281-cecf8b71a8f8?auto=format&fit=crop&w=800&q=80', alt: 'Music artist session' },
-  { src: 'https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=800&q=80', alt: 'Live performance photography' },
-  { src: 'https://images.unsplash.com/photo-1468164016595-6108e4c60c8b?auto=format&fit=crop&w=800&q=80', alt: 'Concert photography' },
-  { src: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80', alt: 'Live music photography' },
+  { src: '/assets/music/cinematic-live-music-photography-nj.jpg', alt: 'Cinematic black-and-white live music performance in New Jersey — Davidsons Lens' },
+  { src: '/assets/music/guitarist-live-performance-nj.jpg', alt: 'Guitarist performing live on stage in New Jersey — Davidsons Lens' },
+  { src: '/assets/music/live-music-photography-stage-nj.jpg', alt: 'Live music photography on stage in New Jersey — Davidsons Lens' },
+  { src: '/assets/music/live-band-performance-nj.jpg', alt: 'Live band performance in New Jersey — Davidsons Lens' },
+  { src: '/assets/music/live-music-concert-photography-nj.jpg', alt: 'Live concert music photography in New Jersey — Davidsons Lens' },
+  { src: '/assets/music/musician-on-stage-nj.jpg', alt: 'Musician on stage mid-song in New Jersey — Davidsons Lens' },
+  { src: '/assets/music/live-show-photography-nj.jpg', alt: 'Live show photography in New Jersey — Davidsons Lens' },
+  { src: '/assets/music/concert-photography-new-jersey.jpg', alt: 'Concert photography in New Jersey — Davidsons Lens' },
+  { src: '/assets/music/live-music-performance-nj.jpg', alt: 'Live music performance photography in New Jersey — Davidsons Lens' },
 ]
 
 export default function MusicPage() {

@@ -8,17 +8,23 @@ export const metadata: Metadata = {
 }
 
 const heroImage = {
-  src: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1920&q=80',
-  alt: 'Sports photography by Davidsons Lens, Bernardsville NJ',
+  src: '/assets/sports/nj-cyclones-basketball-game-02.jpg',
+  alt: 'NJ Cyclones youth basketball player driving to the basket — Davidsons Lens',
 }
 
 const images: { src: string; alt: string }[] = [
-  { src: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80', alt: 'Basketball photography' },
-  { src: 'https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&w=800&q=80', alt: 'Baseball photography' },
-  { src: 'https://images.unsplash.com/photo-1547347298-4074fc3086f0?auto=format&fit=crop&w=800&q=80', alt: 'Sports action photography' },
-  { src: 'https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?auto=format&fit=crop&w=800&q=80', alt: 'Basketball game photography' },
-  { src: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80', alt: 'Sports photography' },
-  { src: 'https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?auto=format&fit=crop&w=800&q=80', alt: 'Sports action shot' },
+  { src: '/assets/sports/nj-cyclones-basketball-game-02.jpg', alt: 'NJ Cyclones player driving to the basket — Davidsons Lens' },
+  { src: '/assets/sports/nj-cyclones-basketball-game-01.jpg', alt: 'NJ Cyclones youth basketball game action — Davidsons Lens' },
+  { src: '/assets/sports/nj-cyclones-basketball-game-03.jpg', alt: 'NJ Cyclones basketball game moment — Davidsons Lens' },
+  { src: '/assets/sports/nj-cyclones-basketball-game-04.jpg', alt: 'NJ Cyclones youth basketball action — Davidsons Lens' },
+  { src: '/assets/sports/nj-cyclones-basketball-game-05.jpg', alt: 'NJ Cyclones basketball player in focus — Davidsons Lens' },
+  { src: '/assets/sports/nj-cyclones-basketball-game-06.jpg', alt: 'NJ Cyclones youth basketball game — Davidsons Lens' },
+  { src: '/assets/sports/nj-cyclones-basketball-game-07.jpg', alt: 'NJ Cyclones basketball action shot — Davidsons Lens' },
+  { src: '/assets/sports/nj-cyclones-basketball-clinic-01.jpg', alt: 'Youth basketball training clinic — Davidsons Lens' },
+  { src: '/assets/sports/nj-cyclones-basketball-clinic-02.jpg', alt: 'Basketball clinic drills — Davidsons Lens' },
+  { src: '/assets/sports/nj-cyclones-basketball-clinic-03.jpg', alt: 'Youth basketball skills training — Davidsons Lens' },
+  { src: '/assets/sports/nj-cyclones-basketball-clinic-04.jpg', alt: 'Basketball clinic session — Davidsons Lens' },
+  { src: '/assets/sports/nj-cyclones-basketball-clinic-05.jpg', alt: 'Youth basketball training in Bernardsville NJ — Davidsons Lens' },
 ]
 
 export default function SportsPage() {

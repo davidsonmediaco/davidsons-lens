@@ -18,8 +18,9 @@ export default function Navigation() {
   const pathname = usePathname()
   const isHome = pathname === '/'
 
-  // Hide the main navigation on the standalone coming-soon page
-  const hideNav = pathname === '/coming-soon'
+  // Hide the top header on the coming-soon page and on the homepage
+  // (the homepage carries its own centered nav beneath the hero wordmark)
+  const hideNav = pathname === '/coming-soon' || isHome
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -43,8 +44,8 @@ export default function Navigation() {
             : 'bg-[#0D0D0D]/95 backdrop-blur-sm border-b border-white/5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between relative">
-          {/* Logo */}
+        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+          {/* Logo — left */}
           <Link
             href="/"
             className="font-display text-xl md:text-2xl text-white tracking-widest uppercase hover:text-[#C9A84C] transition-colors duration-300"
@@ -53,8 +54,8 @@ export default function Navigation() {
             Davidsons Lens
           </Link>
 
-          {/* Desktop nav — centered */}
-          <nav className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
+          {/* Desktop nav — right */}
+          <nav className="hidden md:flex items-center gap-10">
             {navLinks.map(({ href, label }) => (
               <Link
                 key={href}
