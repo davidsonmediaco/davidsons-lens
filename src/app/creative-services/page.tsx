@@ -84,7 +84,7 @@ export default function CreativeServicesPage() {
                 <p>Your page should be working for you every single day. That&apos;s what this is.</p>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 mb-10">
                 {[
                   'Consistent Posting',
                   'Community Engagement',
@@ -95,15 +95,18 @@ export default function CreativeServicesPage() {
                   'Analytics Reporting',
                   'Custom Packages',
                 ].map(item => (
-                  <div
+                  <li
                     key={item}
-                    className="border border-white/10 px-4 py-3 text-sm text-[#A0A0A0]"
+                    className="flex items-center gap-3 py-3 border-b border-white/5 text-[#D5D5D5] text-base"
                     style={{ fontFamily: 'var(--font-body)' }}
                   >
+                    <span className="text-[#C9A84C]" aria-hidden="true">
+                      &mdash;
+                    </span>
                     {item}
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
 
               <CTAButton />
             </div>

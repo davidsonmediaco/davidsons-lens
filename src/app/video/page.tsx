@@ -88,10 +88,16 @@ export default function VideoPage() {
           </div>
         </ScrollReveal>
 
-        {/* Services list */}
+        {/* What I shoot — informational list (not interactive) */}
         <ScrollReveal delay={0.1}>
           <div className="max-w-3xl mx-auto px-6 pb-16">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <p
+              className="text-xs tracking-[0.3em] uppercase text-[#C9A84C] mb-6"
+              style={{ fontFamily: 'var(--font-body)' }}
+            >
+              What I Shoot
+            </p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-12">
               {[
                 'Music Videos',
                 'Short Form Social',
@@ -100,15 +106,18 @@ export default function VideoPage() {
                 'Fitness Content',
                 'Full Production',
               ].map(service => (
-                <div
+                <li
                   key={service}
-                  className="border border-white/10 px-5 py-4 text-sm text-[#A0A0A0] tracking-wide"
+                  className="flex items-center gap-3 py-3 border-b border-white/5 text-[#D5D5D5] text-base"
                   style={{ fontFamily: 'var(--font-body)' }}
                 >
+                  <span className="text-[#C9A84C]" aria-hidden="true">
+                    &mdash;
+                  </span>
                   {service}
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </ScrollReveal>
 
