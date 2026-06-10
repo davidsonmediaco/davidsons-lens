@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     }
     const resend = new Resend(apiKey)
 
-    await resend.emails.send({
+    const { error: sendError } = await resend.emails.send({
       from: 'Davidsons Lens <onboarding@resend.dev>',
       to: process.env.CONTACT_EMAIL ?? 'davidsonmediaco@gmail.com',
       replyTo: email,
@@ -42,6 +42,13 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     })
+
+    // The Resend SDK returns API-level failures in `error` instead of throwing,
+    // so check it explicitly — otherwise we'd report success on a failed send.
+    if (sendError) {
+      console.error('Contact form Resend error:', sendError)
+      return NextResponse.json({ error: 'Failed to send message' }, { status: 502 })
+    }
 
     return NextResponse.json({ success: true })
   } catch (err) {
