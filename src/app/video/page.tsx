@@ -108,7 +108,7 @@ export default function VideoPage() {
               ].map(service => (
                 <li
                   key={service}
-                  className="flex items-center gap-3 py-3 border-b border-white/5 text-[#D5D5D5] text-base"
+                  className="flex items-center gap-3 py-3 border-b border-white/5 text-[#F5F5F5] text-base"
                   style={{ fontFamily: 'var(--font-body)' }}
                 >
                   <span className="text-[#C9A84C]" aria-hidden="true">

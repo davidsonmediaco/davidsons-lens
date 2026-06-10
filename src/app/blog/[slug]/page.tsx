@@ -77,7 +77,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="w-12 h-px bg-[#C9A84C] mb-8" />
 
           <p
-            className="text-[#A0A0A0] text-lg leading-relaxed"
+            className="text-[#F5F5F5] text-lg leading-relaxed"
             style={{ fontFamily: 'var(--font-body)' }}
           >
             {post.excerpt}
@@ -128,7 +128,7 @@ export default async function BlogPostPage({ params }: Props) {
               Ready to work together?
             </h2>
             <p
-              className="text-[#A0A0A0] text-lg mb-8"
+              className="text-[#F5F5F5] text-lg mb-8"
               style={{ fontFamily: 'var(--font-body)' }}
             >
               Let&apos;s talk.

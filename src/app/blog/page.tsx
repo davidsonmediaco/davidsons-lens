@@ -27,7 +27,7 @@ export default function BlogPage() {
             </h1>
             <div className="w-12 h-px bg-[#C9A84C] mb-10" />
             <p
-              className="text-[#A0A0A0] text-lg leading-relaxed mb-16 max-w-xl"
+              className="text-[#F5F5F5] text-lg leading-relaxed mb-16 max-w-xl"
               style={{ fontFamily: 'var(--font-body)' }}
             >
               Behind the lens. Behind the scenes. Notes on craft, process, and what it takes to make
@@ -73,7 +73,7 @@ export default function BlogPage() {
                           {post.title}
                         </h2>
                         <p
-                          className="text-[#A0A0A0] leading-relaxed max-w-2xl"
+                          className="text-[#F5F5F5] leading-relaxed max-w-2xl"
                           style={{ fontFamily: 'var(--font-body)' }}
                         >
                           {post.excerpt}

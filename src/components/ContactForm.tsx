@@ -55,7 +55,7 @@ export default function ContactForm() {
           Message Sent
         </h2>
         <p
-          className="text-[#A0A0A0] text-lg"
+          className="text-[#F5F5F5] text-lg"
           style={{ fontFamily: 'var(--font-body)' }}
         >
           I&apos;ll be in touch soon.

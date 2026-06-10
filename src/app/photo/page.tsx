@@ -71,7 +71,7 @@ export default function PhotoPage() {
             </h1>
             <div className="w-12 h-px bg-[#C9A84C] mb-8" />
             <p
-              className="text-[#A0A0A0] text-lg max-w-xl"
+              className="text-[#F5F5F5] text-lg max-w-xl"
               style={{ fontFamily: 'var(--font-body)' }}
             >
               A full range of photography services across northern New Jersey. Pick a world below.
@@ -109,7 +109,7 @@ export default function PhotoPage() {
                       {label}
                     </h2>
                     <p
-                      className="text-sm text-[#D5D5D5] mt-1"
+                      className="text-sm text-[#F5F5F5] mt-1"
                       style={{ fontFamily: 'var(--font-body)' }}
                     >
                       {description}

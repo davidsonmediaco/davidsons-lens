@@ -34,7 +34,7 @@ export default function CreativeServicesPage() {
               created. About making sure you walk away feeling good about what we built together.
             </p>
             <p
-              className="text-[#A0A0A0] text-lg leading-relaxed max-w-2xl mt-6"
+              className="text-[#F5F5F5] text-lg leading-relaxed max-w-2xl mt-6"
               style={{ fontFamily: 'var(--font-body)' }}
             >
               I pay attention. To the details, to the industry, to what&apos;s working and what
@@ -97,7 +97,7 @@ export default function CreativeServicesPage() {
                 ].map(item => (
                   <li
                     key={item}
-                    className="flex items-center gap-3 py-3 border-b border-white/5 text-[#D5D5D5] text-base"
+                    className="flex items-center gap-3 py-3 border-b border-white/5 text-[#F5F5F5] text-base"
                     style={{ fontFamily: 'var(--font-body)' }}
                   >
                     <span className="text-[#C9A84C]" aria-hidden="true">
@@ -183,7 +183,7 @@ export default function CreativeServicesPage() {
               </div>
 
               <p
-                className="text-[#A0A0A0] text-sm mb-8 max-w-xl"
+                className="text-[#F5F5F5] text-sm mb-8 max-w-xl"
                 style={{ fontFamily: 'var(--font-body)' }}
               >
                 You&apos;ll leave with content pillars, a clear strategy, and a concrete understanding
