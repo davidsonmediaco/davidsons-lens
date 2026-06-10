@@ -51,8 +51,8 @@ const categories = [
     href: '/photo/behind-the-scenes',
     label: 'Behind the Scenes',
     description: 'On set, in the moment',
-    image: '/assets/behind-the-scenes/behind-the-scenes-podcast-shoot-nj-01.jpg',
-    position: 'center',
+    image: '/assets/behind-the-scenes/behind-the-scenes-on-set-nj-05.jpg',
+    position: 'center 30%',
   },
 ]
 
