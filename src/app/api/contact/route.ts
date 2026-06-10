@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     const resend = new Resend(apiKey)
 
     const { error: sendError } = await resend.emails.send({
-      from: 'Davidsons Lens <hello@davidsonslens.com>',
+      from: 'Davidsons Lens <onboarding@resend.dev>',
       to: process.env.CONTACT_EMAIL ?? 'davidsonmediaco@gmail.com',
       replyTo: email,
       subject: `New inquiry from ${name}${service ? ` — ${service}` : ''}`,
