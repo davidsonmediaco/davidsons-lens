@@ -63,6 +63,33 @@ export default function HomepageClient({ images }: { images: HeroImage[] }) {
         >
           <CTAButton href="/contact" label="Let's Work Together" />
         </motion.div>
+
+        {/* Instagram */}
+        <motion.a
+          href="https://instagram.com/davidsonslens"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Follow Davidsons Lens on Instagram"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.9, delay: 1.1 }}
+          className="mt-10 text-[#F5F5F5] hover:text-[#C9A84C] transition-colors duration-300"
+        >
+          <svg
+            className="w-6 h-6"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+          </svg>
+        </motion.a>
       </div>
     </div>
   )
