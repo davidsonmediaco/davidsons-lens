@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import HeroGallery from '@/components/HeroGallery'
 import CTAButton from '@/components/CTAButton'
+import SocialLinks from '@/components/SocialLinks'
 
 const heroNav = [
   ['/photo', 'Photo'],
@@ -41,13 +42,13 @@ export default function HomepageClient({ images }: { images: HeroImage[] }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.9, delay: 0.5 }}
-          className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 mt-6 mb-12"
+          className="flex flex-wrap items-center justify-center gap-3 mt-7 mb-12"
         >
           {heroNav.map(([href, label]) => (
             <Link
               key={href}
               href={href}
-              className="text-sm tracking-[0.2em] uppercase text-[#C9A84C] hover:text-[#DFC070] transition-colors duration-300"
+              className="border border-[#C9A84C]/60 px-5 py-2.5 text-xs tracking-[0.2em] uppercase text-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#0D0D0D] transition-all duration-300"
               style={{ fontFamily: 'var(--font-body)' }}
             >
               {label}
@@ -64,32 +65,15 @@ export default function HomepageClient({ images }: { images: HeroImage[] }) {
           <CTAButton href="/contact" label="Let's Work Together" />
         </motion.div>
 
-        {/* Instagram */}
-        <motion.a
-          href="https://instagram.com/davidsonslens_"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Follow Davidsons Lens on Instagram"
+        {/* Social */}
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.9, delay: 1.1 }}
-          className="mt-10 text-[#F5F5F5] hover:text-[#C9A84C] transition-colors duration-300"
+          className="mt-10"
         >
-          <svg
-            className="w-6 h-6"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-          </svg>
-        </motion.a>
+          <SocialLinks className="text-[#F5F5F5]" />
+        </motion.div>
       </div>
     </div>
   )
