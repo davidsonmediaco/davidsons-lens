@@ -41,12 +41,12 @@ export default function ComingSoonPage() {
         <p className="text-[#A0A0A0] text-base leading-relaxed mb-12">
           It&apos;ll be live soon. Until then the work keeps going. Find me on Instagram{' '}
           <a
-            href="https://instagram.com/davidsonslens"
+            href="https://instagram.com/davidsonslens_"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#C9A84C] hover:text-[#DFC070] transition-colors duration-300"
           >
-            @davidsonslens
+            @davidsonslens_
           </a>
           , or reach out at{' '}
           <a

@@ -66,7 +66,7 @@ export default function HomepageClient({ images }: { images: HeroImage[] }) {
 
         {/* Instagram */}
         <motion.a
-          href="https://instagram.com/davidsonslens"
+          href="https://instagram.com/davidsonslens_"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Follow Davidsons Lens on Instagram"
