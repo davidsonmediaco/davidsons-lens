@@ -12,7 +12,7 @@ const services = [
 ]
 
 export default function ContactForm() {
-  const [form, setForm] = useState({ name: '', email: '', service: '', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', service: '', message: '', company: '' })
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
 
   const handleChange = (
@@ -32,7 +32,7 @@ export default function ContactForm() {
       })
       if (res.ok) {
         setStatus('success')
-        setForm({ name: '', email: '', service: '', message: '' })
+        setForm({ name: '', email: '', service: '', message: '', company: '' })
       } else {
         setStatus('error')
       }
@@ -66,6 +66,21 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5" style={{ fontFamily: 'var(--font-body)' }}>
+      {/* Honeypot — hidden from humans; bots that fill it are silently dropped */}
+      <div className="absolute -left-[9999px] w-px h-px overflow-hidden" aria-hidden="true">
+        <label>
+          Company
+          <input
+            type="text"
+            name="company"
+            tabIndex={-1}
+            autoComplete="off"
+            value={form.company}
+            onChange={handleChange}
+          />
+        </label>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
           <label className="block text-xs tracking-[0.15em] uppercase text-[#A0A0A0] mb-2">
