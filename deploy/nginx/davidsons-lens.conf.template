@@ -1,0 +1,107 @@
+# Davidsons Lens — nginx site config
+#
+# MAINTENANCE MODE
+#   Enable : sudo touch /var/www/maintenance/.enabled
+#   Disable: sudo rm -f /var/www/maintenance/.enabled
+#   (No reload needed — the flag file is checked per request.)
+#
+# Public visitors get the static maintenance page with HTTP 503 +
+# Retry-After, so search engines treat the outage as temporary and do
+# not deindex the site. The page is served by nginx directly, so it
+# still works while the Next.js app is stopped or rebuilding.
+#
+# PREVIEW BYPASS (see the real site during maintenance):
+#   Visit https://davidsonslens.com/preview-access?key=__PREVIEW_SECRET__
+#   once; it sets a cookie good for 7 days.
+
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name davidsonslens.com www.davidsonslens.com _;
+
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+        default_type "text/plain";
+    }
+
+    set $maint 0;
+    if (-f /var/www/maintenance/.enabled) { set $maint 1; }
+    if ($cookie_dl_preview = "__PREVIEW_SECRET__") { set $maint 0; }
+
+    location = /preview-access {
+        if ($arg_key = "__PREVIEW_SECRET__") {
+            add_header Set-Cookie "dl_preview=__PREVIEW_SECRET__; Path=/; Max-Age=604800; Secure; HttpOnly; SameSite=Lax" always;
+            return 302 https://$host/;
+        }
+        return 404;
+    }
+
+    location / {
+        if ($maint = 1) { return 503; }
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    error_page 503 /maintenance.html;
+    location = /maintenance.html {
+        root /var/www/maintenance;
+        internal;
+        add_header Retry-After 7200 always;
+        add_header Cache-Control "no-store, no-cache, must-revalidate" always;
+    }
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name davidsonslens.com www.davidsonslens.com;
+
+    ssl_certificate /etc/letsencrypt/live/davidsonslens.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/davidsonslens.com/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+        default_type "text/plain";
+    }
+
+    set $maint 0;
+    if (-f /var/www/maintenance/.enabled) { set $maint 1; }
+    if ($cookie_dl_preview = "__PREVIEW_SECRET__") { set $maint 0; }
+
+    location = /preview-access {
+        if ($arg_key = "__PREVIEW_SECRET__") {
+            add_header Set-Cookie "dl_preview=__PREVIEW_SECRET__; Path=/; Max-Age=604800; Secure; HttpOnly; SameSite=Lax" always;
+            return 302 https://$host/;
+        }
+        return 404;
+    }
+
+    location / {
+        if ($maint = 1) { return 503; }
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    error_page 503 /maintenance.html;
+    location = /maintenance.html {
+        root /var/www/maintenance;
+        internal;
+        add_header Retry-After 7200 always;
+        add_header Cache-Control "no-store, no-cache, must-revalidate" always;
+    }
+}
