@@ -42,3 +42,19 @@ Durable operational context. Append dated entries; do not rewrite history.
 - Preview bypass: `/preview-access?key=<secret>` sets a 7-day cookie so the owner can view the
   real site while the public sees maintenance. The real secret lives in the gitignored
   `deploy/nginx/.preview-secret`; the generated config is also gitignored.
+
+## 2026-10-03 — Maintenance page redesign
+
+- Rewrote the maintenance page: full-bleed Gail water portrait background
+  (`water-portrait-bernardsville-nj.jpg`, object-position `center 35%` — the crop already
+  validated for the homepage hero), flat black scrim at 15%, content centered on top,
+  Instagram / YouTube / email buttons (52px tap targets), tightened type scale and rhythm.
+- Pinterest deliberately omitted: its URL was never confirmed (still a placeholder in
+  `SocialLinks.tsx`). Do not ship a Pinterest link until the real handle is supplied.
+- **Pitfall solved**: during maintenance `location /` returns 503, which would also gate the
+  background photo. Added an ungated exact-prefix `location ^~ /maintenance-assets/`
+  (alias `/var/www/maintenance/assets/`) in BOTH server blocks so the image still loads.
+- **Open legibility tradeoff**: at the requested 15% the scrim barely darkens the photo.
+  Text relies on a `text-shadow` to stay readable, and on mobile the crop centers on the
+  subject's brightly-lit face, which is the weakest-contrast case. Raising the scrim to
+  ~35-45% would fix it; left at 15% pending the owner's call.

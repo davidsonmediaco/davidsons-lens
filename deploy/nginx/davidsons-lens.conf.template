@@ -24,6 +24,13 @@ server {
         default_type "text/plain";
     }
 
+    # Maintenance page assets (background photo) must stay reachable while gated
+    location ^~ /maintenance-assets/ {
+        alias /var/www/maintenance/assets/;
+        access_log off;
+        expires 1h;
+    }
+
     set $maint 0;
     if (-f /var/www/maintenance/.enabled) { set $maint 1; }
     if ($cookie_dl_preview = "__PREVIEW_SECRET__") { set $maint 0; }
@@ -70,6 +77,13 @@ server {
     location ^~ /.well-known/acme-challenge/ {
         root /var/www/certbot;
         default_type "text/plain";
+    }
+
+    # Maintenance page assets (background photo) must stay reachable while gated
+    location ^~ /maintenance-assets/ {
+        alias /var/www/maintenance/assets/;
+        access_log off;
+        expires 1h;
     }
 
     set $maint 0;
