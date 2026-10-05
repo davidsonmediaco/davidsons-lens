@@ -32,6 +32,7 @@ export default function Footer() {
                 ['/photo', 'Photo'],
                 ['/video', 'Video'],
                 ['/creative-services', 'Creative Services'],
+                ['/about', 'About'],
                 ['/contact', 'Contact'],
               ].map(([href, label]) => (
                 <Link

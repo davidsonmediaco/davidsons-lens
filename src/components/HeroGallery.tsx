@@ -6,9 +6,15 @@ import Image from 'next/image'
 interface HeroGalleryProps {
   images: { src: string; alt: string; position?: string }[]
   interval?: number
+  /** Tailwind classes for the legibility overlay. Defaults to a flat 55% black. */
+  overlayClassName?: string
 }
 
-export default function HeroGallery({ images, interval = 8000 }: HeroGalleryProps) {
+export default function HeroGallery({
+  images,
+  interval = 8000,
+  overlayClassName = "bg-black/55",
+}: HeroGalleryProps) {
   const [current, setCurrent] = useState(0)
 
   useEffect(() => {
@@ -46,7 +52,7 @@ export default function HeroGallery({ images, interval = 8000 }: HeroGalleryProp
         </div>
       ))}
       {/* Dark overlay for text legibility */}
-      <div className="absolute inset-0 bg-black/55" />
+      <div className={`absolute inset-0 ${overlayClassName}`} />
     </div>
   )
 }

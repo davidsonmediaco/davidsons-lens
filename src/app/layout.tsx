@@ -70,7 +70,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${playfair.variable} ${outfit.variable}`}>
       <body className="min-h-screen bg-[#0D0D0D] text-[#F5F5F5]">
-        {gaId && <GoogleAnalytics gaId={gaId} />}
+        {/* Production only, so local dev/preview traffic never reaches the real GA property */}
+        {gaId && process.env.NODE_ENV === 'production' && <GoogleAnalytics gaId={gaId} />}
         <Navigation />
         {children}
       </body>

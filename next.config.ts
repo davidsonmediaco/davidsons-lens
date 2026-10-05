@@ -31,12 +31,12 @@ const nextConfig: NextConfig = {
       "default-src 'self'",
       // 'unsafe-inline' is required for Next.js hydration/streaming inline scripts
       // (no nonce middleware) and for Google Analytics when enabled.
-      `script-src 'self' 'unsafe-inline'${scriptEval} https://www.googletagmanager.com https://www.google-analytics.com`,
+      `script-src 'self' 'unsafe-inline'${scriptEval} https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com`,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob:",
       "font-src 'self' data:",
       "frame-src https://www.youtube-nocookie.com https://www.youtube.com",
-      "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com",
+      "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com https://analytics.google.com https://stats.g.doubleclick.net https://www.google.com https://cloudflareinsights.com",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",

@@ -18,9 +18,9 @@ export default function Navigation() {
   const pathname = usePathname()
   const isHome = pathname === '/'
 
-  // Hide the top header on the coming-soon page and on the homepage
-  // (the homepage carries its own centered nav beneath the hero wordmark)
-  const hideNav = pathname === '/coming-soon' || isHome
+  // Hide the header on the retired coming-soon page only. On the homepage it floats
+  // transparently over the hero and turns solid once the visitor scrolls.
+  const hideNav = pathname === '/coming-soon'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -40,7 +40,7 @@ export default function Navigation() {
           isHome
             ? scrolled
               ? 'bg-[#0D0D0D]/90 backdrop-blur-sm'
-              : 'bg-transparent'
+              : 'bg-gradient-to-b from-black/60 to-transparent'
             : 'bg-[#0D0D0D]/95 backdrop-blur-sm border-b border-white/5'
         }`}
       >
@@ -56,7 +56,9 @@ export default function Navigation() {
 
           {/* Desktop nav — right */}
           <nav className="hidden md:flex items-center gap-10">
-            {navLinks.map(({ href, label }) => (
+            {navLinks
+              .filter(l => l.href !== '/contact')
+              .map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
@@ -70,9 +72,24 @@ export default function Navigation() {
                 {label}
               </Link>
             ))}
+            <Link
+              href="/contact"
+              className="border border-[#C9A84C] px-5 py-2.5 text-xs tracking-[0.2em] uppercase text-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#0D0D0D] transition-all duration-300"
+              style={{ fontFamily: 'var(--font-body)' }}
+            >
+              Book a Shoot
+            </Link>
           </nav>
 
-          {/* Hamburger */}
+          {/* Book button + hamburger (mobile) */}
+          <div className="md:hidden flex items-center gap-3">
+            <Link
+              href="/contact"
+              className="border border-[#C9A84C] px-3.5 py-2 text-[11px] tracking-[0.18em] uppercase text-[#C9A84C]"
+              style={{ fontFamily: 'var(--font-body)' }}
+            >
+              Book
+            </Link>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
@@ -94,6 +111,7 @@ export default function Navigation() {
               }`}
             />
           </button>
+          </div>
         </div>
       </header>
 

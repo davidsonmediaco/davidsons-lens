@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/photo/business`, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE}/video`, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE}/creative-services`, priority: 0.8, changeFrequency: 'monthly' },
+    { url: `${BASE}/about`, priority: 0.7, changeFrequency: 'yearly' },
     { url: `${BASE}/contact`, priority: 0.7, changeFrequency: 'yearly' },
   ]
 

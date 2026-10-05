@@ -107,3 +107,25 @@ Durable operational context. Append dated entries; do not rewrite history.
 
 - Deployed commit 9ced1a4 to production (pull, build, `pm2 restart davidsons-lens`). Verified: all pages 200, old URLs 308 to the right targets, sitemap has 9 URLs, CSP img-src no longer lists Unsplash, dogs images serve through the optimizer.
 - **Pitfall:** do NOT `rm -rf .next` on the server before `npm run build` — PM2 serves from `.next`, so the site is down for the whole build (about a minute or two on the 1-core box). Build in place and restart afterwards; the build replaces `.next` itself. The stale-types error seen locally only mattered after deleting routes in dev.
+
+## 2026-10-05 (inputs) — Pricing + bio direction from owner
+
+- **Pricing decided:** Portraits and dogs "From $250"; Video "From $750" (last project was $550); consulting stays $150 / $50. Small business is deliberately NOT priced publicly (owner gets higher numbers after talking in person; internally one-time from $500, retainers from $1,000). Business CTA = free intro call, not a price.
+- Portraits are moving from unlimited deliverables to defined limits; the limits (session length, image count, locations, turnaround, travel radius, add-ons) are still to be supplied by the owner before the Services copy is written.
+- Typical effort per the owner: shoot plus travel 3-5 hours, editing 1-5 hours.
+- **Bio facts (owner-supplied, draft pending approval):** started shooting as a kid in New York; moved to NJ; first subject was his dog Charlie; practiced on best friend Gail, whose confidence in front of the camera led others to say the same; core promise is removing the intimidation of being on camera so people leave confident; business goal is following the owner and story behind a brand (no such client yet, so do not claim it as done); consulting covers posting consistency, content pillars, captions, hashtags, hooks, plus the psychology of following through. Nothing is published until the owner approves the wording.
+
+## 2026-10-05 (scope limits) — Offer definitions from owner
+
+- **Portraits/dogs, from $250:** 45-minute session, 1 location, 15 edited images, 3-5 day turnaround, travel free within 10 miles (beyond: quoted, wording is my default, unconfirmed). Add-ons deliberately not priced yet; copy says extra images/time "on request".
+- **Video, from $750:** 2-hour shoot; 3-5 reels OR one long-form video cut into 3-5 reels; 3 revisions (assumed total per project, unconfirmed).
+- Small business stays unpriced publicly; a free intro-call CTA was proposed but not yet confirmed.
+
+## 2026-10-05 (Phase 2) — One-page homepage built locally, NOT deployed
+
+- New homepage (`src/app/page.tsx`): hero (3-frame crossfade water/dog/music, headline "Photos that make you feel like yourself." — working copy, owner has not explicitly approved the headline), portfolio grid, Dogs feature, video band, pricing cards, short bio, contact band. `HomepageClient.tsx` deleted. New `/about` (long bio + owner-requested close-out + Contact button), added to sitemap and footer. Shared `src/lib/categories.ts` drives homepage grid and `/photo`. Header now shows on the homepage with a persistent **Book a Shoot** button (mobile: compact "Book"). `HeroGallery` gained an `overlayClassName` prop (hero uses a bottom gradient instead of a flat 55%).
+- **Owner approved the bio** (including naming Charlie and Gail) and asked for a close-out on the long version: "Let me help you feel more confident on camera. Click the contact button and let us get to work." The homepage heading "Hi, I am James." is my wording, not yet confirmed.
+- E:\Dogs holds exactly the 9 dog photos already on the site (byte-identical to `_originals/pets`); no new dog images yet. E:\Dog Portfolio has one extra (mountain-dog.jpg), unused.
+- **Correction to the audit:** GA IS configured locally (`NEXT_PUBLIC_GA_ID` in `.env.local`), but the production build has no GA ID and the CSP `connect-src` blocked analytics.google.com / www.google.com / stats.g.doubleclick.net. CSP now allows those plus the Cloudflare Web Analytics beacon (script-src static.cloudflareinsights.com, connect-src cloudflareinsights.com). GA now loads in production builds only so local previews never hit the real property. To enable GA in production the ID must be added to the SERVER `.env.local` and the site rebuilt (NEXT_PUBLIC vars are inlined at build time).
+- **Pitfall:** the Turbopack dev server cached a stale Tailwind scan, so a newly added class (`md:grid-cols-4`) was not generated until `rm -rf .next` and a restart. If a class appears in the DOM but has no effect in dev, clear `.next` before debugging the code.
+- **Pitfall:** screenshots in the Browser pane can come back cropped/misscaled mid-session; trust DOM measurements (`scrollWidth`, `getBoundingClientRect`) over a single odd screenshot.

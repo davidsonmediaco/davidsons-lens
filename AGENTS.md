@@ -60,9 +60,11 @@ that caused a black flash between slides.
 
 ## Layout map
 
-- `/` — full-screen splash: rotating 4-image hero (8s), centered wordmark, boxed nav buttons,
-  CTA, social icons. No header, no footer on this page.
-- `/photo` — 4 image-tile category cards (Portraits, Music, Dogs, Business) with hover zoom +
+- `/` — one-page homepage: floating header (logo, nav, persistent **Book a Shoot** button), hero
+  (3-frame crossfade, one CTA), portfolio grid (Dogs is the large lead tile), Dogs feature, video
+  band, services/pricing cards, short bio, contact band, footer. Rebuilt 2026-10-05.
+- `/about` — long bio + contact CTA.
+- `/photo` — portfolio hub: 4 image-tile category cards (Portraits, Music, Dogs, Business) with hover zoom +
   gradient labels. Dogs is the owner's favorite subject and a planned flagship.
 - `/photo/*` — gallery sub-pages via `GallerySubPage` (wide hero, description, masonry grid).
 - `/video` — featured YouTube embed (youtube-nocookie) + "What I Shoot" list.
@@ -101,6 +103,11 @@ that caused a black flash between slides.
 6. **Brand facts:** Instagram is `@davidsonslens_` (trailing underscore matters), YouTube is
    `@davidsonslens`, contact email `davidsonmediaco@gmail.com`, sender
    `hello@davidsonslens.com`. Social icons live in `SocialLinks.tsx`.
+7. **Pricing wording is owner-approved:** Portraits/Dogs from $250 (45 min, 1 location, 15 images,
+   3-5 day turnaround, travel free within 10 miles); Video from $750 (2-hour shoot, 3-5 reels or
+   one long-form cut into 3-5 reels, 3 revisions); small business is intentionally NOT priced
+   publicly ("Let's talk"). Do not publish business numbers.
+8. Category data (homepage grid + `/photo`) lives in `src/lib/categories.ts`.
 
 ## Deploying
 

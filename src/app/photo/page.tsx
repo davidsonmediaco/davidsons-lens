@@ -4,43 +4,13 @@ import Image from 'next/image'
 import Footer from '@/components/Footer'
 import ScrollReveal from '@/components/ScrollReveal'
 import PageTransition from '@/components/PageTransition'
+import { categories } from '@/lib/categories'
 
 export const metadata: Metadata = {
   title: 'Photo',
   description:
     'Photography portfolio by Davidsons Lens — portraits, dogs, music, and business photography across northern New Jersey.',
 }
-
-const categories = [
-  {
-    href: '/photo/portraits',
-    label: 'Portraits',
-    description: 'People, musicians, creatives',
-    image: '/assets/portraits/water-portrait-bernardsville-nj.jpg',
-    position: 'center 35%',
-  },
-  {
-    href: '/photo/music',
-    label: 'Music',
-    description: 'Artists, live performance, press',
-    image: '/assets/music/cinematic-live-music-photography-nj.jpg',
-    position: '30% center',
-  },
-  {
-    href: '/photo/dogs',
-    label: 'Dogs',
-    description: 'Big personalities, real moments',
-    image: '/assets/dogs/dramatic-labrador-portrait-nj.jpg',
-    position: 'center 40%',
-  },
-  {
-    href: '/photo/business',
-    label: 'Business',
-    description: 'Brands, spaces, products',
-    image: '/assets/business/sobol-acai-bowls-spread-nj.jpg',
-    position: 'center',
-  },
-]
 
 export default function PhotoPage() {
   return (
