@@ -46,3 +46,6 @@ next-env.d.ts
 # nginx maintenance preview bypass secret (never commit)
 deploy/nginx/.preview-secret
 deploy/nginx/davidsons-lens.conf
+
+# removed sections kept locally for later (sports returning soon); never ship
+/archive/

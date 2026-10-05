@@ -7,7 +7,7 @@ import HomepageClient from '@/components/HomepageClient'
 export const metadata: Metadata = {
   title: 'Davidsons Lens | Photo, Video & Creative Media — Bernardsville, NJ',
   description:
-    'Davidsons Lens is a full-service creative media company based in Bernardsville, NJ. Photography, video, social media for musicians, athletes, small businesses, and individuals across northern New Jersey.',
+    'Davidsons Lens is a full-service creative media company based in Bernardsville, NJ. Photography, video, social media for musicians, dogs and their people, small businesses, and individuals across northern New Jersey.',
 }
 
 // Homepage hero rotation — the brand's strongest work, in hierarchy order.
@@ -25,14 +25,9 @@ const heroImages: { src: string; alt: string; position?: string }[] = [
     position: '30% center',
   },
   {
-    src: '/assets/pets/dramatic-labrador-portrait-nj.jpg',
-    alt: 'Dramatic Labrador portrait — pet photography, Davidsons Lens, New Jersey',
+    src: '/assets/dogs/dramatic-labrador-portrait-nj.jpg',
+    alt: 'Dramatic Labrador portrait — dog photography, Davidsons Lens, New Jersey',
     position: 'center 40%',
-  },
-  {
-    src: '/assets/sports/nj-cyclones-basketball-game-02.jpg',
-    alt: 'NJ Cyclones youth basketball action — sports photography, Davidsons Lens',
-    position: 'center 30%',
   },
   {
     src: '/assets/business/sobol-acai-bowls-spread-nj.jpg',

@@ -8,7 +8,7 @@ import PageTransition from '@/components/PageTransition'
 export const metadata: Metadata = {
   title: 'Photo',
   description:
-    'Photography portfolio by Davidsons Lens — portraits, music, sports, pets, business, and behind-the-scenes photography across northern New Jersey.',
+    'Photography portfolio by Davidsons Lens — portraits, dogs, music, and business photography across northern New Jersey.',
 }
 
 const categories = [
@@ -27,17 +27,10 @@ const categories = [
     position: '30% center',
   },
   {
-    href: '/photo/sports',
-    label: 'Sports',
-    description: 'Baseball, basketball, teams',
-    image: '/assets/sports/nj-cyclones-basketball-game-02.jpg',
-    position: 'center 25%',
-  },
-  {
-    href: '/photo/pets',
-    label: 'Pets',
-    description: 'Dogs, cats, the real personality',
-    image: '/assets/pets/dramatic-labrador-portrait-nj.jpg',
+    href: '/photo/dogs',
+    label: 'Dogs',
+    description: 'Big personalities, real moments',
+    image: '/assets/dogs/dramatic-labrador-portrait-nj.jpg',
     position: 'center 40%',
   },
   {
@@ -46,13 +39,6 @@ const categories = [
     description: 'Brands, spaces, products',
     image: '/assets/business/sobol-acai-bowls-spread-nj.jpg',
     position: 'center',
-  },
-  {
-    href: '/photo/behind-the-scenes',
-    label: 'Behind the Scenes',
-    description: 'On set, in the moment',
-    image: '/assets/behind-the-scenes/behind-the-scenes-on-set-nj-05.jpg',
-    position: 'center 30%',
   },
 ]
 
@@ -74,7 +60,7 @@ export default function PhotoPage() {
               className="text-[#F5F5F5] text-lg max-w-xl"
               style={{ fontFamily: 'var(--font-body)' }}
             >
-              A full range of photography services across northern New Jersey. Pick a world below.
+              Photography across northern New Jersey. Pick a world below.
             </p>
           </div>
         </ScrollReveal>
@@ -82,7 +68,7 @@ export default function PhotoPage() {
         {/* Category image tiles */}
         <ScrollReveal delay={0.1}>
           <div className="max-w-7xl mx-auto px-6 pb-24">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {categories.map(({ href, label, description, image, position }, i) => (
                 <Link
                   key={href}

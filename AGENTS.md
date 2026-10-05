@@ -24,7 +24,7 @@ There is no test suite; `npm run build` (compile + TypeScript) is the verificati
 - **framer-motion** for reveals/transitions (`ScrollReveal`, `PageTransition`)
 - **next/font** Google fonts: Playfair Display → `--font-display`, Outfit → `--font-body`
 - **Resend** powers the contact API (`src/app/api/contact/route.ts`)
-- **marked + gray-matter** render blog MDX from `content/blog/` at build time
+- **marked + gray-matter** are installed for the (currently removed) blog — unused for now
 
 ## Design system (follow exactly)
 
@@ -60,13 +60,14 @@ that caused a black flash between slides.
 
 ## Layout map
 
-- `/` — full-screen splash: rotating 5-image hero (8s), centered wordmark, boxed nav buttons,
+- `/` — full-screen splash: rotating 4-image hero (8s), centered wordmark, boxed nav buttons,
   CTA, social icons. No header, no footer on this page.
-- `/photo` — 6 image-tile category cards (Portraits, Music, Sports, Pets, Business,
-  Behind the Scenes) with hover zoom + gradient labels.
+- `/photo` — 4 image-tile category cards (Portraits, Music, Dogs, Business) with hover zoom +
+  gradient labels. Dogs is the owner's favorite subject and a planned flagship.
 - `/photo/*` — gallery sub-pages via `GallerySubPage` (wide hero, description, masonry grid).
 - `/video` — featured YouTube embed (youtube-nocookie) + "What I Shoot" list.
-- `/creative-services`, `/contact` (form → `/api/contact`), `/blog`, `/coming-soon` (unlinked).
+- `/creative-services`, `/contact` (form → `/api/contact`), `/coming-soon` (unlinked). The blog was removed on
+  2026-10-05 and will return after the rebuild.
 - Interior pages: `Navigation` header (logo left, links right, hamburger on mobile) + `Footer`
   (nav, about, social icons).
 
@@ -112,4 +113,6 @@ Never attempt SSH, PM2, nginx, certbot, or DNS operations.
 - Pinterest icon in `SocialLinks.tsx` points to a placeholder URL (real handle TBD).
 - `/video` still features a single music video (no full reel yet); `/coming-soon` is retired
   but intentionally kept.
-- Blog has one sample post; treat blog styling as real but content as placeholder.
+- Sports, Behind the Scenes, and Blog were removed 2026-10-05 (files parked in the gitignored
+  `archive/`). `next.config.ts` 301s their old URLs; `/photo/pets` → `/photo/dogs`. Sports is
+  expected to return — drop its redirect then. See `docs/REBUILD_PLAN.md` for the active rebuild.

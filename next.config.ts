@@ -10,13 +10,19 @@ const nextConfig: NextConfig = {
     imageSizes: [256, 384],
     // Cache optimized variants for a year so they're encoded once, then served from cache.
     minimumCacheTTL: 31536000,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        pathname: '/photo-**',
-      },
-    ],
+  },
+  // Permanent redirects for removed/renamed URLs so indexed pages and backlinks
+  // pass their value on instead of 404ing. Remove the sports entry if/when
+  // a Sports page returns.
+  async redirects() {
+    return [
+      { source: '/photo/pets', destination: '/photo/dogs', permanent: true },
+      { source: '/assets/pets/:path*', destination: '/assets/dogs/:path*', permanent: true },
+      { source: '/photo/sports', destination: '/photo', permanent: true },
+      { source: '/photo/behind-the-scenes', destination: '/photo', permanent: true },
+      { source: '/blog', destination: '/', permanent: true },
+      { source: '/blog/:slug', destination: '/', permanent: true },
+    ]
   },
   async headers() {
     // React needs eval() in dev only (HMR/debugging); production never does.
@@ -27,7 +33,7 @@ const nextConfig: NextConfig = {
       // (no nonce middleware) and for Google Analytics when enabled.
       `script-src 'self' 'unsafe-inline'${scriptEval} https://www.googletagmanager.com https://www.google-analytics.com`,
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https://images.unsplash.com",
+      "img-src 'self' data: blob:",
       "font-src 'self' data:",
       "frame-src https://www.youtube-nocookie.com https://www.youtube.com",
       "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com",

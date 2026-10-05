@@ -58,3 +58,47 @@ Durable operational context. Append dated entries; do not rewrite history.
   Text relies on a `text-shadow` to stay readable, and on mobile the crop centers on the
   subject's brightly-lit face, which is the weakest-contrast case. Raising the scrim to
   ~35-45% would fix it; left at 15% pending the owner's call.
+
+## 2026-10-05 — Conversion audit + rebuild plan
+
+- Owner reports the site isn't converting. Audit + phased rebuild plan written to
+  `docs/REBUILD_PLAN.md`. Owner's directives: drop the landing "wall" for a one-page homepage with
+  a portfolio grid; remove Behind the Scenes, the blog, and all basketball imagery; make dogs a
+  flagship; rewrite Creative Services.
+- **Pitfall:** all 12 `public/assets/sports/` images are NJ Cyclones basketball, so removing
+  basketball removes the entire Sports section (hero slide, `/photo` tile, sitemap, copy).
+- **Pitfall:** removed URLs (`/photo/sports`, `/photo/behind-the-scenes`, `/blog`, `/blog/*`) are
+  indexed and in the sitemap — they need 301s, not 404s.
+- **Finding:** no analytics are installed (`NEXT_PUBLIC_GA_ID` unset); the Cloudflare Web Analytics
+  beacon is blocked by our CSP on every page. Conversion cannot currently be measured.
+- **Finding:** speed is not the problem (TTFB 70-390 ms; hero images 57-310 KB desktop).
+- A hidden Browser pane pauses rAF, so framer-motion hero content stays at opacity 0 in screenshots
+  taken then — an artifact of the pane, not a site bug.
+- Maintenance mode was still ON on 2026-10-05 (since 2026-10-03). Recommend turning it off during a
+  local rebuild and gating only the final cutover.
+
+## 2026-10-05 (later) — Maintenance OFF + Phase 1 removals (local, NOT deployed)
+
+- **Maintenance mode turned OFF** on the server (`sudo rm -f /var/www/maintenance/.enabled`) at the
+  owner's request. Verified with no cookie: every page 200, homepage `index, follow`,
+  `cf-cache-status: DYNAMIC` (Cloudflare not caching the maintenance page), sitemap + robots normal.
+  SSH worked from the current IP. Plan: rebuild locally; re-enable maintenance only briefly at cutover.
+- **Owner decisions:** Sports removed entirely for now ("bringing it back soon"); Pets renamed
+  to **Dogs**; wants Google-review testimonials; will use his Instagram profile photo for About;
+  has plenty of dog photos but few with owners (a dog-owner shoot is booked for November 2026);
+  struggling to name starting prices.
+- **Phase 1 done locally** (`npm run build` passes, 13 routes): sports, behind-the-scenes, blog
+  pages/images/content/`src/lib/blog.ts` moved to gitignored `archive/removed-2026-10-05/`
+  (`archive` also excluded in `tsconfig.json` — otherwise tsc type-checks the parked pages).
+  `public/assets/pets` -> `public/assets/dogs`, `src/app/photo/pets` -> `dogs`.
+  `next.config.ts` now has permanent redirects (Next emits **308**, which Google treats like 301):
+  `/photo/pets`->`/photo/dogs`, `/assets/pets/*`->`/assets/dogs/*`, `/photo/sports` and
+  `/photo/behind-the-scenes`->`/photo`, `/blog` and `/blog/*`->`/`. Unsplash removed from
+  `remotePatterns` and the CSP `img-src`. Sitemap, footer, homepage hero (4 slides), `/photo`
+  (4 tiles, lg:grid-cols-4) and site metadata/keywords updated (no athletes/sports/web design).
+- **Pitfall:** after deleting routes, `npm run build` fails type-check on stale
+  `.next/dev/types/validator.ts`; `rm -rf .next` fixes it (cache, not code).
+- **Pitfall:** a long multi-line bash heredoc containing quotes/backticks failed to parse in this
+  harness and wrote nothing; use the Write tool (or a node script) for file content.
+- Remaining dog copy still says generic things; full Dogs rewrite is Phase 3. `marked` and
+  `gray-matter` deps are now unused until the blog returns.

@@ -33,7 +33,6 @@ export default function Footer() {
                 ['/video', 'Video'],
                 ['/creative-services', 'Creative Services'],
                 ['/contact', 'Contact'],
-                ['/blog', 'Blog'],
               ].map(([href, label]) => (
                 <Link
                   key={href}
@@ -52,7 +51,7 @@ export default function Footer() {
               About
             </p>
             <p className="text-sm text-[#A0A0A0] leading-relaxed">
-              Based in Bernardsville, NJ — serving musicians, athletes, small businesses,
+              Based in Bernardsville, NJ — serving musicians, dog owners, small businesses,
               and individuals across northern New Jersey.
             </p>
           </div>
