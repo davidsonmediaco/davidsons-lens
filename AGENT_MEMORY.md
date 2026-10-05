@@ -102,3 +102,8 @@ Durable operational context. Append dated entries; do not rewrite history.
   harness and wrote nothing; use the Write tool (or a node script) for file content.
 - Remaining dog copy still says generic things; full Dogs rewrite is Phase 3. `marked` and
   `gray-matter` deps are now unused until the blog returns.
+
+## 2026-10-05 (deploy) — Phase 1 live
+
+- Deployed commit 9ced1a4 to production (pull, build, `pm2 restart davidsons-lens`). Verified: all pages 200, old URLs 308 to the right targets, sitemap has 9 URLs, CSP img-src no longer lists Unsplash, dogs images serve through the optimizer.
+- **Pitfall:** do NOT `rm -rf .next` on the server before `npm run build` — PM2 serves from `.next`, so the site is down for the whole build (about a minute or two on the 1-core box). Build in place and restart afterwards; the build replaces `.next` itself. The stale-types error seen locally only mattered after deleting routes in dev.
