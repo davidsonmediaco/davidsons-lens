@@ -44,11 +44,11 @@ export default function Navigation() {
             : 'bg-[#0D0D0D]/95 backdrop-blur-sm border-b border-white/5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-5 md:px-6 py-4 md:py-5 flex items-center justify-between">
           {/* Logo — left */}
           <Link
             href="/"
-            className="font-display text-xl md:text-2xl text-white tracking-widest uppercase hover:text-[#C9A84C] transition-colors duration-300"
+            className="font-display text-base md:text-2xl text-white tracking-[0.18em] md:tracking-widest uppercase hover:text-[#C9A84C] transition-colors duration-300"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Davidsons Lens

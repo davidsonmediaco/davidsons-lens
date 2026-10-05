@@ -4,7 +4,6 @@ import Link from 'next/link'
 import HeroGallery from '@/components/HeroGallery'
 import CTAButton from '@/components/CTAButton'
 import ScrollReveal from '@/components/ScrollReveal'
-import SocialLinks from '@/components/SocialLinks'
 import Footer from '@/components/Footer'
 import { categories } from '@/lib/categories'
 
@@ -48,7 +47,7 @@ const dogShots = [
   },
 ]
 
-const eyebrow = 'text-xs tracking-[0.3em] uppercase text-[#C9A84C]'
+const eyebrow = 'text-[11px] md:text-xs tracking-[0.22em] md:tracking-[0.3em] uppercase text-[#C9A84C]'
 const display = { fontFamily: 'var(--font-display)' } as const
 const body = { fontFamily: 'var(--font-body)' } as const
 
@@ -62,24 +61,24 @@ export default function HomePage() {
           interval={8000}
           overlayClassName="bg-gradient-to-t from-black/85 via-black/25 to-black/30"
         />
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-36 pb-16 md:pb-24">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-28 pb-12 md:pt-36 md:pb-24">
           <p className={`${eyebrow} mb-6`} style={body}>
             Photo &amp; Video &middot; Bernardsville, NJ
           </p>
           <h1
-            className="text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] max-w-2xl"
+            className="text-[2.5rem] md:text-6xl lg:text-7xl text-white leading-[1.05] max-w-2xl"
             style={display}
           >
             Photos that make you feel like yourself.
           </h1>
           <p
-            className="text-[#F5F5F5] text-lg md:text-xl leading-relaxed max-w-xl mt-8"
+            className="text-[#F5F5F5] text-base md:text-xl leading-relaxed max-w-xl mt-5 md:mt-8"
             style={body}
           >
             Portraits, dogs, music, and small-business photo and video across northern New
             Jersey.
           </p>
-          <div className="flex flex-wrap items-center gap-4 mt-10">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-8 md:mt-10">
             <CTAButton href="/contact" label="Book a Shoot" />
             <a
               href="#work"
@@ -94,12 +93,12 @@ export default function HomePage() {
 
       {/* 2. Portfolio grid — every category visible at once */}
       <section id="work" className="bg-[#0D0D0D] scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-6 py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 py-14 md:py-28">
           <ScrollReveal>
             <p className={`${eyebrow} mb-4`} style={body}>
               The Work
             </p>
-            <h2 className="text-3xl md:text-5xl text-white mb-12" style={display}>
+            <h2 className="text-3xl md:text-5xl text-white mb-8 md:mb-12" style={display}>
               Pick a world.
             </h2>
           </ScrollReveal>
@@ -125,14 +124,14 @@ export default function HomePage() {
                       sizes={isDogs || isBusiness ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 50vw, 25vw'}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
+                    <div className="absolute inset-x-0 bottom-0 p-4 md:p-6">
                       <h3
                         className={`${isDogs ? 'text-3xl md:text-5xl' : 'text-2xl md:text-3xl'} text-white transition-colors duration-300 group-hover:text-[#C9A84C]`}
                         style={display}
                       >
                         {label}
                       </h3>
-                      <p className="text-sm text-[#F5F5F5] mt-1" style={body}>
+                      <p className={`text-sm text-[#F5F5F5] mt-1 ${isDogs ? '' : 'hidden md:block'}`} style={body}>
                         {description}
                       </p>
                     </div>
@@ -146,7 +145,7 @@ export default function HomePage() {
 
       {/* 3. Dogs feature — the flagship story */}
       <section className="bg-[#0D0D0D] border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 py-14 md:py-28">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
             <ScrollReveal className="lg:col-span-2">
               <p className={`${eyebrow} mb-4`} style={body}>
@@ -166,13 +165,18 @@ export default function HomePage() {
               </p>
               <div className="flex flex-wrap gap-4">
                 <CTAButton href="/photo/dogs" label="See Dog Photos" />
-                <CTAButton href="/contact" label="Book a Dog Session" />
+                <span className="hidden sm:inline-block">
+                  <CTAButton href="/contact" label="Book a Dog Session" />
+                </span>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.1} className="lg:col-span-3">
-              <div className="grid grid-cols-3 gap-2 md:gap-3">
-                {dogShots.map(({ src, alt }) => (
-                  <div key={src} className="relative aspect-[3/4] overflow-hidden bg-[#1A1A1A]">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 md:gap-3">
+                {dogShots.map(({ src, alt }, i) => (
+                  <div
+                    key={src}
+                    className={`relative aspect-[3/4] overflow-hidden bg-[#1A1A1A] ${i === 2 ? 'hidden sm:block' : ''}`}
+                  >
                     <Image
                       src={src}
                       alt={alt}
@@ -190,11 +194,11 @@ export default function HomePage() {
 
       {/* 4. Video */}
       <section className="bg-[#0D0D0D] border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 py-14 md:py-28">
           <ScrollReveal>
             <Link
               href="/video"
-              className="group relative block aspect-[4/3] md:aspect-[21/9] overflow-hidden bg-[#1A1A1A]"
+              className="group relative block aspect-[4/5] sm:aspect-[4/3] md:aspect-[21/9] overflow-hidden bg-[#1A1A1A]"
             >
               <Image
                 src="/assets/music/guitarist-live-performance-nj.jpg"
@@ -203,22 +207,22 @@ export default function HomePage() {
                 className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
                 sizes="(max-width: 1280px) 100vw, 1200px"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-black/20" />
-              <div className="absolute inset-0 flex flex-col justify-center p-8 md:p-14 max-w-2xl">
+              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/90 via-black/40 to-black/5 md:from-black/85 md:via-black/50 md:to-black/20" />
+              <div className="absolute inset-0 flex flex-col justify-end md:justify-center p-6 md:p-14 max-w-2xl">
                 <p className={`${eyebrow} mb-4`} style={body}>
                   Video
                 </p>
                 <h2 className="text-3xl md:text-5xl text-white mb-4" style={display}>
                   Motion that feels real.
                 </h2>
-                <p className="text-[#F5F5F5] text-lg leading-relaxed mb-8" style={body}>
+                <p className="hidden sm:block text-[#F5F5F5] text-lg leading-relaxed mb-8" style={body}>
                   Music videos, short-form reels, and brand content built to be watched.
                 </p>
                 <span
                   className="inline-block self-start border border-[#C9A84C] text-[#C9A84C] px-8 py-4 text-sm tracking-[0.25em] uppercase transition-all duration-300 group-hover:bg-[#C9A84C] group-hover:text-[#0D0D0D]"
                   style={body}
                 >
-                  Watch the Featured Video
+                  Watch the Video
                 </span>
               </div>
             </Link>
@@ -228,12 +232,12 @@ export default function HomePage() {
 
       {/* 5. Services — what it costs and what you get */}
       <section className="bg-[#0D0D0D] border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 py-14 md:py-28">
           <ScrollReveal>
             <p className={`${eyebrow} mb-4`} style={body}>
               Services
             </p>
-            <h2 className="text-3xl md:text-5xl text-white mb-12" style={display}>
+            <h2 className="text-3xl md:text-5xl text-white mb-8 md:mb-12" style={display}>
               Simple to book. Clear about what you get.
             </h2>
           </ScrollReveal>
@@ -270,7 +274,7 @@ export default function HomePage() {
                   'Photo, video, and social content',
                   'Built around your brand and your story',
                 ]}
-                cta="Start a Conversation"
+                cta="Let's Talk"
                 href="/contact"
               />
             </div>
@@ -289,7 +293,7 @@ export default function HomePage() {
 
       {/* 6. About — short bio (owner-approved wording); long version lives at /about */}
       <section className="bg-[#0D0D0D] border-t border-white/5">
-        <div className="max-w-3xl mx-auto px-6 py-20 md:py-28">
+        <div className="max-w-3xl mx-auto px-6 py-14 md:py-28">
           <ScrollReveal>
             <p className={`${eyebrow} mb-4`} style={body}>
               About
@@ -321,7 +325,7 @@ export default function HomePage() {
 
       {/* 7. Contact band */}
       <section className="bg-[#0D0D0D] border-t border-white/5">
-        <div className="max-w-3xl mx-auto px-6 py-20 md:py-28 text-center">
+        <div className="max-w-3xl mx-auto px-6 py-14 md:py-28 text-center">
           <ScrollReveal>
             <h2 className="text-3xl md:text-5xl text-white mb-6" style={display}>
               Let&apos;s make something you&apos;re proud of.
@@ -337,7 +341,6 @@ export default function HomePage() {
             >
               davidsonmediaco@gmail.com
             </a>
-            <SocialLinks className="justify-center mt-8 text-[#F5F5F5]" />
           </ScrollReveal>
         </div>
       </section>
@@ -361,18 +364,18 @@ function ServiceCard({
   href: string
 }) {
   return (
-    <div className="flex flex-col border border-white/10 bg-[#1A1A1A] p-8">
+    <div className="flex flex-col border border-white/10 bg-[#1A1A1A] p-6 md:p-8">
       <p className={`${eyebrow} mb-3`} style={body}>
         {title}
       </p>
-      <p className="text-4xl text-white mb-6" style={display}>
+      <p className="text-3xl md:text-4xl text-white mb-4 md:mb-6" style={display}>
         {price}
       </p>
       <ul className="mb-8 flex-1" style={body}>
         {items.map(item => (
           <li
             key={item}
-            className="flex gap-3 py-3 border-b border-white/5 text-[#F5F5F5] text-base"
+            className="flex gap-3 py-2.5 md:py-3 border-b border-white/5 text-[#F5F5F5] text-base"
           >
             <span className="text-[#C9A84C]" aria-hidden="true">
               &mdash;

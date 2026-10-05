@@ -46,8 +46,8 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* About blurb snippet */}
-          <div>
+          {/* About blurb snippet (desktop only; the homepage and /about carry the full bio) */}
+          <div className="hidden md:block">
             <p className="text-xs text-[#C9A84C] tracking-[0.2em] uppercase mb-4">
               About
             </p>
