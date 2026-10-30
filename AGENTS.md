@@ -60,10 +60,13 @@ that caused a black flash between slides.
 
 ## Layout map
 
-- `/` — splash hero (rotating 4-image `HeroGallery`, centered wordmark, boxed nav buttons, CTA,
-  social icons, "Explore the work" cue; no top header on this page) followed by **Selected Work**
-  (`SelectedWork.tsx`): a curated, mixed-category sequence of justified rows (photos keep their
-  natural shape, no overlays/hover/captions), gallery text links, a Let's Work Together CTA, footer.
+- `/` — splash hero (rotating 4-image `HeroGallery`, centered wordmark, owner-approved positioning line,
+  boxed nav buttons, social icons, "Explore the work" cue; no CTA button and no top header on this page)
+  followed by **Selected Work** (`SelectedWork.tsx`): a curated, mixed-category sequence of justified rows
+  (photos keep their natural shape, no overlays/hover/captions) with gallery text links; then a text-only
+  "The person behind the camera" intro (add a portrait only once a verified photo of James exists), the
+  single contact invitation ("Tell me about your shoot" -> /contact), footer. Hero, intro and invitation
+  copy is owner-supplied; do not reword it without approval.
   The photo list and order live in `src/lib/selected-work.ts` (edit there, not in the component).
 - `/about` — long bio + contact CTA.
 - `/photo` — portfolio hub: 4 image-tile category cards (Portraits, Music, Dogs, Business) with hover zoom +

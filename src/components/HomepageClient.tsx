@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { motion, MotionConfig } from 'framer-motion'
 import HeroGallery from '@/components/HeroGallery'
-import CTAButton from '@/components/CTAButton'
 import SocialLinks from '@/components/SocialLinks'
 
 const heroNav = [
@@ -36,18 +35,31 @@ export default function HomepageClient({ images }: { images: HeroImage[] }) {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="text-4xl md:text-6xl lg:text-7xl text-white tracking-[0.3em] uppercase mb-2"
+            className="text-4xl md:text-6xl lg:text-7xl text-white tracking-[0.3em] uppercase"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Davidsons Lens
           </motion.h1>
+
+          {/* Positioning line — secondary to the wordmark. A soft text shadow (not a box)
+              keeps it readable over the brightest areas of every rotating photo. */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.9, delay: 0.4 }}
+            className="mt-5 md:mt-6 max-w-xl text-[15px] md:text-lg leading-relaxed text-[#F5F5F5] [text-shadow:0_1px_14px_rgba(0,0,0,0.65)]"
+            style={{ fontFamily: 'var(--font-body)' }}
+          >
+            Photography and video in Northern New Jersey for people, artists, and businesses.
+            Helping you feel comfortable on camera, so we can create something that feels like you.
+          </motion.p>
 
           {/* Primary navigation — directly beneath the wordmark, this is the homepage nav */}
           <motion.nav
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.9, delay: 0.5 }}
-            className="flex flex-wrap items-center justify-center gap-3 mt-7 mb-12"
+            className="flex flex-wrap items-center justify-center gap-3 mt-8 md:mt-10"
           >
             {heroNav.map(([href, label]) => (
               <Link
@@ -61,21 +73,12 @@ export default function HomepageClient({ images }: { images: HeroImage[] }) {
             ))}
           </motion.nav>
 
-          {/* CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.9 }}
-          >
-            <CTAButton href="/contact" label="Let's Work Together" />
-          </motion.div>
-
           {/* Social */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.9, delay: 1.1 }}
-            className="mt-10"
+            transition={{ duration: 0.9, delay: 0.8 }}
+            className="mt-8 md:mt-10"
           >
             <SocialLinks className="text-[#F5F5F5]" />
           </motion.div>
