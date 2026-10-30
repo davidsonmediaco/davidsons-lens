@@ -20,8 +20,12 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+/* Smooth in-page scrolling (e.g. the homepage "Explore the work" cue),
+   except for visitors who have asked for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {

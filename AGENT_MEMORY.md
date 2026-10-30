@@ -131,3 +131,35 @@ Durable operational context. Append dated entries; do not rewrite history.
 - **Pitfall:** screenshots in the Browser pane can come back cropped/misscaled mid-session; trust DOM measurements (`scrollWidth`, `getBoundingClientRect`) over a single odd screenshot.
 
 - **Mobile de-cluttering pass (owner said the mobile homepage felt too crowded):** tighter section padding (py-14 vs py-28), smaller hero headline/eyebrow, header logo shrunk so logo + Book + menu fit at 375px, tile descriptions hidden except on the Dogs tile, one Dogs CTA and 2 dog thumbnails on phones, video band text anchored to the bottom with a shorter button label, shorter small-business button label, no duplicate social row (contact band) and no footer About blurb on phones. Verified by DOM measurement (no horizontal overflow at 375px, header fits, eyebrow on one line) plus screenshots.
+
+## 2026-10-29 — Homepage "Selected Work" portfolio (branch `homepage-selected-work`, NOT deployed)
+
+- Owner brief: make the homepage scroll straight into a mixed portfolio (reference: dannyclinch.com),
+  preserving the CURRENT LIVE hero. Live was still the Phase 1 splash; local `main` (b753bad, 2 commits
+  ahead of origin, never deployed) held the Oct 5 one-page homepage. Built on a branch off `main` so
+  both stay available. On this branch the homepage = live splash hero (restored `HomepageClient`) +
+  `SelectedWork` + CTA + footer; the Oct 5 homepage sections (dogs band, pricing cards, short bio) are
+  NOT on this homepage. `/about`, CSP analytics fixes, interior-page Book button from main remain.
+- Reference findings (dannyclinch.com): black page, 3 equal masonry columns at ~1200px, ~15px gutters,
+  natural aspect ratios, subjects and B&W/color interleaved, no captions/overlays; single full-width
+  column on phones. We deliberately did NOT copy the masonry (unclear reading order): used justified
+  rows of 1-3 photos (flex-grow = aspect ratio -> equal heights, no crop) for clear L-to-R order and
+  varied scale.
+- Data: `src/lib/selected-work.ts` (8 rows, 16 photos: 5 dogs, 4 portraits, 4 business, 3 music; the 4
+  hero photos excluded). Width/height are stored per photo (sharp is not a direct dependency, so not
+  read at build time).
+- Hero: `min-h-[100svh]`, cue in normal flow (cannot overlap controls), `MotionConfig reducedMotion="user"`.
+  `globals.css` smooth scroll now only under `prefers-reduced-motion: no-preference`. Header hidden on
+  the homepage again (hero carries the nav).
+- **Pitfall:** in a trio, `basis-full sm:basis-auto sm:[flex:var(--ar)_1_0%]` let `sm:basis-auto` win
+  and the lead photo took its intrinsic width; never mix a `basis-*` variant with the flex shorthand at
+  the same breakpoint.
+- **Pitfall:** the local dev image optimizer queues first-time encodes; scrolling fast makes photos
+  look "stuck" for 30s+. Not a file problem (live optimizer served the same files in 0.5-1.0s). After
+  deploying, warm the cache for homepage photos (1-core server encodes on first request).
+- Verified: tsc clean, build passes (18 routes), lint shows only 2 PRE-EXISTING findings (Navigation
+  setState-in-effect error, unused Link in GallerySubPage) identical on main; CLS 0 at 375px; no
+  horizontal overflow; cue scrolls exactly to the section; hero fits 375x812 and 375x667 with clear
+  space above the cue; gallery/contact routes 200.
+- Inaccurate existing gallery alt text noticed (not changed): studio-headshot (actually outdoors),
+  live-band-performance (a B&W solo guitarist), barrister-coffee-roast-close-up (a roaster at work).

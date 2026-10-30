@@ -60,9 +60,11 @@ that caused a black flash between slides.
 
 ## Layout map
 
-- `/` — one-page homepage: floating header (logo, nav, persistent **Book a Shoot** button), hero
-  (3-frame crossfade, one CTA), portfolio grid (Dogs is the large lead tile), Dogs feature, video
-  band, services/pricing cards, short bio, contact band, footer. Rebuilt 2026-10-05.
+- `/` — splash hero (rotating 4-image `HeroGallery`, centered wordmark, boxed nav buttons, CTA,
+  social icons, "Explore the work" cue; no top header on this page) followed by **Selected Work**
+  (`SelectedWork.tsx`): a curated, mixed-category sequence of justified rows (photos keep their
+  natural shape, no overlays/hover/captions), gallery text links, a Let's Work Together CTA, footer.
+  The photo list and order live in `src/lib/selected-work.ts` (edit there, not in the component).
 - `/about` — long bio + contact CTA.
 - `/photo` — portfolio hub: 4 image-tile category cards (Portraits, Music, Dogs, Business) with hover zoom +
   gradient labels. Dogs is the owner's favorite subject and a planned flagship.

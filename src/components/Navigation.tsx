@@ -18,9 +18,9 @@ export default function Navigation() {
   const pathname = usePathname()
   const isHome = pathname === '/'
 
-  // Hide the header on the retired coming-soon page only. On the homepage it floats
-  // transparently over the hero and turns solid once the visitor scrolls.
-  const hideNav = pathname === '/coming-soon'
+  // Hide the top header on the coming-soon page and on the homepage
+  // (the homepage hero carries its own centered nav beneath the wordmark)
+  const hideNav = pathname === '/coming-soon' || isHome
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
