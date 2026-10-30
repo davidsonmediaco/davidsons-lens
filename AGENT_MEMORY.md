@@ -170,3 +170,24 @@ Durable operational context. Append dated entries; do not rewrite history.
 - Verified live: all pages 200, redirects 308, homepage has Selected Work + Explore the work, no horizontal overflow at 375px, hero = one viewport. Warmed the optimizer cache for all 20 homepage photos x widths 384/640/828/1080/1920 (100 variants, 0 failures, ~28s); repeat hit 0.09s.
 - **Pitfall:** in Git Bash, passing `/assets/...` as an argument to node.exe gets MSYS path-converted to `C:/Program Files/Git/assets/...`, so a warm-up script built URLs that all 400d. Encode in the shell instead: `printf %s "$s" | sed "s#/#%2F#g"`.
 - **Pitfall:** when the Browser pane is not on screen it stops rendering, so native `loading="lazy"` images are never requested (0 of 16 loaded) even though markup and a manual `new Image()` load were fine. Verify lazy images from the server side (curl) or with the pane visible.
+
+## 2026-10-29 (later) — Homepage positioning line, intro, single contact invitation (deployed 0ed9bac)
+
+- Owner-supplied copy, used verbatim (do not reword without approval): hero positioning line under the
+  wordmark; "The person behind the camera" intro after Selected Work; bottom invitation "Let’s talk about
+  the details of your shoot." / "Click below and tell me what you have in mind." / button "Tell me about
+  your shoot" -> /contact. The hero "Let's Work Together" button was removed; the homepage now has exactly
+  one contact invitation (plus the nav/footer Contact links). Other pages' CTAs unchanged.
+- No verified photo of James exists in the repo (no about/profile image; the Instagram profile photo is
+  still owed). Intro is text-only by design; never assume a person in the portfolio is James.
+- Hero copy legibility: existing `bg-black/55` overlay + soft text-shadow (no box). Measured with sharp
+  over the paragraph's crop region of all 4 hero photos at 375x812 and 1440x900: even the single brightest
+  pixel gives >= 4.6:1 for #F5F5F5 text; medians 9-18:1. No extra darkening needed.
+- Fit: hero = one viewport at 375x812 (161px above the cue) and 375x667 (89px); at 320x568 it grows to
+  612px via min-h (no clipping). No horizontal overflow. Button label fits on one line from 375px via
+  `max-sm:px-6 max-sm:tracking-[0.15em]` (balanced wrap at 320).
+- **Pitfall:** after `resize_window` in a hidden Browser pane, `getComputedStyle` can return stale media-query
+  results (desktop showed the phone padding). Reload the page before measuring breakpoint-dependent styles.
+- Checks: tsc clean, build 18/18, lint = same 2 pre-existing findings. Live: copy present, old wording 0,
+  1 h1, order hero -> Selected Work -> intro -> invitation -> footer, cue scrolls to #selected-work (top 0),
+  button lands on /contact, no console errors, all main routes 200.
