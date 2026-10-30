@@ -163,3 +163,10 @@ Durable operational context. Append dated entries; do not rewrite history.
   space above the cue; gallery/contact routes 200.
 - Inaccurate existing gallery alt text noticed (not changed): studio-headshot (actually outdoors),
   live-band-performance (a B&W solo guitarist), barrister-coffee-roast-close-up (a roaster at work).
+
+## 2026-10-29 (deploy) — Selected Work homepage live
+
+- Fast-forwarded `main` to `homepage-selected-work` (88d62de) and deployed (pull, build in place, `pm2 restart`). This also shipped the previously undeployed Oct 5 commits: `/about`, footer About link, interior-page header Book button, Dogs-first `/photo` tiles, CSP allowances for GA + Cloudflare beacon (GA still inactive: no `NEXT_PUBLIC_GA_ID` on the server).
+- Verified live: all pages 200, redirects 308, homepage has Selected Work + Explore the work, no horizontal overflow at 375px, hero = one viewport. Warmed the optimizer cache for all 20 homepage photos x widths 384/640/828/1080/1920 (100 variants, 0 failures, ~28s); repeat hit 0.09s.
+- **Pitfall:** in Git Bash, passing `/assets/...` as an argument to node.exe gets MSYS path-converted to `C:/Program Files/Git/assets/...`, so a warm-up script built URLs that all 400d. Encode in the shell instead: `printf %s "$s" | sed "s#/#%2F#g"`.
+- **Pitfall:** when the Browser pane is not on screen it stops rendering, so native `loading="lazy"` images are never requested (0 of 16 loaded) even though markup and a manual `new Image()` load were fine. Verify lazy images from the server side (curl) or with the pane visible.
