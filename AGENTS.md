@@ -60,13 +60,17 @@ that caused a black flash between slides.
 
 ## Layout map
 
-- `/` — splash hero (rotating 4-image `HeroGallery`, centered wordmark, owner-approved positioning line,
-  boxed nav buttons, social icons, "Explore the work" cue; no CTA button and no top header on this page)
-  followed by **Selected Work** (`SelectedWork.tsx`): a curated, mixed-category sequence of justified rows
-  (photos keep their natural shape, no overlays/hover/captions) with gallery text links; then a text-only
-  "The person behind the camera" intro (add a portrait only once a verified photo of James exists), the
-  single contact invitation ("Tell me about your shoot" -> /contact), footer. Hero, intro and invitation
-  copy is owner-supplied; do not reword it without approval.
+- `/` — compact homepage-only header (`HomeHeader.tsx`: wordmark = the page H1, text links on desktop,
+  accessible "Menu" disclosure on phones; `Navigation` renders nothing on "/"), one positioning line
+  ("Photography & film. Northern New Jersey.") on the page background, then the rotating 4-image
+  `HeroGallery` with NO overlay and no text on the photo. Header + line + photo ≈ 76% (phones) / 80% (md+)
+  of the visible height so the portfolio starts just below. Per-photo `position` values in `page.tsx` are
+  tuned for the tall phone crop (horizontal) and wide desktop crop (vertical). Then **Selected Work**
+  (`SelectedWork.tsx`): a curated, mixed-category sequence of justified rows (photos keep their natural
+  shape, no overlays/hover/captions) with gallery text links; then a text-only "The person behind the
+  camera" intro (add a portrait only once a verified photo of James exists), the single contact invitation
+  ("Tell me about your shoot" -> /contact), footer (the only place social icons appear on the homepage).
+  Positioning line, intro and invitation copy is owner-supplied; do not reword it without approval.
   The photo list and order live in `src/lib/selected-work.ts` (edit there, not in the component).
 - `/about` — long bio + contact CTA.
 - `/photo` — portfolio hub: 4 image-tile category cards (Portraits, Music, Dogs, Business) with hover zoom +

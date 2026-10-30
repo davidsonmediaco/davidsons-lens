@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const navLinks = [
+export const navLinks = [
   { href: '/photo', label: 'Photo' },
   { href: '/video', label: 'Video' },
   { href: '/creative-services', label: 'Creative Services' },
@@ -19,7 +19,7 @@ export default function Navigation() {
   const isHome = pathname === '/'
 
   // Hide the top header on the coming-soon page and on the homepage
-  // (the homepage hero carries its own centered nav beneath the wordmark)
+  // (the homepage renders its own compact <HomeHeader />)
   const hideNav = pathname === '/coming-soon' || isHome
 
   useEffect(() => {

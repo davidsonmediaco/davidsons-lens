@@ -6,19 +6,20 @@ import Image from 'next/image'
 interface HeroGalleryProps {
   images: { src: string; alt: string; position?: string }[]
   interval?: number
-  /** Tailwind classes for the legibility overlay. Defaults to a flat 55% black. */
+  /** Optional Tailwind classes for a legibility overlay. None by default: no text sits on the photo. */
   overlayClassName?: string
 }
 
 export default function HeroGallery({
   images,
   interval = 8000,
-  overlayClassName = "bg-black/55",
+  overlayClassName,
 }: HeroGalleryProps) {
   const [current, setCurrent] = useState(0)
 
   useEffect(() => {
-    if (images.length <= 1) return
+    // Visitors who ask for reduced motion get the first photo only, no rotation.
+    if (images.length <= 1 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const timer = setInterval(() => {
       setCurrent(i => (i + 1) % images.length)
     }, interval)
@@ -51,8 +52,7 @@ export default function HeroGallery({
           />
         </div>
       ))}
-      {/* Dark overlay for text legibility */}
-      <div className={`absolute inset-0 ${overlayClassName}`} />
+      {overlayClassName && <div className={`absolute inset-0 ${overlayClassName}`} />}
     </div>
   )
 }

@@ -101,11 +101,12 @@ function Row({ row }: { row: WorkRow }) {
 export default function SelectedWork() {
   return (
     <section id="selected-work" aria-labelledby="selected-work-heading" className="bg-[#0D0D0D]">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8 pt-16 md:pt-24">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-8 md:mb-12">
+      {/* Compact top: the photos should start soon after the hero. */}
+      <div className="max-w-[1400px] mx-auto px-4 md:px-8 pt-6 md:pt-10">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-5 md:mb-8">
           <h2
             id="selected-work-heading"
-            className="text-3xl md:text-4xl text-white"
+            className="text-2xl md:text-3xl text-white"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Selected Work
