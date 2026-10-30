@@ -191,3 +191,28 @@ Durable operational context. Append dated entries; do not rewrite history.
 - Checks: tsc clean, build 18/18, lint = same 2 pre-existing findings. Live: copy present, old wording 0,
   1 h1, order hero -> Selected Work -> intro -> invitation -> footer, cue scrolls to #selected-work (top 0),
   button lands on /contact, no console errors, all main routes 200.
+
+## 2026-10-29 (night) — Homepage header + hero redesign (deployed 9cbc48d)
+
+- Owner brief superseded the earlier "preserve the hero" requirement. Homepage now: `HomeHeader` (homepage-only;
+  wordmark is the page H1; desktop text links; phone "Menu" disclosure with aria-expanded/controls, Escape ->
+  focus back to button, outside click / tab-away closes) -> positioning line "Photography & film. Northern
+  New Jersey." -> `HeroGallery` with no overlay and nothing on the photo -> Selected Work -> intro (now ends
+  "Helping you feel comfortable on camera is a big part of that.") -> invitation -> footer.
+  `HomepageClient.tsx` deleted. `Navigation` exports `navLinks` and still renders nothing on "/".
+- Opening = `min-h-[76svh] md:min-h-[80svh]` flex column with the hero as `flex-1 min-h-[240px]` (grows on
+  short screens instead of clipping). Measured: 76% at 320/375 phones, 80% tablet/desktop; first portfolio
+  photo visible above the fold at 375x812 (83px), 768x1024 (97px), 1440x900 (72px); at 320x568 the
+  Selected Work heading + links are visible but the photo starts 8px below.
+- HeroGallery: overlay is now opt-in (`overlayClassName`, none by default); auto-rotation is skipped when
+  `prefers-reduced-motion: reduce`.
+- Hero focal points: water `center 30%`, music `30% 40%`, dog `75% 22%`, acai `center 40%`. Phones show
+  only the middle ~45% of a landscape photo, so the HORIZONTAL value decides whether a face survives;
+  desktop (~2.2:1) uses only the vertical value. The dog at `55%` cut an eye on phones.
+- **Pitfall:** headless Chrome `--screenshot --window-size=375,...` does NOT give a 375px layout (min window
+  width ~500), so narrow screenshots are wrong (Menu button pushed off-canvas). Use CDP
+  `Emulation.setDeviceMetricsOverride` (scratch script driving Chrome over `--remote-debugging-port` with
+  Node 22's built-in WebSocket) for real phone screenshots. Screenshots saved in `docs/screenshots/`.
+- Checks: tsc clean, build 18/18, lint = same 2 pre-existing findings; no horizontal overflow at
+  320/375/768/1440; live: 1 h1, old paragraph/cue/overlay gone, Instagram link only in footer, all 10 pages
+  200 with interior headers intact, menu opens/closes/links (/video), 16 hero variants warmed.
