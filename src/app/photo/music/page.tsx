@@ -14,14 +14,20 @@ const heroImage = {
 
 const images: { src: string; alt: string }[] = [
   { src: '/assets/music/cinematic-live-music-photography-nj.jpg', alt: 'Cinematic black-and-white live music performance in New Jersey — Davidsons Lens' },
+  { src: '/assets/music/chris-hajian-session-drummer-laughing-the-bunker-studio-brooklyn.jpg', alt: 'Black-and-white photo of a drummer laughing behind a fully miked drum kit during a session for jazz composer Chris Hajian at The Bunker Studio, Brooklyn — Davidsons Lens' },
   { src: '/assets/music/guitarist-live-performance-nj.jpg', alt: 'Guitarist performing live on stage in New Jersey — Davidsons Lens' },
   { src: '/assets/music/live-music-photography-stage-nj.jpg', alt: 'Live music photography on stage in New Jersey — Davidsons Lens' },
+  { src: '/assets/music/chris-hajian-session-grand-piano-the-bunker-studio-brooklyn.jpg', alt: 'Two men working together at a grand piano during a session for jazz composer Chris Hajian at The Bunker Studio, Brooklyn — Davidsons Lens' },
   { src: '/assets/music/live-band-performance-nj.jpg', alt: 'Live band performance in New Jersey — Davidsons Lens' },
+  { src: '/assets/music/chris-hajian-session-mixing-console-the-bunker-studio-brooklyn.jpg', alt: 'White-haired man in glasses at a large mixing console with session notes during a session for jazz composer Chris Hajian at The Bunker Studio, Brooklyn — Davidsons Lens' },
   { src: '/assets/music/live-music-concert-photography-nj.jpg', alt: 'Live concert music photography in New Jersey — Davidsons Lens' },
   { src: '/assets/music/musician-on-stage-nj.jpg', alt: 'Musician on stage mid-song in New Jersey — Davidsons Lens' },
+  { src: '/assets/music/chris-hajian-session-control-room-doorway-the-bunker-studio-brooklyn.jpg', alt: 'Man seated on a sofa, seen through an open door, during a session for jazz composer Chris Hajian at The Bunker Studio, Brooklyn — Davidsons Lens' },
   { src: '/assets/music/live-show-photography-nj.jpg', alt: 'Live show photography in New Jersey — Davidsons Lens' },
+  { src: '/assets/music/chris-hajian-session-pianist-headphones-the-bunker-studio-brooklyn.jpg', alt: 'Pianist in headphones playing a grand piano during a session for jazz composer Chris Hajian at The Bunker Studio, Brooklyn — Davidsons Lens' },
   { src: '/assets/music/concert-photography-new-jersey.jpg', alt: 'Concert photography in New Jersey — Davidsons Lens' },
   { src: '/assets/music/live-music-performance-nj.jpg', alt: 'Live music performance photography in New Jersey — Davidsons Lens' },
+  { src: '/assets/music/chris-hajian-session-control-room-conversation-the-bunker-studio-brooklyn.jpg', alt: 'White-bearded man smiling in the control room during a session for jazz composer Chris Hajian at The Bunker Studio, Brooklyn — Davidsons Lens' },
 ]
 
 export default function MusicPage() {

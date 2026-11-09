@@ -16,7 +16,7 @@
 // --force reprocesses files even if already optimized (re-reads the backup).
 // Use it after changing metadata/encode settings. Originals are never destroyed.
 
-import { readdir, stat, mkdir, copyFile } from 'node:fs/promises'
+import { readdir, readFile, stat, mkdir, copyFile } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
 import path from 'node:path'
 import sharp from 'sharp'
@@ -34,9 +34,17 @@ const COPYRIGHT = '(c) Davidsons Lens - davidsonslens.com'
 
 const fmtKB = (b) => `${(b / 1024).toFixed(0)} KB`
 
-// Turn a SEO filename into a human, ASCII-safe EXIF description.
+// Hand-written, ASCII-only EXIF descriptions, keyed by path under public/assets.
+const DESCRIPTIONS = JSON.parse(
+  await readFile(path.resolve(ROOT, 'scripts/image-descriptions.json'), 'utf8')
+)
+
+// Use the hand-written description if there is one; otherwise turn the SEO filename
+// into a human, ASCII-safe EXIF description.
 // e.g. "nj-cyclones-basketball-game-02" -> "NJ Cyclones Basketball Game - Davidsons Lens"
 function describe(file) {
+  const written = DESCRIPTIONS[path.relative(path.resolve(ROOT, 'public/assets'), file).replaceAll('\\', '/')]
+  if (written) return written
   const base = path.basename(file, path.extname(file))
   const words = base
     .replace(/-\d+$/, '') // drop trailing index like -02

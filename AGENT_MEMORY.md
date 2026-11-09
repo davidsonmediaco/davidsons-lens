@@ -216,3 +216,21 @@ Durable operational context. Append dated entries; do not rewrite history.
 - Checks: tsc clean, build 18/18, lint = same 2 pre-existing findings; no horizontal overflow at
   320/375/768/1440; live: 1 h1, old paragraph/cue/overlay gone, Instagram link only in footer, all 10 pages
   200 with interior headers intact, menu opens/closes/links (/video), 16 hero variants warmed.
+
+## 2026-11-09 — Added Desktop `Portfolio` photos to the four galleries (local, NOT deployed or committed yet)
+
+- Source: `C:\Users\james\Desktop\Portfolio\{Business,Dogs,Music,Portraits}` (28 JPGs; left untouched). portfolio-09 and portfolio-15 are the same frames as the existing `brindle-dog-portrait-nj` and `yellow-lab-relaxing-porch-nj`, so they were skipped; 26 added.
+- Galleries now: dogs 16, portraits 16, music 15, business 16; new photos spread evenly through each `images` list. Homepage Selected Work unchanged.
+- EXIF descriptions now come from `scripts/image-descriptions.json` (keyed by path under `public/assets`, ASCII only), falling back to the filename. Add new photos there so a `--force` re-run keeps real descriptions.
+- **Pitfall (fixed):** the pets -> dogs rename left the gitignored backups in `_originals/pets`, so the optimizer saw all dog photos as new and would have re-compressed them. Renamed the backup folder to `_originals/dogs`. Any future section rename must move its `_originals` folder too.
+- Location labels: the six Music studio photos and portfolio-02 / portfolio-30 have no `-nj` / "New Jersey", because their camera time zones don't match NJ and nothing in the images confirms the place. Owner to confirm.
+- Breeds (French bulldog, doodle) are read from the photos, not confirmed by the owner. No people are named.
+- Verified: 26/26 EXIF, no GPS, long edge <= 2400, 9.6 MB total; tsc clean, build 18/18, lint = same 2 pre-existing findings; all gallery images load with alt text, no overflow, no console errors (emulated Chrome, 1440 and 375).
+
+## 2026-11-09 (later) — Owner confirmed shoot details for the new photos (still NOT deployed or committed)
+
+- Supersedes the location note above: the boxing-ring portrait was shot in NJ (now `-nj`). The six Music studio photos are from Bunker Studios, Brooklyn, a session for jazz composer Chris Hajian; names, alt text and EXIF say so. Which person in the frames is Hajian is unconfirmed, so captions credit the session and never identify an individual. The stone-wall portrait (portfolio-30) still has no location.
+
+## 2026-11-09 (deploy) — New gallery photos live
+
+- Studio name corrected by the owner to "The Bunker Studio" (Brooklyn); this replaces "Bunker Studios" in the note above. The stone-wall portrait is confirmed NJ (now `-nj`). Keep the exact spot out of public copy: it is near the owner's home.
