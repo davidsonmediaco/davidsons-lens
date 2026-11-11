@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { navLinks } from '@/components/Navigation'
 
-// Homepage-only header: a compact wordmark (the page's H1) with plain text links on
-// desktop and a "Menu" disclosure on phones. Other pages keep <Navigation />, which
-// renders nothing on "/".
+// Homepage-only header, laid over the top of the hero photo: a compact wordmark
+// (the page's H1), the positioning line, plain text links on desktop and a "Menu" disclosure on phones. The phone
+// dropdown has no panel behind it (owner request): its links sit straight on the photo.
+// Other pages keep <Navigation />, which renders nothing on "/".
 
 const linkClass =
   'text-xs tracking-[0.2em] uppercase text-[#F5F5F5] hover:text-[#C9A84C] focus-visible:text-[#C9A84C] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C9A84C] transition-colors duration-300'
@@ -39,7 +40,7 @@ export default function HomeHeader() {
   return (
     <header
       ref={headerRef}
-      className="relative z-30 bg-[#0D0D0D]"
+      className="relative z-30 [text-shadow:0_0_2px_rgba(0,0,0,0.85),0_1px_14px_rgba(0,0,0,0.75)]"
       style={{ fontFamily: 'var(--font-body)' }}
       // Tabbing past the last menu link closes the menu.
       onBlur={e => {
@@ -78,13 +79,15 @@ export default function HomeHeader() {
         </button>
       </div>
 
-      <nav
-        id="home-menu"
-        aria-label="Main"
-        hidden={!open}
-        className="md:hidden absolute inset-x-0 top-full bg-[#0D0D0D] border-t border-white/10"
-      >
-        <ul className="px-4 py-2">
+      {/* Positioning line (owner-supplied copy). It lives here so the phone dropdown opens below it. */}
+      <p className="max-w-[1400px] mx-auto px-4 md:px-8 text-sm md:text-base text-[#F5F5F5]">
+        Photography &amp; film. Northern New Jersey.
+      </p>
+
+      {/* Phone dropdown: no panel behind it, so the photo stays visible behind the links.
+          In normal flow (the hero block has a fixed minimum height, so nothing below moves). */}
+      <nav id="home-menu" aria-label="Main" hidden={!open} className="md:hidden">
+        <ul className="px-4 pt-3">
           {navLinks.map(({ href, label }) => (
             <li key={href}>
               <Link href={href} className={`block py-3.5 ${linkClass} text-sm`} onClick={() => setOpen(false)}>

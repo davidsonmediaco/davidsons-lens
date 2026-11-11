@@ -22,13 +22,9 @@ const images: { src: string; alt: string }[] = [
   { src: '/assets/business/cookie-decorator-piping-baseball-stitches-nj.jpg', alt: 'Hands piping red baseball stitches onto an iced cookie on a turntable — small business food photography NJ — Davidsons Lens' },
   { src: '/assets/business/sobol-blue-acai-bowl-nj.jpg', alt: 'SoBol blue majik acai bowl product photography in New Jersey — Davidsons Lens' },
   { src: '/assets/business/barrister-coffee-roasting-nj.jpg', alt: 'Coffee roasting process — small business photography NJ — Davidsons Lens' },
-  { src: '/assets/business/sobol-acai-bowl-fruit-topping-nj.jpg', alt: 'SoBol acai bowl with fresh fruit toppings — food photography NJ — Davidsons Lens' },
   { src: '/assets/business/patriotic-star-decorated-cookies-nj.jpg', alt: 'Red, white and blue decorated cookies with a sprinkled blue star and web-patterned rounds — small business food photography NJ — Davidsons Lens' },
   { src: '/assets/business/san-remo-coffee-bar-wide-nj.jpg', alt: 'Coffee bar interior brand photography in New Jersey — Davidsons Lens' },
-  { src: '/assets/business/sobol-acai-bowl-branding-nj.jpg', alt: 'SoBol acai bowl with branding — small business brand photography NJ — Davidsons Lens' },
-  { src: '/assets/business/barrister-coffee-roast-close-up-nj.jpg', alt: 'Close-up coffee roast product photography in New Jersey — Davidsons Lens' },
   { src: '/assets/business/baker-decorating-baseball-cookies-overhead-nj.jpg', alt: 'Overhead view of a baker piping red stitches on baseball-themed cookies — small business food photography NJ — Davidsons Lens' },
-  { src: '/assets/business/sobol-acai-bowl-close-up-nj.jpg', alt: 'Close-up SoBol acai bowl with mango and kiwi — food photography NJ — Davidsons Lens' },
 ]
 
 export default function BusinessPage() {

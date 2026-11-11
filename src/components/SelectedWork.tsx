@@ -101,23 +101,29 @@ function Row({ row }: { row: WorkRow }) {
 export default function SelectedWork() {
   return (
     <section id="selected-work" aria-labelledby="selected-work-heading" className="bg-[#0D0D0D]">
-      {/* Compact top: the photos should start soon after the hero. */}
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8 pt-6 md:pt-10">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-5 md:mb-8">
+      {/* The Selected Work bar: a lighter-black band with rounded BOTTOM corners
+          (owner-requested exception to the sharp-corner rule). The negative margin slides
+          its top edge under the hero block's rounded corners, so the two read as layered
+          sheets; the matching top padding keeps the content clear of the overlap. */}
+      <div className="-mt-7 md:-mt-12 pt-7 md:pt-12 bg-[#1A1A1A] rounded-b-[28px] md:rounded-b-[48px]">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-8 py-5 md:py-7 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <h2
             id="selected-work-heading"
-            className="text-2xl md:text-3xl text-white"
+            className="text-xl md:text-2xl text-white"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Selected Work
           </h2>
           <nav aria-label="Photo galleries">
-            <ul className="flex flex-wrap gap-x-6 gap-y-2" style={{ fontFamily: 'var(--font-body)' }}>
+            <ul
+              className="flex flex-wrap justify-between md:justify-start gap-x-4 md:gap-x-10 gap-y-2"
+              style={{ fontFamily: 'var(--font-body)' }}
+            >
               {galleries.map(([href, label]) => (
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-xs tracking-[0.2em] uppercase text-[#F5F5F5] underline decoration-[#C9A84C]/50 underline-offset-[6px] hover:text-[#C9A84C] hover:decoration-[#C9A84C] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C9A84C] transition-colors duration-300"
+                    className="inline-block py-1 text-[11px] md:text-xs tracking-[0.18em] md:tracking-[0.2em] uppercase text-[#F5F5F5] underline decoration-[#C9A84C]/50 underline-offset-[6px] hover:text-[#C9A84C] hover:decoration-[#C9A84C] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C9A84C] transition-colors duration-300"
                   >
                     {label}
                   </Link>
@@ -126,7 +132,9 @@ export default function SelectedWork() {
             </ul>
           </nav>
         </div>
+      </div>
 
+      <div className="max-w-[1400px] mx-auto px-4 md:px-8 pt-5 md:pt-8">
         <div className="flex flex-col gap-3 md:gap-4">
           {selectedWork.map(row => (
             <Row key={row.photos.map(p => p.src).join('|')} row={row} />

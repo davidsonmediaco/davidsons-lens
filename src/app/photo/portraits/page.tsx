@@ -14,7 +14,6 @@ const heroImage = {
 
 const images: { src: string; alt: string }[] = [
   { src: '/assets/portraits/outdoor-headshot-portrait-nj.jpg', alt: 'Outdoor mens headshot portrait in New Jersey — Davidsons Lens' },
-  { src: '/assets/portraits/man-framing-face-with-hands-dusk-portrait-nj.jpg', alt: 'Man with twisted locs framing his face with his hands at dusk — portrait photography in New Jersey — Davidsons Lens' },
   { src: '/assets/portraits/denim-headshot-portrait-nj.jpg', alt: 'Denim headshot portrait session in New Jersey — Davidsons Lens' },
   { src: '/assets/portraits/woman-stethoscope-autumn-portrait-nj.jpg', alt: 'Smiling woman wearing a stethoscope outdoors beneath autumn willow trees — portrait photography in New Jersey — Davidsons Lens' },
   { src: '/assets/portraits/woman-eyes-close-up-portrait-nj.jpg', alt: "Extreme close-up of a woman's green eyes framed between her hands — portrait photography in New Jersey — Davidsons Lens" },

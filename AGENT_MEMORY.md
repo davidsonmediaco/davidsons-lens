@@ -234,3 +234,40 @@ Durable operational context. Append dated entries; do not rewrite history.
 ## 2026-11-09 (deploy) — New gallery photos live
 
 - Studio name corrected by the owner to "The Bunker Studio" (Brooklyn); this replaces "Bunker Studios" in the note above. The stone-wall portrait is confirmed NJ (now `-nj`). Keep the exact spot out of public copy: it is near the owner's home.
+
+## 2026-11-09 — Homepage photos re-curated, one portrait removed (local, NOT deployed at time of writing)
+
+- Owner disliked `man-framing-face-with-hands-dusk-portrait-nj.jpg`: removed from `/photo/portraits`, `scripts/image-descriptions.json`, `public/assets` and `_originals` (source remains in Desktop `Portfolio`). Do not re-add it. Portraits gallery is now 15 photos.
+- Owner asked Claude to choose better homepage photos and change the hierarchy. Hero order now: water portrait (`center 30%`), brindle French bulldog (`55% 35%`), Bunker grand piano session (`60% 35%`), San Remo espresso detail (`80% 45%`).
+- Selected Work is still 16 photos in `src/lib/selected-work.ts`, none repeating the hero, in a 3/1/3/1/3/2/3 row rhythm: warm close-ups, bearded portrait full width, Bunker session trio, Barrister roaster offset, bright trio, low-light pair, friendly closing trio.
+- Pitfall: the Barrister roaster photo looks noticeably grainy at hero size (face also turned down); use it at 3/4 width or smaller.
+- Verified locally: desktop 1440 and phone 375, 20 homepage images, 0 broken, 0 missing alt, no sideways overflow, 0 console errors; tsc, eslint on changed files and `npm run build` pass. When deploying, warm the new hero/Selected Work image variants.
+
+## 2026-11-10 — Homepage: rounded hero block, Selected Work bar, grid cut to 8 (local, NOT deployed at time of writing)
+
+- Owner asked to confirm the goal first, then sent a reference screenshot (a "Folioblox" portfolio template): photo fills a rounded-bottom hero with the nav on top of it, and a lighter band with rounded bottom corners tucks underneath. Built to that reference. This supersedes the 2026-10-29 "nothing on the photo" rule for the header and positioning line only.
+- Owner's answers: order = hero block -> Selected Work bar -> grid; rounding on the header block and the bar ONLY (photos, buttons, other pages stay sharp); Claude picks the 8; the bar scrolls with the page (not sticky).
+- Implementation: `page.tsx` hero block `relative z-10 overflow-hidden rounded-b-[28px] md:rounded-b-[48px]` with `HeroGallery` filling it and a top gradient overlay; `HomeHeader` is transparent with a text shadow; `SelectedWork.tsx` bar uses `-mt-7 md:-mt-12` + matching top padding to sit under the hero's corners (radius and margin must stay in step).
+- Selected Work is now 8 photos, rows 3/1/3/1: amber brindle dog, woman's eyes, puppy bond | bearded portrait full width | denim portrait, Bunker drummer (B&W), Labradors on the beach | Barrister roaster offset right. Piano hero position changed to `60% 22%` so the standing man's head clears the nav.
+- Verified locally at 1440, 768, 375 and 320 wide: 12 images, 0 broken, 0 missing alt, no sideways overflow, 0 console errors, one H1; phone menu opens over the photo, Escape closes it and returns focus; tsc, eslint and `npm run build` pass.
+- Still uncommitted together with the 2026-11-09 changes (portrait removal, new hero set). Owner said more design changes follow before moving on.
+
+## 2026-11-10 (later) — Gold header, transparent phone dropdown, stronger top fade (local, NOT deployed)
+
+- Owner request: header title, links and positioning line in gold (`#C9A84C`); phone dropdown transparent when open; black gradient over the top half of the hero photos. Owner first said "around 15%", then "so the menu, title and links are legible": 15% left gold unreadable on the sand, wood and tile photos, so the fade is `from-black/80 via-black/60 via-[18%] to-black/0 to-50%` plus a tight dark text shadow. Owner saw it in the preview and approved ("great").
+- Pitfall: `globals.css` sets `h1-h4 { color: #fff }` unlayered, which beats Tailwind `text-*` classes; the gold wordmark needs an inline `color`.
+- The positioning line moved from `page.tsx` into `HomeHeader.tsx` so the phone dropdown opens below it instead of on top of it. Desktop keeps inline links (a desktop dropdown was a misread and was reverted).
+- Verified at 1440/768/375/320: 12 images, 0 broken, no overflow, 0 console errors, one H1, phone menu opens/closes with Escape returning focus; tsc and eslint clean.
+
+## 2026-11-10 (photo removals) — four Business photos removed at owner's request (local, NOT deployed)
+
+- Removed from the site, `public/assets/business` and `_originals/business`: `sobol-acai-bowl-fruit-topping-nj`, `sobol-acai-bowl-close-up-nj`, `sobol-acai-bowl-branding-nj`, `barrister-coffee-roast-close-up-nj`. Do not re-add. Business gallery is now 12 photos. The web-size copies remain in git history (commit a79c770 and earlier); the full-size `_originals` copies were deleted with them.
+- Selected Work closer (8th photo) is now `barrister-coffee-house-brand-photography-basking-ridge-nj.jpg` (barista from behind at the espresso machine), still offset right at 3/4 width.
+- Owner workflow: they name files to remove or swap; deleting a file from the folder alone would leave a broken image, so pages, descriptions JSON and files are changed together.
+
+## 2026-11-10 (evening) — Gold text tried and reverted; hero photo swap; pre-deploy audit
+
+- Gold text is OUT. The owner approved a gold header, then asked for all site text in gold, then on seeing it said "the gold is distracting. Lets revert to the old way, keep the black gradient". All text is back to the original colors (white headings, `#F5F5F5` body, `#A0A0A0` secondary); the 2026-11-10 "(later)" entry's gold header no longer applies. Kept from that round: the black fade on the hero, the text shadow, the transparent phone dropdown, and the positioning line living in `HomeHeader.tsx`.
+- Hero slide 4 is now `sobol-acai-bowls-spread-nj.jpg` (`center 40%`) instead of the San Remo espresso detail, at the owner's request. Hero order: water portrait, French bulldog, Bunker piano session, SoBol spread.
+- Pre-deploy audit method (reusable): serve the production build locally (`next start -p 3100`) and drive headless Chrome over CDP through all 10 pages at 320, 390, 768, 1440 and 1920 wide, plus the homepage at 375, 414, 844x390, 1024, 1280 and 2560. Checks: broken images, missing alt, sideways overflow, clipped text, H1 count, console errors, failed requests, header/bar geometry, phone menu open/Escape.
+- Note: the local production build loads Google Analytics (a `NEXT_PUBLIC_GA_ID` exists in the local env), so local audits can log failed analytics image requests. Those are not site bugs.

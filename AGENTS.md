@@ -45,7 +45,9 @@ is `#F5F5F5`. `#A0A0A0` is strictly for secondary UI. Never introduce a third gr
 everything else `var(--font-body)` (Outfit). Nav/labels/buttons are uppercase with wide
 tracking (`tracking-[0.2em]`–`[0.3em]`). Gold hairline divider: `w-12 h-px bg-[#C9A84C]`.
 
-**Buttons:** sharp corners — **no rounded corners anywhere**. Gold outline
+**Buttons:** sharp corners — **no rounded corners anywhere**, with ONE owner-requested exception
+(2026-11-10): on the homepage, the hero block and the Selected Work bar have rounded BOTTOM corners
+(28px phones / 48px md+). Photos, buttons and every other page stay sharp. Gold outline
 (`border border-[#C9A84C]`), gold text, hover fills gold with `#0D0D0D` text. Reuse
 `CTAButton`. Interactive things must LOOK interactive (boxed/underlined) — plain text lists
 must not look like buttons (another past user complaint; see the "What I Shoot" list pattern
@@ -60,18 +62,25 @@ that caused a black flash between slides.
 
 ## Layout map
 
-- `/` — compact homepage-only header (`HomeHeader.tsx`: wordmark = the page H1, text links on desktop,
-  accessible "Menu" disclosure on phones; `Navigation` renders nothing on "/"), one positioning line
-  ("Photography & film. Northern New Jersey.") on the page background, then the rotating 4-image
-  `HeroGallery` with NO overlay and no text on the photo. Header + line + photo ≈ 76% (phones) / 80% (md+)
-  of the visible height so the portfolio starts just below. Per-photo `position` values in `page.tsx` are
-  tuned for the tall phone crop (horizontal) and wide desktop crop (vertical). Then **Selected Work**
-  (`SelectedWork.tsx`): a curated, mixed-category sequence of justified rows (photos keep their natural
-  shape, no overlays/hover/captions) with gallery text links; then a text-only "The person behind the
-  camera" intro (add a portrait only once a verified photo of James exists), the single contact invitation
-  ("Tell me about your shoot" -> /contact), footer (the only place social icons appear on the homepage).
-  Positioning line, intro and invitation copy is owner-supplied; do not reword it without approval.
-  The photo list and order live in `src/lib/selected-work.ts` (edit there, not in the component).
+- `/` — one rounded-bottom hero block (about 76% of the visible height on phones / 80% on md+): the
+  rotating 4-image `HeroGallery` fills it edge to edge, and the homepage-only header (`HomeHeader.tsx`) sits ON
+  the photo in the normal white text colors: wordmark = the page H1, text links on desktop, the positioning
+  line ("Photography & film. Northern New Jersey."), and on phones a "Menu" disclosure whose dropdown is
+  transparent (no panel; links sit on the photo, in normal flow below the positioning line). `Navigation`
+  renders nothing on "/". A black fade covers the top half of the photo (`overlayClassName` in `page.tsx`,
+  80% -> 60% -> 0) and the owner asked to keep it; do not weaken it. Gold text (header-only, then site-wide)
+  was tried on 2026-11-10 and rejected by the owner as distracting: do not reintroduce it. Per-photo
+  `position` values in `page.tsx` are tuned for the tall phone crop (horizontal) and wide desktop crop
+  (vertical); keep faces clear of the header strip. Directly under
+  it, tucked beneath the hero's rounded corners with a negative margin, is the **Selected Work** bar
+  (`SelectedWork.tsx`): a lighter-black (`#1A1A1A`) band with rounded bottom corners holding the heading
+  and the gallery text links. Then the Selected Work photos: a curated, mixed-category sequence of 8
+  photos in justified rows (photos keep their natural shape, sharp corners, no overlays/hover/captions);
+  then a text-only "The person behind the camera" intro (add a portrait only once a verified photo of James
+  exists), the single contact invitation ("Tell me about your shoot" -> /contact), footer (the only place
+  social icons appear on the homepage). Positioning line, intro and invitation copy is owner-supplied; do
+  not reword it without approval. The photo list and order live in `src/lib/selected-work.ts` (edit there,
+  not in the component).
 - `/about` — long bio + contact CTA.
 - `/photo` — portfolio hub: 4 image-tile category cards (Portraits, Music, Dogs, Business) with hover zoom +
   gradient labels. Dogs is the owner's favorite subject and a planned flagship.

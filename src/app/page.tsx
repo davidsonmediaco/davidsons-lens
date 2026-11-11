@@ -23,18 +23,18 @@ const heroImages: { src: string; alt: string; position?: string }[] = [
     position: 'center 30%',
   },
   {
-    src: '/assets/music/cinematic-live-music-photography-nj.jpg',
-    alt: 'Cinematic live music photography — Davidsons Lens, New Jersey',
-    position: '30% 40%',
+    src: '/assets/dogs/brindle-french-bulldog-walking-toward-camera-nj.jpg',
+    alt: 'Brindle French bulldog walking toward the camera with its tongue out — dog photography, Davidsons Lens, New Jersey',
+    position: '55% 35%',
   },
   {
-    src: '/assets/dogs/dramatic-labrador-portrait-nj.jpg',
-    alt: 'Dramatic Labrador portrait — dog photography, Davidsons Lens, New Jersey',
-    position: '75% 22%',
+    src: '/assets/music/chris-hajian-session-grand-piano-the-bunker-studio-brooklyn.jpg',
+    alt: 'Two men working together at a grand piano during a session for jazz composer Chris Hajian at The Bunker Studio, Brooklyn — Davidsons Lens',
+    position: '60% 22%',
   },
   {
     src: '/assets/business/sobol-acai-bowls-spread-nj.jpg',
-    alt: 'SoBol acai bowls — food and brand photography, Davidsons Lens, New Jersey',
+    alt: 'Overhead spread of SoBol acai bowls topped with fruit and coconut — food and brand photography, Davidsons Lens, New Jersey',
     position: 'center 40%',
   },
 ]
@@ -42,24 +42,19 @@ const heroImages: { src: string; alt: string; position?: string }[] = [
 export default function HomePage() {
   return (
     <>
-      {/* Opening: compact header, one positioning line, then the photograph — together
-          about 76-80% of the visible screen (svh = with mobile browser bars showing), so
-          the portfolio starts just below. min-h + flex-1 let short screens or enlarged
-          text grow instead of clipping. */}
-      <div className="flex flex-col min-h-[76svh] md:min-h-[80svh] bg-[#0D0D0D]">
+      {/* Opening: one "header section" — the photograph fills the whole block, with the
+          compact header (which includes the positioning line) on top of it (a black fade over the top half of the photo,
+          strong enough that the gold header text stays readable on bright photos; 15% was tried and was not). The block is about 76-80% of the visible screen
+          (svh = with mobile browser bars showing) and has rounded BOTTOM corners
+          (owner-requested exception to the sharp-corner rule). The Selected Work bar
+          tucks underneath it, so this block must stay above it (z-10). */}
+      <div className="relative z-10 flex flex-col min-h-[76svh] md:min-h-[80svh] overflow-hidden rounded-b-[28px] md:rounded-b-[48px] bg-[#0D0D0D]">
+        <HeroGallery
+          images={heroImages}
+          interval={8000}
+          overlayClassName="bg-gradient-to-b from-black/80 via-black/60 via-[18%] to-black/0 to-50%"
+        />
         <HomeHeader />
-        <p
-          className="w-full max-w-[1400px] mx-auto px-4 md:px-8 pb-3 md:pb-4 text-sm md:text-base text-[#F5F5F5]"
-          style={{ fontFamily: 'var(--font-body)' }}
-        >
-          Photography &amp; film. Northern New Jersey.
-        </p>
-        {/* Full-bleed on phones; aligned with the portfolio grid on wider screens. */}
-        <div className="flex flex-1 min-h-[240px] w-full max-w-[1400px] mx-auto md:px-8">
-          <div className="relative flex-1">
-            <HeroGallery images={heroImages} interval={8000} />
-          </div>
-        </div>
       </div>
       <SelectedWork />
 
