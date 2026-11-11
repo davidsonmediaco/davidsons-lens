@@ -292,3 +292,9 @@ Durable operational context. Append dated entries; do not rewrite history.
 - NOT applied: the brief's Task 1 (a fixed list of 8 Selected Work photos, first one full width). It conflicts with the owner's own instructions from the same two days: one listed photo (`barrister-coffee-roast-close-up-nj`) was deleted at their request, another was removed from the hero, and they asked for the family photo at the bottom of a grid they had just approved. Asked the owner which should win.
 - The brief's standing rules worth keeping: no em dashes in visible copy written from now on; do not change URLs; no Sports gallery until there are keepers; Business copy must not claim salons, retail or offices (food and drink only).
 - Preview pitfall: two hero images hung on the dev server's image optimizer (requests never returned) until the preview was restarted; the production build and the live site were unaffected.
+
+## 2026-11-11 (deploy) — 7968d02 live
+
+- Owner said "deploy" without choosing the pasted brief's homepage list, so the current 9-photo Selected Work set went live as is. The brief's Task 1 remains unapplied and unanswered.
+- Server: pulled, built in place, PM2 online. Warmed 366/366 image variants across `/`, `/photo` and the four galleries (0 failures, 17s). 10 routes 200. Live `/photo` shows the new intro and card copy; live homepage and Portraits gallery include the family portraits. Live layout audit at 11 screen sizes: 0 problems.
+- This notes entry is uncommitted locally; include it in the next commit.
