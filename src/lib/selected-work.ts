@@ -14,8 +14,8 @@
 // - `width` / `height` must be the file's real pixel size (they set the shape and stop
 //   the page jumping while photos load). To read them, run from the project folder:
 //     node -e "require('sharp')('public/assets/dogs/FILE.jpg').metadata().then(m=>console.log(m.width,m.height))"
-// - Optional for single-photo rows: `size: 'wide'` (about 3/4 width) and
-//   `align: 'left' | 'right'` to offset it, for rhythm. Default is full width.
+// - Every row fills the full width. Do NOT use `size: 'wide'` / `align` (they leave empty
+//   space beside the photo, which the owner does not want); a single photo is full width.
 // - Keep the hero photos (see src/app/page.tsx) out of this list so the section
 //   doesn't repeat an image the visitor has just seen.
 
@@ -90,14 +90,19 @@ export const selectedWork: WorkRow[] = [
       },
     ],
   },
-  // Offset closer: a craftsman at work, leading into the introduction.
+  // Closing pair, full width: a craftsman at work beside a family portrait.
+  // (No offset or 3/4-width rows: the owner wants every row to fill the grid, with no empty space.)
   {
-    size: 'wide',
-    align: 'right',
     photos: [
       {
         src: '/assets/business/barrister-coffee-house-brand-photography-basking-ridge-nj.jpg',
         alt: 'Barista in a Barrister Coffee House hoodie, seen from behind, working at the espresso machine — small business photography, Basking Ridge NJ',
+        width: 2400,
+        height: 1600,
+      },
+      {
+        src: '/assets/portraits/family-of-five-beneath-tree-autumn-park-portrait-nj.jpg',
+        alt: 'Family of five gathered beneath a large tree in an autumn park, one boy perched in its branches — family portrait photography, New Jersey',
         width: 2400,
         height: 1600,
       },

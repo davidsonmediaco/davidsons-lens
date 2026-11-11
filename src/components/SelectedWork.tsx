@@ -101,12 +101,14 @@ function Row({ row }: { row: WorkRow }) {
 export default function SelectedWork() {
   return (
     <section id="selected-work" aria-labelledby="selected-work-heading" className="bg-[#0D0D0D]">
-      {/* The Selected Work bar: a lighter-black band with rounded BOTTOM corners
-          (owner-requested exception to the sharp-corner rule). The negative margin slides
-          its top edge under the hero block's rounded corners, so the two read as layered
-          sheets; the matching top padding keeps the content clear of the overlap. */}
-      <div className="-mt-7 md:-mt-12 pt-7 md:pt-12 bg-[#1A1A1A] rounded-b-[28px] md:rounded-b-[48px]">
-        <div className="max-w-[1400px] mx-auto px-4 md:px-8 py-5 md:py-7 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      {/* The Selected Work panel: one lighter-black sheet with rounded BOTTOM corners
+          (owner-requested exception to the sharp-corner rule) that holds the heading, the
+          gallery links AND the whole photo grid, so it is clear the heading belongs to the
+          photos. The negative margin slides its top edge under the hero block's rounded
+          corners, so the two read as layered sheets; the matching top padding keeps the
+          content clear of the overlap. */}
+      <div className="-mt-7 md:-mt-12 pt-7 md:pt-12 pb-8 md:pb-14 bg-[#1A1A1A] rounded-b-[28px] md:rounded-b-[48px]">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-8 pt-5 md:pt-7 pb-4 md:pb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <h2
             id="selected-work-heading"
             className="text-xl md:text-2xl text-white"
@@ -132,13 +134,13 @@ export default function SelectedWork() {
             </ul>
           </nav>
         </div>
-      </div>
 
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8 pt-5 md:pt-8">
-        <div className="flex flex-col gap-3 md:gap-4">
-          {selectedWork.map(row => (
-            <Row key={row.photos.map(p => p.src).join('|')} row={row} />
-          ))}
+        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+          <div className="flex flex-col gap-3 md:gap-4">
+            {selectedWork.map(row => (
+              <Row key={row.photos.map(p => p.src).join('|')} row={row} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

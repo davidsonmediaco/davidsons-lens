@@ -46,7 +46,7 @@ everything else `var(--font-body)` (Outfit). Nav/labels/buttons are uppercase wi
 tracking (`tracking-[0.2em]`–`[0.3em]`). Gold hairline divider: `w-12 h-px bg-[#C9A84C]`.
 
 **Buttons:** sharp corners — **no rounded corners anywhere**, with ONE owner-requested exception
-(2026-11-10): on the homepage, the hero block and the Selected Work bar have rounded BOTTOM corners
+(2026-11-10): on the homepage, the hero block and the Selected Work panel have rounded BOTTOM corners
 (28px phones / 48px md+). Photos, buttons and every other page stay sharp. Gold outline
 (`border border-[#C9A84C]`), gold text, hover fills gold with `#0D0D0D` text. Reuse
 `CTAButton`. Interactive things must LOOK interactive (boxed/underlined) — plain text lists
@@ -72,10 +72,12 @@ that caused a black flash between slides.
   was tried on 2026-11-10 and rejected by the owner as distracting: do not reintroduce it. Per-photo
   `position` values in `page.tsx` are tuned for the tall phone crop (horizontal) and wide desktop crop
   (vertical); keep faces clear of the header strip. Directly under
-  it, tucked beneath the hero's rounded corners with a negative margin, is the **Selected Work** bar
-  (`SelectedWork.tsx`): a lighter-black (`#1A1A1A`) band with rounded bottom corners holding the heading
-  and the gallery text links. Then the Selected Work photos: a curated, mixed-category sequence of 8
-  photos in justified rows (photos keep their natural shape, sharp corners, no overlays/hover/captions);
+  it, tucked beneath the hero's rounded corners with a negative margin, is the **Selected Work** panel
+  (`SelectedWork.tsx`): ONE lighter-black (`#1A1A1A`) sheet with rounded bottom corners that holds the
+  heading, the gallery text links AND the whole photo grid (the owner wants it obvious that the heading
+  belongs to the photos). The grid is a curated, mixed-category sequence of justified rows (photos keep
+  their natural shape, sharp corners, no overlays/hover/captions). Every row must fill the full width:
+  no offset or 3/4-width rows, no empty space beside a photo (owner: "no gaps");
   then a text-only "The person behind the camera" intro (add a portrait only once a verified photo of James
   exists), the single contact invitation ("Tell me about your shoot" -> /contact), footer (the only place
   social icons appear on the homepage). Positioning line, intro and invitation copy is owner-supplied; do

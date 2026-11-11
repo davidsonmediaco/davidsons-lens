@@ -30,7 +30,7 @@ export default function PhotoPage() {
               className="text-[#F5F5F5] text-lg max-w-xl"
               style={{ fontFamily: 'var(--font-body)' }}
             >
-              Photography across northern New Jersey. Pick a world below.
+              Photography across northern New Jersey. Choose what you need.
             </p>
           </div>
         </ScrollReveal>
@@ -39,7 +39,7 @@ export default function PhotoPage() {
         <ScrollReveal delay={0.1}>
           <div className="max-w-7xl mx-auto px-6 pb-24">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {categories.map(({ href, label, description, image, position }, i) => (
+              {categories.map(({ href, label, audience, description, image, position }, i) => (
                 <Link
                   key={href}
                   href={href}
@@ -64,11 +64,13 @@ export default function PhotoPage() {
                     >
                       {label}
                     </h2>
+                    {/* Two short lines: who it's for, then what's offered. */}
                     <p
-                      className="text-sm text-[#F5F5F5] mt-1"
+                      className="text-sm leading-snug text-[#F5F5F5] mt-2"
                       style={{ fontFamily: 'var(--font-body)' }}
                     >
-                      {description}
+                      <span className="block">{audience}</span>
+                      <span className="block">{description}</span>
                     </p>
                     <span className="inline-block mt-3 text-xs tracking-[0.2em] uppercase text-[#C9A84C] opacity-0 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
                       View Gallery →
