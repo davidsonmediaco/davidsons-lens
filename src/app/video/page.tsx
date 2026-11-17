@@ -1,14 +1,16 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import Footer from '@/components/Footer'
 import CTAButton from '@/components/CTAButton'
 import ScrollReveal from '@/components/ScrollReveal'
 import PageTransition from '@/components/PageTransition'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/video',
   title: 'Video',
   description:
-    'Video production in Bernardsville, NJ. Music videos, UGC, branding content, fitness content and short form social video for musicians, businesses and creators across northern New Jersey.',
-}
+    'Video production in Bernardsville, NJ. Music videos, UGC, branding, fitness and short form social video for musicians, businesses and creators in northern NJ.',
+})
 
 const YOUTUBE_CHANNEL = 'https://www.youtube.com/@davidsonslens'
 const FEATURED_VIDEO_ID = 'lQYogZoeweA'

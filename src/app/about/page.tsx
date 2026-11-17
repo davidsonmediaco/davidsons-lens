@@ -1,14 +1,16 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import Footer from '@/components/Footer'
 import CTAButton from '@/components/CTAButton'
 import ScrollReveal from '@/components/ScrollReveal'
 import PageTransition from '@/components/PageTransition'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/about',
   title: 'About',
   description:
-    'Meet the photographer behind Davidsons Lens in Bernardsville, NJ. Portraits, dogs, music, and small-business photo and video, shot to make you feel confident on camera.',
-}
+    'Meet the photographer behind Davidsons Lens in Bernardsville, NJ. Portraits, dogs, music, and small-business photo and video, shot to make you feel confident.',
+})
 
 export default function AboutPage() {
   return (

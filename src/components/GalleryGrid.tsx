@@ -1,8 +1,9 @@
 'use client'
 
+import { useRef, type CSSProperties } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { useReveal } from '@/components/useReveal'
 
 interface GalleryImage {
   src: string
@@ -53,12 +54,20 @@ function GalleryItem({
   index: number
   masonry?: boolean
 }) {
+  // Each photo fades up as it scrolls into view; it is visible in the HTML (see useReveal).
+  const ref = useRef<HTMLDivElement>(null)
+  useReveal(ref, 40)
+
   const inner = (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.6, delay: (index % 6) * 0.07 }}
+    <div
+      ref={ref}
+      style={
+        {
+          '--reveal-delay': `${(index % 6) * 0.07}s`,
+          '--reveal-y': '16px',
+          '--reveal-duration': '0.6s',
+        } as CSSProperties
+      }
       className={`relative overflow-hidden bg-[#1A1A1A] group ${masonry ? 'break-inside-avoid mb-3' : 'aspect-[4/3]'}`}
     >
       <Image
@@ -72,7 +81,7 @@ function GalleryItem({
         loading="lazy"
       />
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500" />
-    </motion.div>
+    </div>
   )
 
   if (img.href) {

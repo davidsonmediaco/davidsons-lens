@@ -1,14 +1,16 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import Footer from '@/components/Footer'
 import CTAButton from '@/components/CTAButton'
 import ScrollReveal from '@/components/ScrollReveal'
 import PageTransition from '@/components/PageTransition'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/creative-services',
   title: 'Creative Services',
   description:
     'Social media management, consulting, and creative services from Davidsons Lens in Bernardsville, NJ.',
-}
+})
 
 export default function CreativeServicesPage() {
   return (

@@ -1,14 +1,16 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import Footer from '@/components/Footer'
 import ScrollReveal from '@/components/ScrollReveal'
 import PageTransition from '@/components/PageTransition'
 import ContactForm from '@/components/ContactForm'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/contact',
   title: 'Contact',
   description:
     "Get in touch with Davidsons Lens. Photography, video, social media, and creative services in Bernardsville, NJ. Let's work together.",
-}
+})
 
 export default function ContactPage() {
   return (

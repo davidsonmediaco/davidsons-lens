@@ -42,6 +42,32 @@ h1, h2, h3, h4 {
   color: #FFFFFF;
 }
 
+/* Interior page settle-in (PageTransition). Starts partly visible so the page is on screen
+   from the first paint; never start this at 0, that hides the page from the first paint
+   and from Google's "largest content" timing. */
+@keyframes page-enter {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .page-enter {
+    animation: page-enter 0.5s ease-out both;
+  }
+}
+
+/* Scroll reveals (useReveal: ScrollReveal blocks and gallery photos). Blocks are visible
+   by default. The script marks only blocks still below the screen as "waiting", then
+   "shown" when they scroll into view. Do not add a default hidden state here. */
+[data-reveal='waiting'] {
+  opacity: 0;
+  transform: translateY(var(--reveal-y, 32px));
+}
+[data-reveal='shown'] {
+  transition:
+    opacity var(--reveal-duration, 0.7s) cubic-bezier(0.25, 0.1, 0.25, 1) var(--reveal-delay, 0s),
+    transform var(--reveal-duration, 0.7s) cubic-bezier(0.25, 0.1, 0.25, 1) var(--reveal-delay, 0s);
+}
+
 /* Selection */
 ::selection {
   background-color: #C9A84C;

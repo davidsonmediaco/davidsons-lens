@@ -1,7 +1,7 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { useRef, type CSSProperties } from 'react'
+import { useReveal } from '@/components/useReveal'
 
 interface ScrollRevealProps {
   children: React.ReactNode
@@ -10,30 +10,28 @@ interface ScrollRevealProps {
   direction?: 'up' | 'fade'
 }
 
+// Fades a block in as it scrolls into view. The block is visible in the HTML; see useReveal.
 export default function ScrollReveal({
   children,
   delay = 0,
   className = '',
   direction = 'up',
 }: ScrollRevealProps) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
-
-  const variants = {
-    hidden: direction === 'up' ? { opacity: 0, y: 32 } : { opacity: 0 },
-    visible: { opacity: 1, y: 0 },
-  }
+  const ref = useRef<HTMLDivElement>(null)
+  useReveal(ref)
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
-      variants={variants}
-      transition={{ duration: 0.7, delay, ease: [0.25, 0.1, 0.25, 1] }}
       className={className}
+      style={
+        {
+          '--reveal-delay': `${delay}s`,
+          '--reveal-y': direction === 'up' ? '32px' : '0px',
+        } as CSSProperties
+      }
     >
       {children}
-    </motion.div>
+    </div>
   )
 }

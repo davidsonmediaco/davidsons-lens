@@ -1,16 +1,19 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import GallerySubPage from '@/components/GallerySubPage'
-
-export const metadata: Metadata = {
-  title: 'Business',
-  description:
-    'Small business photography and video in Bernardsville, NJ. Building trust and pulling customers in through high quality visuals. Serving businesses across northern New Jersey.',
-}
 
 const heroImage = {
   src: '/assets/business/san-remo-espresso-machine-detail-nj.jpg',
   alt: 'Premium coffee brand photography of a San Remo espresso machine in New Jersey — Davidsons Lens',
 }
+
+export const metadata: Metadata = pageMetadata({
+  path: '/photo/business',
+  title: 'Business',
+  description:
+    'Small business photography and video in Bernardsville, NJ. High quality visuals that build trust and pull customers in. Serving northern New Jersey.',
+  image: heroImage,
+})
 
 const images: { src: string; alt: string }[] = [
   { src: '/assets/business/sobol-acai-bowls-spread-nj.jpg', alt: 'SoBol acai bowls spread — food and brand photography in New Jersey — Davidsons Lens' },
@@ -30,6 +33,7 @@ const images: { src: string; alt: string }[] = [
 export default function BusinessPage() {
   return (
     <GallerySubPage
+      path="/photo/business"
       category="Business"
       heroImage={heroImage}
       description={`First impressions happen before a customer ever walks through your door. The photos and videos representing your business tell people whether you take pride in what you do before they've had a chance to find out for themselves.

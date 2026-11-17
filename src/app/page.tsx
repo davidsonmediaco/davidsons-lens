@@ -1,15 +1,18 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import HomeHeader from '@/components/HomeHeader'
 import HeroGallery from '@/components/HeroGallery'
 import SelectedWork from '@/components/SelectedWork'
 import CTAButton from '@/components/CTAButton'
 import Footer from '@/components/Footer'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/',
   title: 'Davidsons Lens | Photo, Video & Creative Media — Bernardsville, NJ',
+  titleIsComplete: true,
   description:
     'Photographer and videographer in Bernardsville, NJ. Portraits, dog photography, music, and small-business photo and video across northern New Jersey.',
-}
+})
 
 // Homepage hero rotation — the brand's strongest work, in hierarchy order.
 // `position` tunes the object-cover focal point. The hero box is tall on phones

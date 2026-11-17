@@ -298,3 +298,31 @@ Durable operational context. Append dated entries; do not rewrite history.
 - Owner said "deploy" without choosing the pasted brief's homepage list, so the current 9-photo Selected Work set went live as is. The brief's Task 1 remains unapplied and unanswered.
 - Server: pulled, built in place, PM2 online. Warmed 366/366 image variants across `/`, `/photo` and the four galleries (0 failures, 17s). 10 routes 200. Live `/photo` shows the new intro and card copy; live homepage and Portraits gallery include the family portraits. Live layout audit at 11 screen sizes: 0 problems.
 - This notes entry is uncommitted locally; include it in the next commit.
+
+## 2026-11-16 — SEO structural audit (findings only, NO fixes made; owner asked for the list first)
+
+- Duplicate addresses: `http://davidsonslens.com`, `http://www.`, `https://www.` and the bare origin IP (http and https) all return 200 with indexable pages; no redirect to `https://davidsonslens.com` and no `<link rel="canonical">` on any page. `og:url`, `og:title` and `og:description` are the homepage's on every page (inherited from `layout.tsx`).
+- No JSON-LD anywhere. Interior titles and H1s are one generic word ("Dogs | Davidsons Lens", H1 "Dogs"); homepage H1 is the brand name only.
+- Thin text: homepage 83 words of main content, `/photo` 54, galleries 120-160.
+- `PageTransition` renders `<main>` at `opacity:0` in the server HTML on every interior page (and each gallery photo sits in a `ScrollReveal` at opacity 0). Lab LCP on a throttled phone (4x CPU, slow 4G): `/` 1.3s, `/about` and `/contact` 1.9s, galleries 2.7s, `/photo` 3.5s. CLS measured 0 on all six pages, including after scrolling.
+- Galleries have 2 inbound internal pages each (home, `/photo`); no cross-links or breadcrumbs. Sitemap has no `lastmod`. Four meta descriptions exceed ~160 chars (About 168, Music 170, Business 175, Video 186).
+- Optimized images (`/_next/image`) return `cf-cache-status: DYNAMIC`, so Cloudflare does not cache them and every request hits the origin.
+- A web search index still lists `http://davidsonslens.com/videos` titled "Videos - Chris Davidson" (an older site on the domain); `/videos` now 404s. Other guessed legacy paths also 404.
+- Fine as is: robots.txt (Cloudflare-managed block is AI/training crawlers only; Googlebot allowed), real 404 status with noindex, 308s for old sections and trailing slashes, `/coming-soon` noindex, viewport tag, alt text on every image, hero image preloaded.
+- Audit scripts in the session scratchpad: `seo-crawl.mjs` (head tags, headings, links per page) and `cwv.mjs` (LCP/CLS via CDP with throttling).
+
+
+## 2026-11-17 — SEO code-only fixes (branch `seo-structure`, local, NOT deployed)
+
+Owner said "fix all the code-only items and show me". Done on a branch, built and verified locally; nothing pushed or deployed.
+
+- Canonical + per-page sharing tags: new `src/lib/seo.ts` `pageMetadata()`; all 10 indexable pages use it. Each page now has `<link rel="canonical">` to its `https://davidsonslens.com/...` address and its own `og:url`, `og:title`, `og:description`, Twitter tags. Galleries share their hero photo as the card image; other pages keep `/og-image.jpg`. Titles and H1s were NOT changed (need owner-approved wording).
+- Pages visible at first paint: `PageTransition` is now a plain `<main class="page-enter">` (CSS fade from 0.4, no JavaScript). `ScrollReveal` and gallery photos use the new `useReveal` hook: content is visible in the HTML, the script hides only blocks that are entirely below the screen and fades them in on scroll (`[data-reveal]` in `globals.css`). Server HTML for `/photo/dogs` went from 21 `opacity:0` blocks to 0. framer-motion is now only used by `Navigation` (mobile menu).
+- Galleries: breadcrumb trail (Home / Photo / Gallery) above the description plus BreadcrumbList JSON-LD, and a "More galleries" row of text links to the other three galleries after the CTA. Each gallery now has inbound links from 5 pages instead of 2. New visible words: "Home", "Photo", "More galleries" (flagged to the owner).
+- Sitemap: `lastmod` on every URL, taken from the last git commit touching that page's content files (falls back to no date if git is unavailable at build).
+- Redirect: `/videos` -> `/video` (308), for the old-site address still in search indexes.
+- Meta descriptions trimmed to under 160 characters: About 168 -> 158, Music 170 -> 153, Business 175 -> 148, Video 186 -> 158. Only the hidden search description changed, not the visible page text.
+- Verification (local production build): `npm run build` passes; layout audit at 11 screen sizes x 10 pages 0 problems; H1 effective opacity 1 at load on every interior page; all scroll fade-ins fire; 0 console exceptions. ESLint: only the old `Navigation` setState-in-effect finding remains (the unused `Link` import in `GallerySubPage` is now used).
+- Pitfall: gallery pages grow taller while lazy photos load (masonry placeholders are 800x600, real shapes differ), so a scripted "scroll to the bottom" must re-read the page height or it stops short and reports reveals as stuck.
+- Still NOT done from the audit (not code-only): http/www/origin-IP redirects and locking the origin to Cloudflare, Cloudflare cache rule for `/_next/image`, business structured data (needs owner's public details), titles/H1 wording, more page text, Search Console setup.
+- Timing, simulated slow phone (4x CPU, slow 4G) on the LOCAL production build: largest content visible at `/photo` 0.9s, `/photo/dogs` 1.3s, `/photo/portraits` 0.9s, `/about` 0.9s, `/contact` 0.8s; layout shift 0. Live before the change: 3.5s, 2.7s, 2.7s, 1.9s, 1.9s. Local runs about 0.3s quicker than live (the unchanged homepage measured 1.0s local vs 1.3s live), so re-measure on live after deploy.

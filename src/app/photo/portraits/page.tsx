@@ -1,16 +1,19 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import GallerySubPage from '@/components/GallerySubPage'
-
-export const metadata: Metadata = {
-  title: 'Portraits',
-  description:
-    'Professional portrait photography in Bernardsville, NJ. Serving musicians, creatives, and individuals across Somerset County and northern New Jersey.',
-}
 
 const heroImage = {
   src: '/assets/portraits/water-portrait-bernardsville-nj.jpg',
   alt: 'Cinematic waterside portrait photography in Bernardsville, NJ — Davidsons Lens',
 }
+
+export const metadata: Metadata = pageMetadata({
+  path: '/photo/portraits',
+  title: 'Portraits',
+  description:
+    'Professional portrait photography in Bernardsville, NJ. Serving musicians, creatives, and individuals across Somerset County and northern New Jersey.',
+  image: heroImage,
+})
 
 const images: { src: string; alt: string }[] = [
   { src: '/assets/portraits/outdoor-headshot-portrait-nj.jpg', alt: 'Outdoor mens headshot portrait in New Jersey — Davidsons Lens' },
@@ -36,6 +39,7 @@ const images: { src: string; alt: string }[] = [
 export default function PortraitsPage() {
   return (
     <GallerySubPage
+      path="/photo/portraits"
       category="Portraits"
       heroImage={heroImage}
       description={`My goal with every portrait session is simple. I want you to leave feeling more confident than when you showed up. Not just in the photos we made, but in yourself.

@@ -21,7 +21,9 @@ There is no test suite; `npm run build` (compile + TypeScript) is the verificati
 
 - **Next.js 16 (App Router) + TypeScript**, Turbopack
 - **Tailwind CSS v4** — CSS-first config via `@theme` in `src/app/globals.css` (no tailwind.config)
-- **framer-motion** for reveals/transitions (`ScrollReveal`, `PageTransition`)
+- **framer-motion** is used only for the interior mobile menu (`Navigation`). Page and scroll
+  fades are plain CSS: `PageTransition` (`.page-enter`) and `ScrollReveal` / gallery photos
+  (`useReveal` + `[data-reveal]` in `globals.css`)
 - **next/font** Google fonts: Playfair Display → `--font-display`, Outfit → `--font-body`
 - **Resend** powers the contact API (`src/app/api/contact/route.ts`)
 - **marked + gray-matter** are installed for the (currently removed) blog — unused for now
@@ -56,7 +58,13 @@ on `/video`).
 **Aesthetic:** dark, cinematic, premium, editorial. Generous whitespace, restrained motion
 (fades/reveals, ~0.3–0.9s), no flashy effects.
 
-**Motion:** the homepage hero (`HeroGallery`) is a stack of absolutely-positioned images
+**Motion (do not regress, 2026-11-17):** content must be visible in the server HTML. Never ship a
+block at `opacity: 0` that waits for JavaScript (`motion.* initial={{ opacity: 0 }}` did this to
+every interior page and pushed first visible content past 2.5s on phones). `useReveal` renders
+blocks visible and only hides ones still below the screen, then fades them in on scroll;
+`.page-enter` starts partly visible. Reuse those.
+
+The homepage hero (`HeroGallery`) is a stack of absolutely-positioned images
 cross-dissolved with CSS opacity. Do NOT rewrite it with AnimatePresence `mode="wait"` —
 that caused a black flash between slides.
 
@@ -86,7 +94,9 @@ that caused a black flash between slides.
 - `/about` — long bio + contact CTA.
 - `/photo` — portfolio hub: 4 image-tile category cards (Portraits, Music, Dogs, Business) with hover zoom +
   gradient labels. Dogs is the owner's favorite subject and a planned flagship.
-- `/photo/*` — gallery sub-pages via `GallerySubPage` (wide hero, description, masonry grid).
+- `/photo/*` — gallery sub-pages via `GallerySubPage` (wide hero, breadcrumb trail "Home / Photo / <Gallery>"
+  with matching BreadcrumbList JSON-LD, description, masonry grid, CTA, then "More galleries" text links to
+  the other three galleries). Each page passes its own `path`.
 - `/video` — featured YouTube embed (youtube-nocookie) + "What I Shoot" list.
 - `/creative-services`, `/contact` (form → `/api/contact`), `/coming-soon` (unlinked). The blog was removed on
   2026-10-05 and will return after the rebuild.
@@ -115,7 +125,11 @@ that caused a black flash between slides.
    length caps, HTML escaping. The honeypot field name `company` must stay in sync between
    `ContactForm.tsx` and the route.
 3. **SEO state:** site is live and indexable — `robots` metadata, `robots.txt`, `sitemap.ts`
-   stay as-is. New pages get added to `src/app/sitemap.ts`.
+   stay as-is. New pages get added to `src/app/sitemap.ts` (its "last updated" dates come from
+   git at build time; list the files a page's content comes from). Every indexable page builds
+   its metadata with `pageMetadata()` from `src/lib/seo.ts`, which sets the canonical address and
+   that page's own Open Graph / Twitter tags; do not go back to a bare `{ title, description }`.
+   Page titles and H1s are still the short generic ones pending owner-approved wording.
 4. **Perf budget:** production is a 1GB/1-core EC2 box. No heavy new dependencies; prefer
    CSS over JS animation; keep pages lean.
 5. **Secrets:** never read, print, or commit `.env*` files, API keys, or `.pem` files.

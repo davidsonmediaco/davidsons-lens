@@ -1,16 +1,19 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import GallerySubPage from '@/components/GallerySubPage'
-
-export const metadata: Metadata = {
-  title: 'Dogs',
-  description:
-    'Dog photography in Bernardsville, NJ. Capturing the real personality behind every dog. Serving dog owners across Somerset County and northern New Jersey.',
-}
 
 const heroImage = {
   src: '/assets/dogs/dramatic-labrador-portrait-nj.jpg',
   alt: 'Dramatic close-up Labrador portrait — dog photography in New Jersey — Davidsons Lens',
 }
+
+export const metadata: Metadata = pageMetadata({
+  path: '/photo/dogs',
+  title: 'Dogs',
+  description:
+    'Dog photography in Bernardsville, NJ. Capturing the real personality behind every dog. Serving dog owners across Somerset County and northern New Jersey.',
+  image: heroImage,
+})
 
 const images: { src: string; alt: string }[] = [
   { src: '/assets/dogs/happy-yellow-lab-portrait-nj.jpg', alt: 'Happy yellow Labrador portrait outdoors — dog photography NJ — Davidsons Lens' },
@@ -34,6 +37,7 @@ const images: { src: string; alt: string }[] = [
 export default function DogsPage() {
   return (
     <GallerySubPage
+      path="/photo/dogs"
       category="Dogs"
       heroImage={heroImage}
       description={`Every dog has a personality. The goofy ones, the dramatic ones, the ones who act like they own the room and know it. A perfectly posed photo is nice but it's not what makes your dog yours.

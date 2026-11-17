@@ -1,16 +1,19 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import GallerySubPage from '@/components/GallerySubPage'
-
-export const metadata: Metadata = {
-  title: 'Music',
-  description:
-    'Music artist photography in Bernardsville, NJ. Raw, emotional, and real press shots and live performance photography for independent musicians across northern New Jersey.',
-}
 
 const heroImage = {
   src: '/assets/music/cinematic-live-music-photography-nj.jpg',
   alt: 'Cinematic live music performance photography in New Jersey — Davidsons Lens',
 }
+
+export const metadata: Metadata = pageMetadata({
+  path: '/photo/music',
+  title: 'Music',
+  description:
+    'Music photography in Bernardsville, NJ. Raw, emotional press shots and live performance photography for independent musicians across northern New Jersey.',
+  image: heroImage,
+})
 
 const images: { src: string; alt: string }[] = [
   { src: '/assets/music/cinematic-live-music-photography-nj.jpg', alt: 'Cinematic black-and-white live music performance in New Jersey — Davidsons Lens' },
@@ -33,6 +36,7 @@ const images: { src: string; alt: string }[] = [
 export default function MusicPage() {
   return (
     <GallerySubPage
+      path="/photo/music"
       category="Music"
       heroImage={heroImage}
       description={`Music is personal. It's an extension of who you are and the photos that represent you should reflect that. Not a polished version of you. The real one. The one that exists when the music takes over and everything else falls away.

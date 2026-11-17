@@ -20,6 +20,8 @@ const nextConfig: NextConfig = {
       { source: '/assets/pets/:path*', destination: '/assets/dogs/:path*', permanent: true },
       { source: '/photo/sports', destination: '/photo', permanent: true },
       { source: '/photo/behind-the-scenes', destination: '/photo', permanent: true },
+      // Address from the site that used to be on this domain; still listed in search indexes.
+      { source: '/videos', destination: '/video', permanent: true },
       { source: '/blog', destination: '/', permanent: true },
       { source: '/blog/:slug', destination: '/', permanent: true },
     ]

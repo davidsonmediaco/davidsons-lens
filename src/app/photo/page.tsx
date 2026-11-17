@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
@@ -6,11 +7,12 @@ import ScrollReveal from '@/components/ScrollReveal'
 import PageTransition from '@/components/PageTransition'
 import { categories } from '@/lib/categories'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/photo',
   title: 'Photo',
   description:
     'Photography portfolio by Davidsons Lens — portraits, dogs, music, and business photography across northern New Jersey.',
-}
+})
 
 export default function PhotoPage() {
   return (
