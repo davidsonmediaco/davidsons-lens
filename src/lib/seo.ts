@@ -113,5 +113,5 @@ export const businessJsonLd = {
 
 /** Serialize structured data for a <script type="application/ld+json"> tag. */
 export const jsonLdHtml = (data: unknown) => ({
-  __html: JSON.stringify(data).replace(/</g, '\u003c'),
+  __html: JSON.stringify(data).replace(/</g, '\\u003c'),
 })
