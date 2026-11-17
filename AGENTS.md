@@ -72,8 +72,8 @@ that caused a black flash between slides.
 
 - `/` — one rounded-bottom hero block (about 76% of the visible height on phones / 80% on md+): the
   rotating 4-image `HeroGallery` fills it edge to edge, and the homepage-only header (`HomeHeader.tsx`) sits ON
-  the photo in the normal white text colors: wordmark = the page H1, text links on desktop, the positioning
-  line ("Photography & film. Northern New Jersey."), and on phones a "Menu" disclosure whose dropdown is
+  the photo in the normal white text colors: wordmark (a plain `<p>`), text links on desktop, the positioning
+  line ("Photography & film. Northern New Jersey.", which is the page H1, styled as body text), and on phones a "Menu" disclosure whose dropdown is
   transparent (no panel; links sit on the photo, in normal flow below the positioning line). `Navigation`
   renders nothing on "/". A black fade covers the top half of the photo (`overlayClassName` in `page.tsx`,
   80% -> 60% -> 0) and the owner asked to keep it; do not weaken it. Gold text (header-only, then site-wide)
@@ -129,7 +129,8 @@ that caused a black flash between slides.
    git at build time; list the files a page's content comes from). Every indexable page builds
    its metadata with `pageMetadata()` from `src/lib/seo.ts`, which sets the canonical address and
    that page's own Open Graph / Twitter tags; do not go back to a bare `{ title, description }`.
-   Page titles and H1s are still the short generic ones pending owner-approved wording.
+   Titles say what and where (e.g. "Dog Photographer in Bernardsville, NJ"). Interior H1s use
+   `PageTitle` (big short title + smaller descriptive line inside one H1); keep exactly one H1 per page.
 4. **Perf budget:** production is a 1GB/1-core EC2 box. No heavy new dependencies; prefer
    CSS over JS animation; keep pages lean.
 5. **Secrets:** never read, print, or commit `.env*` files, API keys, or `.pem` files.

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/seo'
+import PageTitle from '@/components/PageTitle'
 import Footer from '@/components/Footer'
 import ScrollReveal from '@/components/ScrollReveal'
 import PageTransition from '@/components/PageTransition'
@@ -7,7 +8,7 @@ import ContactForm from '@/components/ContactForm'
 
 export const metadata: Metadata = pageMetadata({
   path: '/contact',
-  title: 'Contact',
+  title: 'Book a Shoot in Bernardsville, NJ',
   description:
     "Get in touch with Davidsons Lens. Photography, video, social media, and creative services in Bernardsville, NJ. Let's work together.",
 })
@@ -18,12 +19,11 @@ export default function ContactPage() {
       <div className="pt-[72px] bg-[#0D0D0D] min-h-screen">
         <div className="max-w-3xl mx-auto px-6 pt-16 pb-24">
           <ScrollReveal>
-            <h1
-              className="text-5xl md:text-7xl text-white mb-6"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              Contact
-            </h1>
+            <PageTitle
+              className="text-4xl sm:text-5xl md:text-7xl mb-6"
+              title="Book a Shoot"
+              subtitle="Photo and video across northern New Jersey"
+            />
             <div className="w-12 h-px bg-[#C9A84C] mb-10" />
             <p
               className="text-[#F5F5F5] text-lg leading-relaxed mb-14 max-w-xl"

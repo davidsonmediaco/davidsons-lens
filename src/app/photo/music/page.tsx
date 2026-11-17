@@ -9,7 +9,7 @@ const heroImage = {
 
 export const metadata: Metadata = pageMetadata({
   path: '/photo/music',
-  title: 'Music',
+  title: 'Music & Band Photographer in New Jersey',
   description:
     'Music photography in Bernardsville, NJ. Raw, emotional press shots and live performance photography for independent musicians across northern New Jersey.',
   image: heroImage,
@@ -38,6 +38,8 @@ export default function MusicPage() {
     <GallerySubPage
       path="/photo/music"
       category="Music"
+      heading="Music Photography"
+      subheading="for bands and artists across New Jersey"
       heroImage={heroImage}
       description={`Music is personal. It's an extension of who you are and the photos that represent you should reflect that. Not a polished version of you. The real one. The one that exists when the music takes over and everything else falls away.
 

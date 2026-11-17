@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { navLinks } from '@/components/Navigation'
 
-// Homepage-only header, laid over the top of the hero photo: a compact wordmark
-// (the page's H1), the positioning line, plain text links on desktop and a "Menu" disclosure on phones. The phone
+// Homepage-only header, laid over the top of the hero photo: a compact wordmark,
+// the positioning line (the page's H1; it says what and where, the wordmark is only the brand), plain text links on desktop and a "Menu" disclosure on phones. The phone
 // dropdown has no panel behind it (owner request): its links sit straight on the photo.
 // Other pages keep <Navigation />, which renders nothing on "/".
 
@@ -48,12 +48,12 @@ export default function HomeHeader() {
       }}
     >
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 h-14 md:h-[72px] flex items-center justify-between gap-4">
-        <h1
+        <p
           className="whitespace-nowrap text-[17px] md:text-xl uppercase tracking-[0.12em] text-white"
           style={{ fontFamily: 'var(--font-display)' }}
         >
           Davidsons Lens
-        </h1>
+        </p>
 
         <nav aria-label="Main" className="hidden md:block">
           <ul className="flex items-center gap-8">
@@ -79,10 +79,15 @@ export default function HomeHeader() {
         </button>
       </div>
 
-      {/* Positioning line (owner-supplied copy). It lives here so the phone dropdown opens below it. */}
-      <p className="max-w-[1400px] mx-auto px-4 md:px-8 text-sm md:text-base text-[#F5F5F5]">
+      {/* Positioning line (owner-supplied copy) = the page's H1. It lives here so the phone dropdown
+          opens below it. Inline font/color: globals.css styles every h1 in the display face and
+          pure white, and this must keep looking like body text. */}
+      <h1
+        className="max-w-[1400px] mx-auto px-4 md:px-8 text-sm md:text-base"
+        style={{ fontFamily: 'var(--font-body)', color: '#F5F5F5' }}
+      >
         Photography &amp; film. Northern New Jersey.
-      </p>
+      </h1>
 
       {/* Phone dropdown: no panel behind it, so the photo stays visible behind the links.
           In normal flow (the hero block has a fixed minimum height, so nothing below moves). */}

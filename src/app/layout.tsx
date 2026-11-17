@@ -19,7 +19,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://davidsonslens.com'),
   title: {
-    default: 'Davidsons Lens | Photo, Video & Creative Media — Bernardsville, NJ',
+    default: 'Photographer & Videographer in Bernardsville, NJ | Davidsons Lens',
     template: '%s | Davidsons Lens',
   },
   description:
@@ -45,14 +45,14 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://davidsonslens.com',
     siteName: 'Davidsons Lens',
-    title: 'Davidsons Lens | Photo, Video & Creative Media — Bernardsville, NJ',
+    title: 'Photographer & Videographer in Bernardsville, NJ | Davidsons Lens',
     description:
       'Full-service creative media company based in Bernardsville, NJ. Photography, video, social media for musicians, dog owners, small businesses and individuals across northern New Jersey.',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Davidsons Lens' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Davidsons Lens | Photo, Video & Creative Media',
+    title: 'Photographer & Videographer in Bernardsville, NJ | Davidsons Lens',
     description: 'Full-service creative media company based in Bernardsville, NJ.',
     images: ['/og-image.jpg'],
   },

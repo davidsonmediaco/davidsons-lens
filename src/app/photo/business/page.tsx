@@ -9,7 +9,7 @@ const heroImage = {
 
 export const metadata: Metadata = pageMetadata({
   path: '/photo/business',
-  title: 'Business',
+  title: 'Food & Small Business Photographer in NJ',
   description:
     'Small business photography and video in Bernardsville, NJ. High quality visuals that build trust and pull customers in. Serving northern New Jersey.',
   image: heroImage,
@@ -35,6 +35,8 @@ export default function BusinessPage() {
     <GallerySubPage
       path="/photo/business"
       category="Business"
+      heading="Business Photography"
+      subheading="for food and drink businesses in northern New Jersey"
       heroImage={heroImage}
       description={`First impressions happen before a customer ever walks through your door. The photos and videos representing your business tell people whether you take pride in what you do before they've had a chance to find out for themselves.
 

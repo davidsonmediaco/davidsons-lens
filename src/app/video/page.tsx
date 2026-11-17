@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/seo'
+import PageTitle from '@/components/PageTitle'
 import Footer from '@/components/Footer'
 import CTAButton from '@/components/CTAButton'
 import ScrollReveal from '@/components/ScrollReveal'
@@ -7,7 +8,7 @@ import PageTransition from '@/components/PageTransition'
 
 export const metadata: Metadata = pageMetadata({
   path: '/video',
-  title: 'Video',
+  title: 'Videographer in Bernardsville, NJ',
   description:
     'Video production in Bernardsville, NJ. Music videos, UGC, branding, fitness and short form social video for musicians, businesses and creators in northern NJ.',
 })
@@ -56,12 +57,11 @@ export default function VideoPage() {
         <ScrollReveal>
           <div className="max-w-3xl mx-auto px-6 py-20 md:py-28">
             <div className="w-12 h-px bg-[#C9A84C] mb-10" />
-            <h1
-              className="text-4xl md:text-5xl text-white mb-8"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              Video
-            </h1>
+            <PageTitle
+              className="text-4xl md:text-5xl mb-8"
+              title="Video Production"
+              subtitle="in Bernardsville and northern New Jersey"
+            />
             <div
               className="text-[#F5F5F5] text-lg leading-relaxed space-y-6"
               style={{ fontFamily: 'var(--font-body)' }}

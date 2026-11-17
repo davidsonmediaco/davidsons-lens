@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/seo'
+import PageTitle from '@/components/PageTitle'
 import Footer from '@/components/Footer'
 import CTAButton from '@/components/CTAButton'
 import ScrollReveal from '@/components/ScrollReveal'
@@ -7,7 +8,7 @@ import PageTransition from '@/components/PageTransition'
 
 export const metadata: Metadata = pageMetadata({
   path: '/about',
-  title: 'About',
+  title: 'About James, Photographer in Bernardsville, NJ',
   description:
     'Meet the photographer behind Davidsons Lens in Bernardsville, NJ. Portraits, dogs, music, and small-business photo and video, shot to make you feel confident.',
 })
@@ -18,12 +19,11 @@ export default function AboutPage() {
       <div className="pt-[72px] bg-[#0D0D0D] min-h-screen">
         <ScrollReveal>
           <div className="max-w-3xl mx-auto px-6 pt-16 pb-24">
-            <h1
-              className="text-5xl md:text-7xl text-white mb-6"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              About
-            </h1>
+            <PageTitle
+              className="text-4xl sm:text-5xl md:text-7xl mb-6"
+              title="About James"
+              subtitle="Photographer and videographer in Bernardsville, NJ"
+            />
             <div className="w-12 h-px bg-[#C9A84C] mb-10" />
             <div
               className="text-[#F5F5F5] text-lg leading-relaxed space-y-6"

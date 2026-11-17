@@ -9,7 +9,7 @@ const heroImage = {
 
 export const metadata: Metadata = pageMetadata({
   path: '/photo/dogs',
-  title: 'Dogs',
+  title: 'Dog Photographer in Bernardsville, NJ',
   description:
     'Dog photography in Bernardsville, NJ. Capturing the real personality behind every dog. Serving dog owners across Somerset County and northern New Jersey.',
   image: heroImage,
@@ -39,6 +39,8 @@ export default function DogsPage() {
     <GallerySubPage
       path="/photo/dogs"
       category="Dogs"
+      heading="Dog Photography"
+      subheading="in Bernardsville and northern New Jersey"
       heroImage={heroImage}
       description={`Every dog has a personality. The goofy ones, the dramatic ones, the ones who act like they own the room and know it. A perfectly posed photo is nice but it's not what makes your dog yours.
 

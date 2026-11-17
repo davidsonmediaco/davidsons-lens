@@ -5,6 +5,7 @@ import GalleryGrid from '@/components/GalleryGrid'
 import CTAButton from '@/components/CTAButton'
 import ScrollReveal from '@/components/ScrollReveal'
 import PageTransition from '@/components/PageTransition'
+import PageTitle from '@/components/PageTitle'
 import { categories } from '@/lib/categories'
 
 const SITE = 'https://davidsonslens.com'
@@ -12,7 +13,12 @@ const SITE = 'https://davidsonslens.com'
 interface GallerySubPageProps {
   /** The gallery's address, e.g. '/photo/dogs'. Used for the breadcrumb and the cross-links. */
   path: string
+  /** Short gallery name, used in the breadcrumb (e.g. "Dogs"). */
   category: string
+  /** Big title over the hero photo, e.g. "Dog Photography". */
+  heading: string
+  /** Smaller line under it, completing the H1, e.g. "in Bernardsville and northern New Jersey". */
+  subheading: string
   heroImage?: { src: string; alt: string }
   description: string
   aboutBlurb: string
@@ -25,6 +31,8 @@ const textLink =
 export default function GallerySubPage({
   path,
   category,
+  heading,
+  subheading,
   heroImage,
   description,
   aboutBlurb,
@@ -68,12 +76,11 @@ export default function GallerySubPage({
         )}
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex items-end pb-12 px-6 md:px-16">
-          <h1
-            className="text-5xl md:text-7xl text-white tracking-wide"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            {category}
-          </h1>
+          <PageTitle
+            className="text-4xl sm:text-5xl md:text-7xl tracking-wide"
+            title={heading}
+            subtitle={subheading}
+          />
         </div>
       </div>
 

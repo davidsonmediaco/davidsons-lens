@@ -8,7 +8,7 @@ import Footer from '@/components/Footer'
 
 export const metadata: Metadata = pageMetadata({
   path: '/',
-  title: 'Davidsons Lens | Photo, Video & Creative Media — Bernardsville, NJ',
+  title: 'Photographer & Videographer in Bernardsville, NJ | Davidsons Lens',
   titleIsComplete: true,
   description:
     'Photographer and videographer in Bernardsville, NJ. Portraits, dog photography, music, and small-business photo and video across northern New Jersey.',

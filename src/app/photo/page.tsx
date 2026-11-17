@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/seo'
+import PageTitle from '@/components/PageTitle'
 import Link from 'next/link'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
@@ -9,7 +10,7 @@ import { categories } from '@/lib/categories'
 
 export const metadata: Metadata = pageMetadata({
   path: '/photo',
-  title: 'Photo',
+  title: 'Photography in Bernardsville & Northern NJ',
   description:
     'Photography portfolio by Davidsons Lens — portraits, dogs, music, and business photography across northern New Jersey.',
 })
@@ -21,12 +22,11 @@ export default function PhotoPage() {
         {/* Header */}
         <ScrollReveal>
           <div className="max-w-7xl mx-auto px-6 pt-16 pb-10">
-            <h1
-              className="text-5xl md:text-7xl text-white mb-4"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              Photo
-            </h1>
+            <PageTitle
+              className="text-4xl sm:text-5xl md:text-7xl mb-4"
+              title="Photography"
+              subtitle="in Bernardsville, NJ"
+            />
             <div className="w-12 h-px bg-[#C9A84C] mb-8" />
             <p
               className="text-[#F5F5F5] text-lg max-w-xl"

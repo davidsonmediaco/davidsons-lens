@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/seo'
+import PageTitle from '@/components/PageTitle'
 import Footer from '@/components/Footer'
 import CTAButton from '@/components/CTAButton'
 import ScrollReveal from '@/components/ScrollReveal'
@@ -7,7 +8,7 @@ import PageTransition from '@/components/PageTransition'
 
 export const metadata: Metadata = pageMetadata({
   path: '/creative-services',
-  title: 'Creative Services',
+  title: 'Social Media Management in Bernardsville, NJ',
   description:
     'Social media management, consulting, and creative services from Davidsons Lens in Bernardsville, NJ.',
 })
@@ -19,12 +20,11 @@ export default function CreativeServicesPage() {
         {/* Page header */}
         <ScrollReveal>
           <div className="max-w-4xl mx-auto px-6 pt-16 pb-12">
-            <h1
-              className="text-5xl md:text-7xl text-white mb-6"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              Creative Services
-            </h1>
+            <PageTitle
+              className="text-4xl sm:text-5xl md:text-7xl mb-6"
+              title="Creative Services"
+              subtitle="Social media management and consulting in Bernardsville, NJ"
+            />
             <div className="w-12 h-px bg-[#C9A84C] mb-10" />
             <p
               className="text-[#F5F5F5] text-lg leading-relaxed max-w-2xl"

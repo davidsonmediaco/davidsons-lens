@@ -9,7 +9,7 @@ const heroImage = {
 
 export const metadata: Metadata = pageMetadata({
   path: '/photo/portraits',
-  title: 'Portraits',
+  title: 'Portrait Photographer in Bernardsville, NJ',
   description:
     'Professional portrait photography in Bernardsville, NJ. Serving musicians, creatives, and individuals across Somerset County and northern New Jersey.',
   image: heroImage,
@@ -41,6 +41,8 @@ export default function PortraitsPage() {
     <GallerySubPage
       path="/photo/portraits"
       category="Portraits"
+      heading="Portrait Photography"
+      subheading="in Bernardsville and northern New Jersey"
       heroImage={heroImage}
       description={`My goal with every portrait session is simple. I want you to leave feeling more confident than when you showed up. Not just in the photos we made, but in yourself.
 
