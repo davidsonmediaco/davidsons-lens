@@ -13,11 +13,42 @@
 # PREVIEW BYPASS (see the real site during maintenance):
 #   Visit https://davidsonslens.com/preview-access?key=__PREVIEW_SECRET__
 #   once; it sets a cookie good for 7 days.
+#
+# ONE ADDRESS + CLOUDFLARE ONLY (2026-11-17)
+#   Only Cloudflare (and the server itself) may connect; anything else, such as a visit to
+#   the server's bare IP address, gets its connection closed (444). That removes the
+#   duplicate copy of the site at the IP address and stops visitors skipping Cloudflare
+#   (which also keeps the contact form's per-visitor rate limit honest).
+#   Requires /etc/nginx/cloudflare-ips.conf, generated and refreshed weekly by
+#   deploy/nginx/update-cloudflare-ips.sh. Run that script BEFORE installing this config.
+#
+#   Every http:// or www. visit gets a permanent (301) redirect to the same path on
+#   https://davidsonslens.com. The visitor's scheme comes from Cloudflare's CF-Visitor
+#   header, so this keeps working whatever Cloudflare's SSL mode is (no redirect loop).
+#   Certificate renewal checks (/.well-known/acme-challenge/) are never redirected.
+
+# Which connections come from Cloudflare (or from this server).
+geo $dl_from_cloudflare {
+    default 0;
+    127.0.0.1/32 1;
+    ::1/128 1;
+    include /etc/nginx/cloudflare-ips.conf;
+}
 
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
     server_name davidsonslens.com www.davidsonslens.com _;
+
+    # Only Cloudflare may connect (see the note at the top of this file).
+    if ($dl_from_cloudflare = 0) { return 444; }
+
+    # One official address: https://davidsonslens.com (see the note at the top of this file).
+    set $dl_redirect 0;
+    if ($host != "davidsonslens.com") { set $dl_redirect 1; }
+    if ($http_cf_visitor ~ '"scheme":"http"') { set $dl_redirect 1; }
+    if ($uri ~ "^/\.well-known/acme-challenge/") { set $dl_redirect 0; }
+    if ($dl_redirect = 1) { return 301 https://davidsonslens.com$request_uri; }
 
     location ^~ /.well-known/acme-challenge/ {
         root /var/www/certbot;
@@ -73,6 +104,16 @@ server {
     ssl_certificate /etc/letsencrypt/live/davidsonslens.com/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/davidsonslens.com/privkey.pem;
     ssl_protocols TLSv1.2 TLSv1.3;
+
+    # Only Cloudflare may connect (see the note at the top of this file).
+    if ($dl_from_cloudflare = 0) { return 444; }
+
+    # One official address: https://davidsonslens.com (see the note at the top of this file).
+    set $dl_redirect 0;
+    if ($host != "davidsonslens.com") { set $dl_redirect 1; }
+    if ($http_cf_visitor ~ '"scheme":"http"') { set $dl_redirect 1; }
+    if ($uri ~ "^/\.well-known/acme-challenge/") { set $dl_redirect 0; }
+    if ($dl_redirect = 1) { return 301 https://davidsonslens.com$request_uri; }
 
     location ^~ /.well-known/acme-challenge/ {
         root /var/www/certbot;
