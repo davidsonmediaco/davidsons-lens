@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { pageMetadata } from '@/lib/seo'
+import { businessJsonLd, jsonLdHtml, pageMetadata } from '@/lib/seo'
 import HomeHeader from '@/components/HomeHeader'
 import HeroGallery from '@/components/HeroGallery'
 import SelectedWork from '@/components/SelectedWork'
@@ -45,6 +45,8 @@ const heroImages: { src: string; alt: string; position?: string }[] = [
 export default function HomePage() {
   return (
     <>
+      {/* Business details for Google; see businessJsonLd in src/lib/seo.ts. */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdHtml(businessJsonLd)} />
       {/* Opening: one "header section" — the photograph fills the whole block, with the
           compact header (which includes the positioning line) on top of it (a black fade over the top half of the photo,
           strong enough that the gold header text stays readable on bright photos; 15% was tried and was not). The block is about 76-80% of the visible screen

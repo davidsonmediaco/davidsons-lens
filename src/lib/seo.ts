@@ -54,3 +54,64 @@ export function pageMetadata({
     },
   }
 }
+
+// Business details for Google (structured data on the homepage). They must match the Google
+// Business Profile, which is a service-area business: only the town is public, never a street
+// address (owner's privacy). Hours are left out until the profile's Wednesday/Thursday hours are
+// corrected. Do not add review ratings here: Google ignores self-published review markup.
+const SITE = 'https://davidsonslens.com'
+
+export const businessJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${SITE}/#business`,
+      name: SITE_NAME,
+      url: SITE,
+      description:
+        'Photographer and videographer in Bernardsville, NJ. Portraits, dog photography, music, and small-business photo and video across northern New Jersey.',
+      image: `${SITE}/og-image.jpg`,
+      logo: `${SITE}/icon.png`,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Bernardsville',
+        addressRegion: 'NJ',
+        addressCountry: 'US',
+      },
+      areaServed: [
+        { '@type': 'City', name: 'Bernardsville, NJ' },
+        { '@type': 'AdministrativeArea', name: 'Somerset County, NJ' },
+        { '@type': 'AdministrativeArea', name: 'Morris County, NJ' },
+        { '@type': 'State', name: 'New Jersey' },
+      ],
+      knowsAbout: [
+        'Portrait photography',
+        'Headshots',
+        'Dog photography',
+        'Music and band photography',
+        'Food and small business photography',
+        'Video production',
+        'Social media management',
+      ],
+      sameAs: [
+        'https://instagram.com/davidsonslens_',
+        'https://www.youtube.com/@davidsonslens',
+        // Google Business Profile (knowledge-graph id of the verified profile)
+        'https://www.google.com/search?kgmid=/g/11xfk6w1s4',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE}/#website`,
+      url: SITE,
+      name: SITE_NAME,
+      publisher: { '@id': `${SITE}/#business` },
+    },
+  ],
+}
+
+/** Serialize structured data for a <script type="application/ld+json"> tag. */
+export const jsonLdHtml = (data: unknown) => ({
+  __html: JSON.stringify(data).replace(/</g, '\u003c'),
+})
