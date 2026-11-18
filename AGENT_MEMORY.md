@@ -380,3 +380,6 @@ Owner said "fix all the code-only items and show me". Done on a branch, built an
 ## 2026-11-17 — Real Pinterest + TikTok links
 
 - Owner confirmed both accounts on the Google Business Profile are theirs. `SocialLinks.tsx` now links Instagram, TikTok (`https://www.tiktok.com/@davidsonmediaco`), Pinterest (`https://www.pinterest.com/davidsonslens_/`, replacing the old placeholder `/davidsonslens/`), YouTube. Both added to `sameAs` in `businessJsonLd`. The placeholder open item is closed. Maintenance page left as is (Instagram / YouTube / email only).
+
+- Deployed 961963c 2026-11-17: live footer shows TikTok + real Pinterest, sameAs live, warm 366/366, live audit 0 problems.
+- Business Profile: the main category change to Photographer went through later the same day (owner reported it now says Photographer), after first showing "NOT APPROVED".
