@@ -368,3 +368,10 @@ Owner said "fix all the code-only items and show me". Done on a branch, built an
 - Owner says the Google Business Profile is fixed (website link, category, hours). On recheck the public panel still showed "Media company" and the old Wednesday hours: edits were likely still in Google's review. Recheck later; once the hours are right they can be added to `businessJsonLd`.
 - Pitfall: while re-checking the profile, a click meant for the hours toggle hit the panel's Save button (layout had shifted) and saved the business to the owner's Google list; undone at once ("Item removed from all lists"). Take a fresh screenshot before clicking in Google panels.
 - Next (owner's order): more page text, later.
+
+## 2026-11-17 — Business Profile edit review (read-only look in the owner's Business Profile Manager)
+
+- Owner reported "the change violated some policy". Cause: the primary-category change Media company -> Photographer was NOT APPROVED ("You cannot make significant changes to your business identity"). Advice given: keep Media company as primary, add Photographer and Video production service as additional categories; if those are also refused, ask Business Profile support to change the primary category. Google has no "Videographer" category.
+- Website field now `http://davidsonslens.com/` (accepted; suggested switching to https). Hours still show Wed 6PM-12AM and Thu 12AM-6PM. Service area: New Jersey, Bridgewater NJ + 4 more; no public address (matches the town-only JSON-LD).
+- The profile lists social links not on the site: Pinterest `https://www.pinterest.com/davidsonslens_/` (the site's Pinterest icon still uses the placeholder `/davidsonslens/`) and TikTok `@davidsonmediaco`. Owner to confirm before the site uses them. Profile description spells the name "Davidson Lens" and mentions web design.
+- Nothing was saved or changed in the profile; the editor was closed with X.
