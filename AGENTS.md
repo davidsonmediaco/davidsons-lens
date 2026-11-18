@@ -152,7 +152,6 @@ Never attempt SSH, PM2, nginx, certbot, or DNS operations.
 
 ## Known open items
 
-- Pinterest icon in `SocialLinks.tsx` points to a placeholder URL (real handle TBD).
 - `/video` still features a single music video (no full reel yet); `/coming-soon` is retired
   but intentionally kept.
 - Sports, Behind the Scenes, and Blog were removed 2026-10-05 (files parked in the gitignored

@@ -96,6 +96,8 @@ export const businessJsonLd = {
       ],
       sameAs: [
         'https://instagram.com/davidsonslens_',
+        'https://www.tiktok.com/@davidsonmediaco',
+        'https://www.pinterest.com/davidsonslens_/',
         'https://www.youtube.com/@davidsonslens',
         // Google Business Profile (knowledge-graph id of the verified profile)
         'https://www.google.com/search?kgmid=/g/11xfk6w1s4',

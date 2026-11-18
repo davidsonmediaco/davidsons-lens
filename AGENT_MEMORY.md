@@ -375,3 +375,8 @@ Owner said "fix all the code-only items and show me". Done on a branch, built an
 - Website field now `http://davidsonslens.com/` (accepted; suggested switching to https). Hours still show Wed 6PM-12AM and Thu 12AM-6PM. Service area: New Jersey, Bridgewater NJ + 4 more; no public address (matches the town-only JSON-LD).
 - The profile lists social links not on the site: Pinterest `https://www.pinterest.com/davidsonslens_/` (the site's Pinterest icon still uses the placeholder `/davidsonslens/`) and TikTok `@davidsonmediaco`. Owner to confirm before the site uses them. Profile description spells the name "Davidson Lens" and mentions web design.
 - Nothing was saved or changed in the profile; the editor was closed with X.
+
+
+## 2026-11-17 — Real Pinterest + TikTok links
+
+- Owner confirmed both accounts on the Google Business Profile are theirs. `SocialLinks.tsx` now links Instagram, TikTok (`https://www.tiktok.com/@davidsonmediaco`), Pinterest (`https://www.pinterest.com/davidsonslens_/`, replacing the old placeholder `/davidsonslens/`), YouTube. Both added to `sameAs` in `businessJsonLd`. The placeholder open item is closed. Maintenance page left as is (Instagram / YouTube / email only).
