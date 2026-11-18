@@ -389,3 +389,4 @@ Owner said "fix all the code-only items and show me". Done on a branch, built an
 
 - Profile (read only): main category Photographer; description fixed ("Davidsons Lens", no web design); hours Sun-Fri 9:00 AM-8:00 PM, Saturday closed (owner's choice: hours = when they answer inquiries, shoots by appointment); Planning attribute "Appointment required"; no booking link yet; website still `http://`. Profile's Instagram link is `instagram.com/davidsonslens/` (no underscore), not the real `davidsonslens_`; owner told to fix. A "Your edit is being reviewed" notice was present.
 - `businessJsonLd` now has `openingHoursSpecification` Sun-Fri 09:00-20:00 to match. Keep it in sync if the profile hours change.
+- Update same day: owner reopened Saturday (pending Google review when checked). Profile hours are now every day 9:00 AM-8:00 PM; JSON-LD changed to all seven days, 09:00-20:00.
