@@ -383,3 +383,9 @@ Owner said "fix all the code-only items and show me". Done on a branch, built an
 
 - Deployed 961963c 2026-11-17: live footer shows TikTok + real Pinterest, sameAs live, warm 366/366, live audit 0 problems.
 - Business Profile: the main category change to Photographer went through later the same day (owner reported it now says Photographer), after first showing "NOT APPROVED".
+
+
+## 2026-11-18 — Business Profile re-check; hours added to JSON-LD (branch `gbp-hours`)
+
+- Profile (read only): main category Photographer; description fixed ("Davidsons Lens", no web design); hours Sun-Fri 9:00 AM-8:00 PM, Saturday closed (owner's choice: hours = when they answer inquiries, shoots by appointment); Planning attribute "Appointment required"; no booking link yet; website still `http://`. Profile's Instagram link is `instagram.com/davidsonslens/` (no underscore), not the real `davidsonslens_`; owner told to fix. A "Your edit is being reviewed" notice was present.
+- `businessJsonLd` now has `openingHoursSpecification` Sun-Fri 09:00-20:00 to match. Keep it in sync if the profile hours change.

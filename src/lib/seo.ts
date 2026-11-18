@@ -57,8 +57,9 @@ export function pageMetadata({
 
 // Business details for Google (structured data on the homepage). They must match the Google
 // Business Profile, which is a service-area business: only the town is public, never a street
-// address (owner's privacy). Hours are left out until the profile's Wednesday/Thursday hours are
-// corrected. Do not add review ratings here: Google ignores self-published review markup.
+// address (owner's privacy). Hours are when the owner answers inquiries (shoots are by appointment)
+// and must match the profile's hours. Do not add review ratings here: Google ignores
+// self-published review markup.
 const SITE = 'https://davidsonslens.com'
 
 export const businessJsonLd = {
@@ -79,6 +80,14 @@ export const businessJsonLd = {
         addressRegion: 'NJ',
         addressCountry: 'US',
       },
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          opens: '09:00',
+          closes: '20:00',
+        },
+      ],
       areaServed: [
         { '@type': 'City', name: 'Bernardsville, NJ' },
         { '@type': 'AdministrativeArea', name: 'Somerset County, NJ' },
